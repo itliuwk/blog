@@ -3,8 +3,8 @@
     <div id="top-img"></div>
     <div class="blog-nav">
       <div class="content">
-        <a title="刘伟坤博客-刘伟坤博客,分享网站seo优化教程，网站源码下载，网站搭建教程，专注互联网资讯，新手站长起点资源网站！" href="#"><img
-          src="../assets/img/logo.jpg" alt="刘伟坤博客"></a>
+        <router-link to="/"><a title="刘伟坤博客-刘伟坤博客,分享网站seo优化教程，网站源码下载，网站搭建教程，专注互联网资讯，新手站长起点资源网站！" href="#"><img
+          src="../assets/img/logo.jpg" alt="刘伟坤博客"></a></router-link>
         <div class="nav-u">
           <ul>
             <li>
@@ -56,7 +56,6 @@
     top: 0px;
     animation: upAndTranslateX 1.5s;
   }
-
 
 
   @keyframes upAndTranslateX {

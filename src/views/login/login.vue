@@ -56,7 +56,7 @@
 <style scoped>
   .login {
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 74px);
     /*background: url(../../assets/img/bg.jpg) no-repeat;*/
     /*-webkit-background-size: 100% 100%;*/
     /*background-size: 100% 100%;*/

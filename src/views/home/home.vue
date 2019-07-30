@@ -105,6 +105,7 @@
       flex: 1;
 
       .control {
+        background: #fff;
         position: relative;
         height: 300px;
         border-radius: 4px;

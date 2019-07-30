@@ -48,18 +48,19 @@
           <span>2019年7月30日18:33:23</span>
         </div>
       </div>
-    </div>   <div class="item">
-    <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
-    <div>
-      <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-      <p class="view">
-        昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
-      <div class="info">
-        <span>liuwk</span>
-        <span>2019年7月30日18:33:23</span>
+    </div>
+    <div class="item">
+      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
+      <div>
+        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
+        <p class="view">
+          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
+        <div class="info">
+          <span>liuwk</span>
+          <span>2019年7月30日18:33:23</span>
+        </div>
       </div>
     </div>
-  </div>
     <div class="item">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
@@ -117,6 +118,7 @@
       div {
         margin-left: 20px;
         position: relative;
+
         .view {
           text-indent: 2em;
           margin-top: 10px;
@@ -129,11 +131,16 @@
           bottom: -15px;
           left: -20px;
           color: #999;
-          span{
+
+          span {
             margin: 0 5px;
           }
         }
       }
+    }
+
+    .item:hover {
+      background: rgba(190,180,150,.2);
     }
   }
 
