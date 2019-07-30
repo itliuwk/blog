@@ -13,7 +13,7 @@
             </li>
             <li>
               <i class="iconfont icon-shouye"></i>
-              技术教程
+              技术文章
             </li>
             <li>
               <i class="iconfont icon-gongju"></i>
@@ -93,7 +93,6 @@
       position: relative;
       height: 70px;
       top: 0;
-      padding-top: 4px;
       box-sizing: border-box;
       max-width: 1300px;
       margin-left: auto;
@@ -115,20 +114,39 @@
         margin-left: 25px;
         width: 500px;
         line-height: 65px;
+        height: 100%;
 
         ul {
           width: 100%;
+          overflow: hidden;
+          height: 100%;
 
           li {
             float: left;
-            margin-right: 20px;
+            margin-right: 30px;
             cursor: pointer;
             font-size: 16px;
             color: #99a9bf;
+            height: 100%;
+            padding: 0 10px;
           }
 
           li:hover {
-            color: #188ae2;
+            color: #fff;
+            background: #289ee2;
+            animation: upOpacity 0.3s;
+          }
+
+          @keyframes upOpacity {
+            0% {
+              opacity: 0.2;
+            }
+            50% {
+              opacity: 0.5;
+            }
+            100% {
+              opacity: 1;
+            }
           }
         }
       }
