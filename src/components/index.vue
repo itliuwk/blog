@@ -1,5 +1,5 @@
 <template>
-  <div class="blog">
+  <div :class="isTop==true?'blog':'blog-none'">
     <div id="top-img"></div>
     <div class="blog-nav">
       <div class="content">
@@ -42,16 +42,45 @@
       return {
         searchValue: ''
       }
-    }
+    },
+    props: ['isTop']
   }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+
+  .blog {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0px;
+    animation: upAndTranslateX 1.5s;
+  }
+
+
+
+  @keyframes upAndTranslateX {
+    0% {
+      opacity: 0.2;
+    }
+    25% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    75% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   #top-img {
     background: url('../assets/img/top.png');
     height: 4px;
     top: 0px;
-    position: fixed;
     width: 100%;
     Z-index: 9999;
   }

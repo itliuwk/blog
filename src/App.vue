@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <home></home>
+    <home :isTop="isTop"></home>
     <div class="routerView">
       <router-view/>
     </div>
@@ -14,6 +14,25 @@
     name: 'App',
     components: {
       home
+    },
+    data() {
+      return {
+        isTop: false
+      }
+
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll)
+    },
+    methods: {
+      handleScroll(e) {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 滚动条偏移量
+        if (scrollTop > 1) {
+          this.isTop = true;
+        } else {
+          this.isTop = false;
+        }
+      }
     }
   }
 </script>
