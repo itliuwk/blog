@@ -1,0 +1,17 @@
+@mixin more2row($rowNum:2) {
+    overflow          : hidden;
+    text-overflow     : ellipsis;
+    display           : -webkit-box;
+    -webkit-line-clamp: $rowNum;
+    -webkit-box-orient: vertical;
+}
+
+.more2row {
+    @include more2row(2)
+}
+
+@mixin more1row {
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    white-space  : nowrap;
+}
