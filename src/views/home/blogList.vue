@@ -140,7 +140,20 @@
     }
 
     .item:hover {
-      background: rgba(190,180,150,.2);
+      background: rgba(84, 190, 150, 0.1);
+      animation: upOpacity 0.3s;
+    }
+
+    @keyframes upOpacity {
+      0% {
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
     }
   }
 
