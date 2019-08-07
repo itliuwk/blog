@@ -17,15 +17,17 @@
         <div class="contact">
           <div class="weixin">
             <i class="iconfont icon-weixin"></i>
+            <img src="../../assets/img/weixiCode.jpg" alt="">
           </div>
           <div class="qq">
-            <i class="iconfont icon-icon"></i>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?V=3&uin=1834183435&Site=QQ&Menu=yes"><i
+              class="iconfont icon-icon"></i></a>
           </div>
           <div class="github">
-            <i class="iconfont icon-github"></i>
+            <a target="_blank" href="https://github.com/itliuwk"><i class="iconfont icon-github"></i></a>
           </div>
           <div class="weibo">
-            <i class="iconfont icon-weibo"></i>
+            <a target="_blank" href="https://weibo.com/u/2433275163"><i class="iconfont icon-weibo"></i></a>
           </div>
         </div>
         <div class="statistics">
@@ -70,7 +72,7 @@
         ]
       }
     },
-    components:{
+    components: {
       BlogList
     }
   }
@@ -148,6 +150,23 @@
           .weixin {
             color: #248a34;
             border: 1px solid #248a34;
+            position: relative;
+
+            img {
+              width: 100px;
+              height: 100px;
+              position: absolute;
+              top: -110px;
+              left: 0;
+              display: none;
+              box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
+            }
+          }
+
+          .weixin:hover{
+            img{
+              display: block;
+            }
           }
 
           .qq {
