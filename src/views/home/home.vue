@@ -163,8 +163,8 @@
             }
           }
 
-          .weixin:hover{
-            img{
+          .weixin:hover {
+            img {
               display: block;
             }
           }
