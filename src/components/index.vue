@@ -94,9 +94,9 @@
       height: 70px;
       top: 0;
       box-sizing: border-box;
-      max-width: 1300px;
-      margin-left: auto;
-      margin-right: auto;
+      /*max-width: 1300px;*/
+
+      margin: 0 20px;
       padding-left: 0;
       padding-right: 0;
 
