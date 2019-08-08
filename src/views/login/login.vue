@@ -3,7 +3,9 @@
 
     <div id="box">
 <!--      <img class="img-logo" src="../../assets/img/footer_bar_logo.png" height="155" width="499"/>-->
+      <h3 style="text-align: center;">登录</h3>
       <div class="box-ipt">
+
         <i class="iconfont icon-fl-renyuan"></i>
         <input type="text" id="account-number" v-model="params.username" placeholder="请输入您的账号" value="">
         <i class="iconfont icon-mima"></i>
@@ -94,7 +96,7 @@
 
   #account-number, #password {
     border: 1px solid #e6e6e6;
-    width: 91%;
+    width: 100%;
     float: left;
     height: 40px;
     line-height: 40px;
@@ -133,7 +135,7 @@
   }
 
   .register {
-    text-align: center;
+    text-align: right;
     margin-top: 20px;
   }
 

@@ -3,6 +3,7 @@
 
     <div id="box">
 <!--      <img class="img-logo" src="../../assets/img/footer_bar_logo.png" height="155" width="499"/>-->
+      <h3 style="text-align: center;">注册</h3>
       <div class="box-ipt">
         <i class="iconfont icon-fl-renyuan"></i>
         <input type="text" id="account-number" v-model="params.username" placeholder="请输入您需要注册的账号">
@@ -63,7 +64,7 @@
 
   #box {
     width: 400px;
-    height: 350px;
+    height: 380px;
     position: fixed;
     /*background: rgb(255, 248, 235);*/
     padding: 30px;
@@ -93,7 +94,7 @@
 
   #account-number, #password {
     border: 1px solid #e6e6e6;
-    width: 91%;
+    width: 100%;
     float: left;
     height: 40px;
     line-height: 40px;
@@ -132,7 +133,7 @@
   }
 
   .register1 {
-    text-align: center;
+    text-align: right;
     margin-top: 20px;
   }
 
@@ -158,7 +159,7 @@
 
   #confirm-password {
     border: 1px solid #e6e6e6;
-    width: 91%;
+    width: 100%;
     float: left;
     height: 40px;
     line-height: 40px;

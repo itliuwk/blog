@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Axios from '@/views/axios'
 import login from '@/router/modules/login'
 
 

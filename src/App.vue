@@ -25,7 +25,7 @@
         transitionName: 'slide-right',
         enterClass: '',
         leaveClass: '',
-        ClassArr: ['fadeOut', 'fadeOutDown', 'fadeOutDownBig', 'fadeOutLeft', 'fadeOutLeftBig', 'fadeOutRight', 'fadeOutRightBig', 'fadeOutUp', 'fadeOutUpBig', 'bounceIn', 'bounceInDown', 'bounceInUp', 'lightSpeedIn', 'lightSpeedOut', 'rotateIn', 'zoomInDown', 'zoomIn', 'rollOut', 'rollIn', 'slideOutUp', 'slideOutDown', 'slideInLeft', 'slideInRight', 'rotateOut', 'rotateOutDownLeft', 'rotateOutDownRight', 'fadeIn', 'fadeInDown', 'fadeInUp', 'fadeInUpBig', 'bounceOut', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight', 'bounceOutUp', 'slideInUp', 'slideInDown', 'zoomIn', 'zoomInDown', 'zoomInUp']
+        ClassArr: ['rubberBand','pulse','swing','tada','wobble','heartBeat','fadeOut','flipInX','flipInY','flipOutX','flipOutY','rotateIn','rotateOut','rotateOutDownLeft','rotateOutDownRight','rotateOutUpLeft','rotateOutUpRight','hinge','jackInTheBox','rollIn','rollOut']
       }
 
     },
@@ -34,8 +34,10 @@
     },
     watch: {
       $route(to, from) {
-        this.enterClass = this.ClassArr[this.random()];
         this.leaveClass = this.ClassArr[this.random()];
+       setTimeout(()=>{
+         this.enterClass = this.ClassArr[this.random()];
+       },500)
       }
     },
     methods: {
@@ -48,7 +50,8 @@
         }
       },
       random() {
-        return Math.floor(Math.random() * (1 - 40) + 40)
+        //定义随机数，对应好 this.ClassArr.length 的长度，我这里 length 是 21
+        return Math.floor(Math.random() * (1 - 21) + 21)
       }
     }
   }
