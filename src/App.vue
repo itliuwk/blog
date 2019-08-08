@@ -2,8 +2,8 @@
   <div id="app">
     <home :isTop="isTop"></home>
 
-    <div class="routerView">
-      <transition :enter-active-class="enterClass" :leave-active-class="leaveClass">
+    <div class="">
+      <transition name="fade-transform" mode="out-in">
         <router-view class="animated"></router-view>
       </transition>
     </div>
@@ -23,9 +23,9 @@
       return {
         isTop: false,
         transitionName: 'slide-right',
-        enterClass: '',
+        enterClass: 'bounceIn',
         leaveClass: '',
-        ClassArr: ['rubberBand','pulse','swing','tada','wobble','heartBeat','fadeOut','flipInX','flipInY','flipOutX','flipOutY','rotateIn','rotateOut','rotateOutDownLeft','rotateOutDownRight','rotateOutUpLeft','rotateOutUpRight','hinge','jackInTheBox','rollIn','rollOut']
+        ClassArr: ['rollIn', 'rollOut']
       }
 
     },
@@ -34,10 +34,8 @@
     },
     watch: {
       $route(to, from) {
-        this.leaveClass = this.ClassArr[this.random()];
-       setTimeout(()=>{
-         this.enterClass = this.ClassArr[this.random()];
-       },500)
+        // this.leaveClass = this.ClassArr[this.random()];
+        // this.enterClass = this.ClassArr[this.random()];
       }
     },
     methods: {
@@ -50,8 +48,9 @@
         }
       },
       random() {
+        let n = 2;
         //定义随机数，对应好 this.ClassArr.length 的长度，我这里 length 是 21
-        return Math.floor(Math.random() * (1 - 21) + 21)
+        return Math.floor(Math.random() * (1 - n) + n)
       }
     }
   }

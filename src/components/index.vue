@@ -7,10 +7,12 @@
           src="../assets/img/logo.jpg" alt="刘伟坤博客"></a></router-link>
         <div class="nav-u">
           <ul>
-            <li>
-              <i class="iconfont icon-shouye"></i>
-              <router-link to="/">首页</router-link>
-            </li>
+            <router-link to="/">
+              <li>
+                <i class="iconfont icon-shouye"></i>
+                首页
+              </li>
+            </router-link>
             <li>
               <i class="iconfont icon-shouye"></i>
               技术文章
@@ -26,9 +28,11 @@
           <span>
             <router-link to="/login">登录</router-link>
           </span>
-          <el-button type="primary" round>
-            <router-link to="/register">我要注册</router-link>
-          </el-button>
+          <router-link to="/register">
+            <el-button type="primary" round>
+              我要注册
+            </el-button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -53,7 +57,7 @@
     width: 100%;
     position: fixed;
     z-index: 999;
-    top: 0px;
+    top: 0;
     animation: upAndTranslateX 1.5s;
   }
 
@@ -61,6 +65,7 @@
   @keyframes upAndTranslateX {
     0% {
       opacity: 0.2;
+
     }
     25% {
       opacity: 0.4;

@@ -1,7 +1,7 @@
 <template>
   <div class="blogList">
 
-    <div class="item">
+    <div class="item" @click="toDetail">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
         <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
@@ -13,7 +13,8 @@
         </div>
       </div>
     </div>
-    <div class="item">
+
+    <div class="item" @click="toDetail">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
         <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
@@ -25,7 +26,9 @@
         </div>
       </div>
     </div>
-    <div class="item">
+
+
+    <div class="item" @click="toDetail">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
         <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
@@ -37,7 +40,8 @@
         </div>
       </div>
     </div>
-    <div class="item">
+
+    <div class="item" @click="toDetail">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
         <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
@@ -49,7 +53,8 @@
         </div>
       </div>
     </div>
-    <div class="item">
+
+    <div class="item" @click="toDetail">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
         <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
@@ -61,7 +66,8 @@
         </div>
       </div>
     </div>
-    <div class="item">
+
+    <div class="item" @click="toDetail">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
         <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
@@ -73,7 +79,8 @@
         </div>
       </div>
     </div>
-    <div class="item">
+
+    <div class="item" @click="toDetail">
       <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
       <div>
         <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
@@ -90,8 +97,14 @@
 </template>
 
 <script>
+
   export default {
-    name: "blogList"
+    name: "blogList",
+    methods: {
+      toDetail() {
+        this.$router.push('./detail');
+      }
+    }
   }
 </script>
 
@@ -140,15 +153,17 @@
     }
 
     .item:hover {
-      /*animation: upOpacity 0.3s;*/
+      transition-duration: .5s;
       background: #000;
 
-      h3{
+      h3 {
+        transition-duration: .5s;
         font-size: 20px;
         color: #188ae2;
       }
 
-      .view{
+      .view {
+        transition-duration: .5s;
         color: #fff;
       }
     }
