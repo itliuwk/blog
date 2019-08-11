@@ -58,7 +58,7 @@
 
 <script>
   import Right from '@/components/right'
-  import {random} from '@/utils/index'
+  import {random_photo} from '@/utils/index'
 
   export default {
     name: "blogDetail",
@@ -71,7 +71,8 @@
       Right
     },
     mounted() {
-       this.bgUrl = `https://wallpaper.infinitynewtab.com/wallpaper/${random(1, 1000)}.jpg`
+      console.log(random_photo());
+      this.bgUrl = random_photo()
     },
   }
 </script>

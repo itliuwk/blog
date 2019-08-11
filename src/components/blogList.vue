@@ -1,105 +1,60 @@
 <template>
   <div class="blogList">
 
-    <div class="item" @click="toDetail">
-      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
+    <div class="item" @click="toDetail" v-for="(item,index) in blogList" :key="index">
+      <img :src="item.url" alt="">
       <div>
-        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-        <p class="view">
-          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
+        <h3>{{item.title}}</h3>
+        <p class="view">{{item.content}}</p>
         <div class="info">
-          <span>liuwk</span>
-          <span>2019年7月30日18:33:23</span>
+          <span>{{item.author}}</span>
+          <span>{{item.createDate}}</span>
         </div>
       </div>
     </div>
 
-    <div class="item" @click="toDetail">
-      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
-      <div>
-        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-        <p class="view">
-          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
-        <div class="info">
-          <span>liuwk</span>
-          <span>2019年7月30日18:33:23</span>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="item" @click="toDetail">
-      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
-      <div>
-        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-        <p class="view">
-          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
-        <div class="info">
-          <span>liuwk</span>
-          <span>2019年7月30日18:33:23</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="item" @click="toDetail">
-      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
-      <div>
-        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-        <p class="view">
-          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
-        <div class="info">
-          <span>liuwk</span>
-          <span>2019年7月30日18:33:23</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="item" @click="toDetail">
-      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
-      <div>
-        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-        <p class="view">
-          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
-        <div class="info">
-          <span>liuwk</span>
-          <span>2019年7月30日18:33:23</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="item" @click="toDetail">
-      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
-      <div>
-        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-        <p class="view">
-          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
-        <div class="info">
-          <span>liuwk</span>
-          <span>2019年7月30日18:33:23</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="item" @click="toDetail">
-      <img src="https://ww2.sinaimg.cn/large/006WWMJggy1g2ftrfpvsej30st06kmxs.jpg" alt="">
-      <div>
-        <h3>新浪图床外链调用失效临时解决办法：使用Referrer策略</h3>
-        <p class="view">
-          昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...</p>
-        <div class="info">
-          <span>liuwk</span>
-          <span>2019年7月30日18:33:23</span>
-        </div>
-      </div>
-    </div>
 
   </div>
 </template>
 
 <script>
-
+  import {random_photo} from '@/utils/index'
   export default {
     name: "blogList",
+    data(){
+      return{
+        blogList:[
+          {
+            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
+            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
+            author:'liuwk',
+            createDate:'2019年8月11日16:40:05',
+            url:random_photo()
+          },
+          {
+            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
+            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
+            author:'liuwk',
+            createDate:'2019年8月11日16:40:05',
+            url:random_photo()
+          },
+          {
+            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
+            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
+            author:'liuwk',
+            createDate:'2019年8月11日16:40:05',
+            url:random_photo()
+          },
+          {
+            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
+            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
+            author:'liuwk',
+            createDate:'2019年8月11日16:40:05',
+            url:random_photo()
+          }
+        ]
+      }
+    },
     methods: {
       toDetail() {
         this.$router.push('./detail');
