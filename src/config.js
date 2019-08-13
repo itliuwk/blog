@@ -1,3 +1,3 @@
 
 
-export const BASE_API = "http://sxitw.wicp.vip:45439/api/";
+export const BASE_API = "http://localhost:8000/api/";

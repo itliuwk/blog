@@ -1,14 +1,14 @@
 <template>
   <div class="blogList">
 
-    <div class="item" @click="toDetail" v-for="(item,index) in blogList" :key="index">
+    <div class="item" @click="toDetail(item.id)" v-for="(item,index) in blogList" :key="index">
       <img :src="item.url" alt="">
       <div>
         <h3>{{item.title}}</h3>
         <p class="view">{{item.content}}</p>
         <div class="info">
           <span>{{item.author}}</span>
-          <span>{{item.createDate}}</span>
+          <span>{{item.createtime}}</span>
         </div>
       </div>
     </div>
@@ -19,45 +19,32 @@
 
 <script>
   import {random_photo} from '@/utils/index'
+  import {YYYYMMDD} from '@/utils/date'
+  import {list} from '@/api/blog'
+
   export default {
     name: "blogList",
-    data(){
-      return{
-        blogList:[
-          {
-            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
-            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
-            author:'liuwk',
-            createDate:'2019年8月11日16:40:05',
-            url:random_photo()
-          },
-          {
-            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
-            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
-            author:'liuwk',
-            createDate:'2019年8月11日16:40:05',
-            url:random_photo()
-          },
-          {
-            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
-            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
-            author:'liuwk',
-            createDate:'2019年8月11日16:40:05',
-            url:random_photo()
-          },
-          {
-            title:'新浪图床外链调用失效临时解决办法：使用Referrer策略',
-            content:' 昨天我们分析了新浪图床外链调用失败的原因，新浪图床可能已经开始限制外链，疑似已开启防盗链，新浪免费图床时代看来已经结束了，建议各位站长尽量还是更换别的图床或者本地化吧。今天写一个...',
-            author:'liuwk',
-            createDate:'2019年8月11日16:40:05',
-            url:random_photo()
-          }
-        ]
+    data() {
+      return {
+        blogList: []
       }
     },
+    mounted() {
+      this.getList();
+    },
     methods: {
-      toDetail() {
-        this.$router.push('./detail');
+      toDetail(id) {
+        this.$router.push('./detail?id=' + id);
+      },
+      getList() {
+        list().then(res => {
+          res.data.map(item => {
+            item.createtime = YYYYMMDD(item.createtime);
+            item.url = random_photo();
+            return item;
+          });
+          this.blogList = res.data;
+        })
       }
     }
   }
@@ -86,6 +73,7 @@
       div {
         margin-left: 20px;
         position: relative;
+        width: 80%;
 
         .view {
           text-indent: 2em;
@@ -120,6 +108,11 @@
       .view {
         transition-duration: .5s;
         color: #fff;
+      }
+
+      img {
+        transition-duration: .5s;
+        transform: scale(1.2);
       }
     }
 

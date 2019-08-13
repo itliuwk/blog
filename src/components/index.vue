@@ -25,14 +25,34 @@
         </div>
         <div class="login">
           <el-input v-model="searchValue" clearable class="search" placeholder="输入关键字 Enter键搜索..."></el-input>
-          <span>
+
+          <div style="display: inline-block" v-if="userInfo==null">
+            <span>
             <router-link to="/login">登录</router-link>
           </span>
-          <router-link to="/register">
-            <el-button type="primary" round>
-              我要注册
-            </el-button>
-          </router-link>
+            <router-link to="/register">
+              <el-button type="primary" round>
+                我要注册
+              </el-button>
+            </router-link>
+          </div>
+          <div v-else style="display: inline-block">
+            <router-link  style="    color: #99a9bf;" to="/admin">会员中心</router-link>
+            <img src="../assets/img/default.png" style="border-radius: 50%;margin-left: 20px" alt="">
+            <el-dropdown>
+              <span class="el-dropdown-link" style="cursor: pointer">
+                {{userInfo.realname}}<i class="el-icon-arrow-down el-icon--right"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>
+                  <router-link to="/">退出</router-link>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+
+
+          </div>
+
         </div>
       </div>
     </div>
@@ -47,7 +67,25 @@
         searchValue: ''
       }
     },
-    props: ['isTop']
+    props: ['isTop'],
+    mounted() {
+
+    },
+    computed: {
+      userInfo() {
+        return JSON.parse(localStorage.getItem('userInfo')) || null;
+      }
+    },
+    watch: {
+      userInfo(val) {
+        console.log(val);
+      }
+    },
+    methods: {
+      handleSelect(val) {
+        console.log(val);
+      }
+    }
   }
 </script>
 

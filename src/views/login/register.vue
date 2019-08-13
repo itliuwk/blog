@@ -2,7 +2,7 @@
   <div class="register">
 
     <div id="box">
-<!--      <img class="img-logo" src="../../assets/img/footer_bar_logo.png" height="155" width="499"/>-->
+      <!--      <img class="img-logo" src="../../assets/img/footer_bar_logo.png" height="155" width="499"/>-->
       <h3 style="text-align: center;">注册</h3>
       <div class="box-ipt">
         <i class="iconfont icon-fl-renyuan"></i>
@@ -32,18 +32,22 @@
         params: {
           username: '',
           password: '',
-          realname: ''
+          realname: '',
+          createDate: ''
         }
       }
     },
     methods: {
       registerClick() {
-        register(this.params).then(res => {
-          if (res.errno == -1) {
-            Alert.fail(res.message);
+        let params = {
+          ...this.params,
+          createDate: Date.now()
+        };
+        register(params).then(res => {
+          if (res.data.errno == -1) {
+            Alert.fail(res.data.message);
             return false;
           }
-          Alert.success(res.message + ',即将返回登录页面');
           setTimeout(() => {
             this.$router.push('/login');
           }, 2000);

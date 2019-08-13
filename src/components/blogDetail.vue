@@ -3,13 +3,13 @@
 
     <section class="article-focusbox" :style="{backgroundImage: 'url('+bgUrl+')'}">
       <header class="article-header">
-        <h1 class="article-title">美化版音乐在线</h1>
+        <h1 class="article-title">{{detail.title}}</h1>
         <div class="article-meta">
-          <span class="item item-1">2019-5-28</span>
+          <span class="item item-1">{{detail.createtime}}</span>
           <span class="item item-4">分类：    	<a href="https://iooqp.cn/?sort=9" rel="category tag">技术教程</a></span>
           <span class="item item-5">
             <a id="ae_bdcx" rel="external nofollow" target="_blank"
-               href="http://zhanzhang.baidu.com/sitesubmit/index?sitename=https://iooqp.cn/?post=340#comment"
+               :href='detail.included'
                style="color: rgb(255, 0, 0);">提交收录</a>
           </span>
 
@@ -23,27 +23,23 @@
         <div class="content-c">
           <p class="statement">特别声明：文章多为网络转载，资源使用一般不提供任何帮助，特殊资源除外，如有侵权请联系！</p>
 
-
-          <p>直接丢源码，话不多说，嘻嘻。</p>
-          <p>下载地址:<a href="http://t.cn/AiOslpdF" target="_blank"
-                     style="color: rgb(255, 94, 82);">http://t.cn/AiOslpdF</a>
-          </p>
-          <p><br></p>
-          <p><img src="https://s2.ax1x.com/2019/07/11/ZgzODU.jpg"></p>
+          <div>
+            {{detail.content}}
+          </div>
         </div>
         <div class="content-b">
           <h3>本文版权</h3>
           <div>
-            阅读时间： 0小时08分01秒 发布于:2019-8-5
+            发布日期： {{detail.createtime}}
           </div>
           <div>
-            本文标题： <span class="title">美化版音乐在线</span>
+            本文标题： <span class="title">{{detail.title}}</span>
           </div>
           <div>
-            本文链接：<a href="https://iooqp.cn/?post=447"> https://iooqp.cn/?post=447</a>
+            本文链接：<a :href="detail.url">{{detail.url}}</a>
           </div>
           <div>
-            版权声明：文章为《 <a href="javascript:void (0)">liuweikun</a>》原创，转载请保留出处！
+            版权声明：文章为《 <a href="javascript:void (0)">{{detail.author}}</a>》原创，转载请保留出处！
           </div>
         </div>
 
@@ -59,21 +55,42 @@
 <script>
   import Right from '@/components/right'
   import {random_photo} from '@/utils/index'
+  import {YYYYMMDD} from '@/utils/date'
+  import {detail} from '@/api/blog'
 
   export default {
     name: "blogDetail",
-    data(){
-      return{
-        bgUrl:''
+    data() {
+      return {
+        bgUrl: '',
+        detail: {}
       }
     },
     components: {
       Right
     },
     mounted() {
-      console.log(random_photo());
-      this.bgUrl = random_photo()
+
+      this.getDetail();
     },
+    methods: {
+
+      getDetail() {
+        let params = {
+          id: this.$route.query.id
+        };
+        detail(params).then(res => {
+          let href = window.location.href.replace('#/', '');
+          res.data.createtime = YYYYMMDD(res.data.createtime);
+          res.data.url = href;
+          res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
+          this.detail = res.data;
+          this.bgUrl = random_photo();
+        });
+
+
+      }
+    }
   }
 </script>
 

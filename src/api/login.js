@@ -6,9 +6,8 @@ export function login(params) {
   return request({
     url: BASE_API + 'user/login',
     method: 'post',
-    withCredentials: true,
     data:params,
-  }).then(res => res.data);
+  }).then(res => res);
 }
 
 
@@ -16,7 +15,6 @@ export function register(params) {
   return request({
     url: BASE_API + 'user/register',
     method: 'post',
-    withCredentials: true,
     data:params,
-  }).then(res => res.data);
+  }).then(res => res);
 }

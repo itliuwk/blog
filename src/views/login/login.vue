@@ -2,7 +2,7 @@
   <div class="login">
 
     <div id="box">
-<!--      <img class="img-logo" src="../../assets/img/footer_bar_logo.png" height="155" width="499"/>-->
+      <!--      <img class="img-logo" src="../../assets/img/footer_bar_logo.png" height="155" width="499"/>-->
       <h3 style="text-align: center;">登录</h3>
       <div class="box-ipt">
 
@@ -23,6 +23,7 @@
 <script>
   import {login} from "../../api/login";
   import Alert from '@/utils/alert'
+
   export default {
     name: "login",
     data() {
@@ -33,20 +34,21 @@
         }
       }
     },
-    watch:{
-      '$router':function (val) {
+    watch: {
+      '$router': function (val) {
         console.log(val);
       }
     },
     methods: {
       loginClick() {
         login(this.params).then(res => {
-          console.log(res);
-          if (res.errno===0){
+          localStorage.setItem('userInfo', JSON.stringify(res.data.data));
+          this.$store.commit('SET_USERINFO', res.data.data);
+          if (res.data.errno === 0) {
             Alert.success('登录成功，即将进入后台页面');
-            setTimeout(()=>{
-              this.$router.push('/login');
-            },2000);
+            setTimeout(() => {
+              this.$router.push('/admin');
+            }, 2000);
           }
         })
       }
