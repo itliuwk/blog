@@ -41,7 +41,7 @@
     methods: {
       handleScroll(e) {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 滚动条偏移量
-        if (scrollTop > 1) {
+        if (scrollTop > 100) {
           this.isTop = true;
         } else {
           this.isTop = false;

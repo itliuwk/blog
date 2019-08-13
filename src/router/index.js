@@ -13,6 +13,11 @@ export default new Router({
       name: 'home',
       component: () => import('@/views/home/home')
     },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: () => import('@/views/admin/index')
+    },
     ...login,
     ...blog
   ]
