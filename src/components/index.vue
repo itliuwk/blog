@@ -26,10 +26,10 @@
         <div class="login">
           <el-input v-model="searchValue" clearable class="search" placeholder="输入关键字 Enter键搜索..."></el-input>
 
-          <div style="display: inline-block" v-if="userInfo==null">
-            <span>
-            <router-link to="/login">登录</router-link>
-          </span>
+          <div style="display: inline-block" v-if="userInfo==null||!userInfo">
+            <span style="margin-right: 20px">
+              <router-link to="/login">登录</router-link>
+            </span>
             <router-link to="/register">
               <el-button type="primary" round>
                 我要注册
@@ -37,7 +37,7 @@
             </router-link>
           </div>
           <div v-else style="display: inline-block">
-            <router-link  style="    color: #99a9bf;" to="/admin">会员中心</router-link>
+            <router-link style="    color: #99a9bf;" to="/admin">会员中心</router-link>
             <img src="../assets/img/default.png" style="border-radius: 50%;margin-left: 20px" alt="">
             <el-dropdown>
               <span class="el-dropdown-link" style="cursor: pointer">
@@ -45,7 +45,7 @@
               </span>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>
-                  <router-link to="/">退出</router-link>
+                  <span @click="loginOut">退出</span>
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -60,6 +60,8 @@
 </template>
 
 <script>
+  import Alert from '@/utils/alert'
+
   export default {
     name: "index",
     data() {
@@ -73,17 +75,40 @@
     },
     computed: {
       userInfo() {
-        return JSON.parse(localStorage.getItem('userInfo')) || null;
+        return this.$store.state.userInfo || JSON.parse(localStorage.getItem('userInfo'));
       }
     },
     watch: {
       userInfo(val) {
-        console.log(val);
+      },
+      $route: {
+        deep: true,
+        handler(val) {
+          if (val.fullPath == '/admin') {
+            if (!this.userInfo && this.userInfo == null) {
+              if (!this.$store.state.isLogin){
+                Alert.fail('你还没有登录，即将返回首页');
+
+                setTimeout(() => {
+                  this.$router.push('/');
+                }, 100)
+              }
+            }
+          }
+        }
       }
     },
     methods: {
       handleSelect(val) {
         console.log(val);
+      },
+      loginOut() {
+        Alert.success('退出成功，即将返回首页');
+        this.$router.push('/');
+        setTimeout(() => {
+          localStorage.clear();
+          this.$store.commit('SET_USERINFO', null);
+        }, 1500)
       }
     }
   }

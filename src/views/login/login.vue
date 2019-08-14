@@ -46,6 +46,7 @@
           this.$store.commit('SET_USERINFO', res.data.data);
           if (res.data.errno === 0) {
             Alert.success('登录成功，即将进入后台页面');
+            this.$store.commit('SET_ISLOGIN',true);
             setTimeout(() => {
               this.$router.push('/admin');
             }, 2000);

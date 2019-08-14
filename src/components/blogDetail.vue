@@ -7,11 +7,11 @@
         <div class="article-meta">
           <span class="item item-1">{{detail.createtime}}</span>
           <span class="item item-4">分类：    	<a href="https://iooqp.cn/?sort=9" rel="category tag">技术教程</a></span>
-          <span class="item item-5">
-            <a id="ae_bdcx" rel="external nofollow" target="_blank"
-               :href='detail.included'
-               style="color: rgb(255, 0, 0);">提交收录</a>
-          </span>
+<!--          <span class="item item-5">-->
+<!--            <a id="ae_bdcx" rel="external nofollow" target="_blank"-->
+<!--               :href='detail.included'-->
+<!--               style="color: rgb(255, 0, 0);">提交收录</a>-->
+<!--          </span>-->
 
         </div>
 
@@ -80,7 +80,7 @@
           id: this.$route.query.id
         };
         detail(params).then(res => {
-          let href = window.location.href.replace('#/', '');
+          let href = window.location.href;
           res.data.createtime = YYYYMMDD(res.data.createtime);
           res.data.url = href;
           res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;

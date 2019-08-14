@@ -5,7 +5,7 @@
              style="background-image: url(https://cy-pic.kuaizhan.com/g3/ac/71/4dc8-80b8-40c0-9600-9d30118b967a24);">
       <header class="article-header">
         <img src="../../assets/img/tx.png" style="z-index: 999" width="80" alt="">
-        <h3 class="article-title">账号：{{userInfo.username}}</h3>
+        <h3 class="article-title" v-if="userInfo">账号：{{userInfo.username ||''}}</h3>
       </header>
     </section>
 
@@ -80,7 +80,7 @@
     },
     watch: {
       userInfo(val) {
-      }
+      },
     },
     mounted() {
       this.bgUrl = random_photo();
