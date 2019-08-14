@@ -9,6 +9,11 @@ export function random(m,n) {
 }
 
 
+
 export function random_photo() {
-  return `https://wallpaper.infinitynewtab.com/wallpaper/${random(1, 1000)}.jpg`
+  // return `https://wallpaper.infinitynewtab.com/wallpaper/${random(1, 1000)}.jpg`
+  // return `http://api.laolibab.cn/king/tupian/tpdm/${random(1, 500)}.jpg`
+  return `http://sxitw.cn/imgs/${random(1, 39)}.jpg`
+  // return `../images/${random(1, 39)}.jpg`
 }
+
