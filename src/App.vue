@@ -2,7 +2,7 @@
   <div id="app">
     <home :isTop="isTop"></home>
 
-    <div class="">
+    <div class="bg" :style="{backgroundImage: 'url('+bgUrl+')'}">
       <transition name="fade-transform" mode="out-in">
         <router-view class="animated"></router-view>
       </transition>
@@ -13,7 +13,7 @@
 
 <script>
   import home from '@/components/index'
-
+  import {random_photo} from '@/utils/index'
   export default {
     name: 'App',
     components: {
@@ -25,11 +25,13 @@
         transitionName: 'slide-right',
         enterClass: 'bounceIn',
         leaveClass: '',
+        bgUrl: '',
         ClassArr: ['rollIn', 'rollOut']
       }
 
     },
     mounted() {
+      this.bgUrl = random_photo();
       window.addEventListener('scroll', this.handleScroll);
     },
     watch: {
@@ -63,6 +65,17 @@
     margin-right: auto;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .bg {
+    height: calc(100% - 74px);
+    background: url('./assets/img/bg.jpg') no-repeat;
+    background-size: cover;
+    overflow: auto;
+  }
+
+  body {
+    min-width: 1400px;
   }
 
 
