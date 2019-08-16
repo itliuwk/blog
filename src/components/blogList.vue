@@ -2,7 +2,8 @@
   <div class="blogList">
 
     <div class="item" @click="toDetail(item.id)" v-for="(item,index) in blogList" :key="index">
-      <img :src="item.url" alt="">
+      <img  v-if="item.url" :src="item.url" alt=""/>
+      <img v-else src="../assets/images/10.jpg" alt=""/>
       <div>
         <h3>{{item.title}}</h3>
         <p class="view">{{item.content}}</p>
@@ -38,9 +39,9 @@
       },
       getList() {
         list().then(res => {
-          res.data.map(item => {
+          res.data.map((item,index)=>{
             item.createtime = YYYYMMDD(item.createtime);
-            item.url = random_photo();
+            // item.url = random_photo();
             return item;
           });
           this.blogList = res.data;
