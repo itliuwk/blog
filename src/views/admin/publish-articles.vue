@@ -66,6 +66,13 @@
     mounted() {
 
     },
+    props:['detail'],
+
+    watch:{
+      detail(val){
+        this.form = val
+      }
+    },
     methods: {
 
       confirm() {
