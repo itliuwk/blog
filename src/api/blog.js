@@ -20,3 +20,13 @@ export function detail(params) {
 }
 
 
+export function add(params) {
+  return request({
+    url: BASE_API + 'blog/new',
+    method: 'post',
+    data:params,
+  }).then(res => res.data);
+}
+
+
+

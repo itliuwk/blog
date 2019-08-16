@@ -11,36 +11,19 @@
 
     <div class="content">
       <div class="left">
-        <el-menu
-          default-active="1"
-          @select="selectIndex"
-          class="el-menu-vertical-demo"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
-          <el-menu-item index="1">
-            <span slot="title">用户中心</span>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <span slot="title">发布文章</span>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <span slot="title">我的文章</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <span slot="title">修改资料</span>
-          </el-menu-item>
-          <el-menu-item index="5">
-            <span slot="title">退出</span>
-          </el-menu-item>
-        </el-menu>
-
+        <ul>
+          <li :class="selIdx=='1'?'active':''" @click="selectIndex(1)">用户中心</li>
+          <li :class="selIdx=='2'?'active':''" @click="selectIndex(2)">发布文章</li>
+          <li :class="selIdx=='3'?'active':''" @click="selectIndex(3)">管理文章</li>
+          <li :class="selIdx=='4'?'active':''" @click="selectIndex(4)">修改资料</li>
+          <li :class="selIdx=='5'?'active':''" @click="selectIndex(5)">退出</li>
+        </ul>
       </div>
       <div class="right">
-        <Modify v-if="selIdx==1"></Modify>
-        <MyArticle v-if="selIdx==2"></MyArticle>
-        <PublishArticles v-if="selIdx==3"></PublishArticles>
-        <User v-if="selIdx==4"></User>
+        <User v-if="selIdx==1"></User>
+        <PublishArticles v-if="selIdx==2"></PublishArticles>
+        <MyArticle v-if="selIdx==3"></MyArticle>
+        <Modify v-if="selIdx==4"></Modify>
       </div>
     </div>
 
@@ -162,10 +145,36 @@
     height: 600px;
     box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
     background: #545c64;
+    border-radius: 10px;
+
+    ul {
+
+
+      li {
+        padding: 20px;
+        cursor: pointer;
+        color: #fff;
+
+        box-sizing: border-box;
+      }
+
+      li.active {
+        color: rgb(255, 208, 75);
+        border-left: 5px solid #188ae2;
+      }
+      li:hover{
+        background: rgb(67,74,80);
+        transition-duration: .5s;
+        border-left: 5px solid #188ae2;
+
+      }
+    }
   }
 
   .content .right {
     flex: 4;
+    background: #fff;
+    border-radius: 10px;
   }
 
 

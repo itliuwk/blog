@@ -6,7 +6,9 @@
       <img v-else src="../assets/images/10.jpg" alt=""/>
       <div>
         <h3>{{item.title}}</h3>
-        <p class="view">{{item.content}}</p>
+       <div class="view">
+         {{item.subtitle}}
+       </div>
         <div class="info">
           <span>{{item.author}}</span>
           <span>{{item.createtime}}</span>
@@ -41,9 +43,12 @@
         list().then(res => {
           res.data.map((item,index)=>{
             item.createtime = YYYYMMDD(item.createtime);
+            item.content = item.content.toString()
             // item.url = random_photo();
+            console.log(item.content);
             return item;
           });
+
           this.blogList = res.data;
         })
       }

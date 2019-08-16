@@ -23,8 +23,8 @@
         <div class="content-c">
           <p class="statement">特别声明：文章多为网络转载，资源使用一般不提供任何帮助，特殊资源除外，如有侵权请联系！</p>
 
-          <div>
-            {{detail.content}}
+          <div v-html="detail.content">
+
           </div>
         </div>
         <div class="content-b">
