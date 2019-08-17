@@ -71,7 +71,10 @@
 
     watch: {
       detail(val) {
-        this.form = val
+        val.content = val.content.replace(/fuwenben963/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+        this.form = val;
+        this.content =  val.content.replace(/fuwenben963/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+
       }
     },
     methods: {
@@ -110,7 +113,7 @@
           return false;
         }
 
-        console.log(this.content);
+
         this.form = {
           ...this.form,
           content: 'fuwenben963' + this.unescapeHTML(this.content) + 'fuwenben963'

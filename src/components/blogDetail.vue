@@ -168,6 +168,14 @@
       width: 70% !important;
       text-align: center;
     }
+
+    .ql-syntax{
+      background: #000;
+      color: #fff;
+      padding: 5px 10px;
+    }
+
+
   }
 
   .content-b {
@@ -195,6 +203,7 @@
       color: #ff1493;
     }
   }
+
 
 
 </style>

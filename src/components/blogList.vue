@@ -16,13 +16,15 @@
       </div>
     </div>
 
-    <el-pagination
-      background
-      @current-change="currentChange"
-      layout="prev, pager, next"
-      :page-size="params.total"
-      :total="count">
-    </el-pagination>
+    <div class="pageCount">
+      <el-pagination
+        background
+        @current-change="currentChange"
+        layout="total, prev, pager, next, jumper"
+        :page-size="params.total"
+        :total="count">
+      </el-pagination>
+    </div>
 
 
   </div>
@@ -31,7 +33,7 @@
 <script>
   import {random_photo} from '@/utils/index'
   import {YYYYMMDD} from '@/utils/date'
-  import {list,listCount} from '@/api/blog'
+  import {list, listCount} from '@/api/blog'
 
   export default {
     name: "blogList",
@@ -40,9 +42,9 @@
         blogList: [],
         params: {
           page: 0,
-          total: 5
+          total: 10
         },
-        count:0
+        count: 0
       }
     },
     mounted() {
@@ -156,6 +158,13 @@
         opacity: 1;
       }
     }
+  }
+
+  .pageCount{
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 50px;
   }
 
 </style>
