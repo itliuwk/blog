@@ -2,6 +2,9 @@
   <div class="page">
     <div v-if="!isEdit">
       <el-table
+        v-loading="loading"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
         :data="list"
         style="width: 100%">
         <el-table-column
@@ -44,6 +47,7 @@
       return {
         list: [],
         isEdit: false,
+        loading: true,
         detail: {}
       }
     },
@@ -60,7 +64,7 @@
           username = '';
         }
         list({username}).then(res => {
-
+          this.loading = false;
           this.list = res.data.map(item => {
             item.createtime = YYYYMMDD(item.createtime);
             return item;
@@ -68,13 +72,18 @@
         })
       },
       edit(id) {
-        this.isEdit = true;
-        let params = {
-          id
-        };
-        detail(params).then(res => {
-          this.detail = res.data;
-        });
+        this.loading = true;
+        setTimeout(()=>{
+          this.isEdit = true;
+          this.loading = false;
+          let params = {
+            id
+          };
+          detail(params).then(res => {
+            this.detail = res.data;
+          });
+        },1000)
+
       },
       del(id) {
         let params = {
