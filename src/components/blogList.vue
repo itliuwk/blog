@@ -40,7 +40,7 @@
         this.$router.push('./detail?id=' + id);
       },
       getList() {
-        list().then(res => {
+        list({page:1,total:5}).then(res => {
           res.data.map((item,index)=>{
             item.createtime = YYYYMMDD(item.createtime);
             item.content = item.content.toString()

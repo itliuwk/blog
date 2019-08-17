@@ -80,6 +80,7 @@
         detail(params).then(res => {
           let href = window.location.href;
           res.data.createtime = YYYYMMDD(res.data.createtime);
+          res.data.content = res.data.content.replace(/fuwenben963/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
           res.data.url = href;
           res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
           this.detail = res.data;

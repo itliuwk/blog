@@ -4,7 +4,7 @@
     <el-input style="margin-top: 20px" v-model="form.subtitle" placeholder="请输入副标题，50字以内"></el-input>
     <div style="margin: 25px 0;">
       <quill-editor
-        v-model="form.content"
+        v-model="content"
         ref="myQuillEditor"
         :options="editorOption">
       </quill-editor>
@@ -44,6 +44,7 @@
     name: "release",
     data() {
       return {
+        content: '',
         form: {
           title: '',
           subtitle: '',
@@ -77,9 +78,9 @@
 
       confirm() {
 
-        let content = this.unescapeHTML(this.form.content);
-
-        console.log(content);
+        // let content = this.unescapeHTML(this.form.content);
+        //
+        // console.log(content);
 
 
         if (!this.form.title) {
@@ -104,14 +105,15 @@
           return false;
         }
 
-        if (!content) {
+        if (!this.content) {
           Alert.fail('内容不能为空喔');
           return false;
         }
 
+        console.log(this.content);
         this.form = {
           ...this.form,
-          content
+          content: 'fuwenben963' + this.unescapeHTML(this.content) + 'fuwenben963'
         };
 
 
@@ -134,9 +136,9 @@
 
 
       },
-      unescapeHTML: function (content) {
-        content = '' + content;
-        return content.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&/g, '&').replace(/"/g, '&quot;').replace(/’/g, '&apos;');
+      unescapeHTML: function (a) {
+        a = "" + a;
+        return a.replace(/</g, "&lt;").replace(/>/g, "&gt;");
       },
     }
   }
