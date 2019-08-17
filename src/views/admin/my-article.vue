@@ -1,5 +1,7 @@
 <template>
   <div class="page">
+    <el-button v-if="isEdit">返回</el-button>
+
     <div v-if="!isEdit">
       <el-table
         v-loading="loading"
@@ -90,15 +92,23 @@
           id,
           username: JSON.parse(localStorage.getItem('userInfo')).username
         };
-        del(params).then(res => {
-          if (res.errno===0){
-            Alert.success('删除成功');
-            setTimeout(()=>{
-              this.getList();
-            },1000)
-          }
 
-        });
+        Alert.confirm('确定删除嘛？').then(reslut => {
+          del(params).then(res => {
+            if (res.errno===0){
+              Alert.success('删除成功');
+              setTimeout(()=>{
+                this.getList();
+              },1000)
+            }
+
+          }).catch(err=>{
+
+          })
+        })
+
+
+
       },
 
     }

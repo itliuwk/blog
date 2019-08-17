@@ -1,20 +1,23 @@
 <template>
   <div class="blogList">
 
-    <div class="item" @click="toDetail(item.id)" v-for="(item,index) in blogList" :key="index">
-      <img v-if="item.url" :src="item.url" alt=""/>
-      <img v-else src="../assets/images/10.jpg" alt=""/>
-      <div>
-        <h3>{{item.title}}</h3>
-        <div class="view">
-          {{item.subtitle}}
-        </div>
-        <div class="info">
-          <span>{{item.author}}</span>
-          <span>{{item.createtime}}</span>
+    <div v-loading="isLoading">
+      <div class="item" @click="toDetail(item.id)" v-for="(item,index) in blogList" :key="index">
+        <img v-if="item.url" :src="item.url" alt=""/>
+        <img v-else src="../assets/images/10.jpg" alt=""/>
+        <div>
+          <h3>{{item.title}}</h3>
+          <div class="view">
+            {{item.subtitle}}
+          </div>
+          <div class="info">
+            <span>{{item.author}}</span>
+            <span>{{item.createtime}}</span>
+          </div>
         </div>
       </div>
     </div>
+
 
     <div class="pageCount">
       <el-pagination
@@ -40,6 +43,7 @@
     data() {
       return {
         blogList: [],
+        isLoading: true,
         params: {
           page: 0,
           total: 10
@@ -59,11 +63,12 @@
           res.data.map((item, index) => {
             item.createtime = YYYYMMDD(item.createtime);
             item.content = item.content.toString()
-            // item.url = random_photo();
+            item.url = random_photo();
             return item;
           });
 
           this.blogList = res.data;
+          this.isLoading = false
         });
 
         listCount(this.params).then(res => {
@@ -77,8 +82,10 @@
           page: (page - 1) * this.params.total,
           total: this.params.total
         };
-
-        this.getList();
+        this.isLoading = true;
+        setTimeout(() => {
+          this.getList();
+        }, 1000)
       },
     }
   }
@@ -160,7 +167,7 @@
     }
   }
 
-  .pageCount{
+  .pageCount {
     background: #fff;
     padding: 10px;
     border-radius: 4px;

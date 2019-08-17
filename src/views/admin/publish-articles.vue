@@ -37,7 +37,7 @@
   ];
 
 
-  import {add} from '@/api/blog'
+  import {add, update} from '@/api/blog'
   import Alert from '@/utils/alert'
 
   export default {
@@ -71,9 +71,9 @@
 
     watch: {
       detail(val) {
-        val.content = val.content.replace(/fuwenben963/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+        val.content = this.html_entity_decode(val.content);
         this.form = val;
-        this.content =  val.content.replace(/fuwenben963/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+        this.content = val.content
 
       }
     },
@@ -120,29 +120,67 @@
         };
 
 
-        add(this.form).then(res => {
-          if (res.errno == 0) {
-            Alert.success('发布成功');
-            this.form = {
-              title: '',
-              content: '',
-              author: JSON.parse(localStorage.getItem('userInfo')).username,
-              createTime: Date.now()
-            };
+        if (this.detail == undefined) {
+          add(this.form).then(res => {
+            if (res.errno == 0) {
+              Alert.success('发布成功');
+              this.form = {
+                title: '',
+                content: '',
+                author: JSON.parse(localStorage.getItem('userInfo')).username,
+                createTime: Date.now()
+              };
+              this.content = '';
 
-            Alert.confirm('发布成功,要跳转会首页查看嘛？').then(reslut => {
-              this.$router.push('/')
-            })
+              Alert.confirm('发布成功,要跳转回首页查看嘛？').then(reslut => {
+                this.$router.push('/')
+              }).catch(err=>{
 
-          }
-        })
+              })
+
+            }
+          })
+        } else {
+          update(this.form).then(res => {
+            if (res.errno == 0) {
+              Alert.success('修改成功');
+              this.form = {
+                title: '',
+                content: '',
+                author: JSON.parse(localStorage.getItem('userInfo')).username,
+                createTime: Date.now()
+              };
+              this.content = '';
+
+              Alert.confirm('修改成功,要跳转回首页查看嘛？').then(reslut => {
+                this.$router.push('/')
+              }).catch(err=>{
+
+              })
+
+            }
+          })
+        }
 
 
       },
-      unescapeHTML: function (a) {
-        a = "" + a;
-        return a.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      unescapeHTML(str) {
+        str = str.replace(/&/g, '&amp;');
+        str = str.replace(/</g, '&lt;');
+        str = str.replace(/>/g, '&gt;');
+        str = str.replace(/"/g, '&quot;');
+        str = str.replace(/'/g, '&#039;');
+        return str;
       },
+      html_entity_decode(str) {
+        str = str.replace(/fuwenben963/g, '');
+        str = str.replace(/&amp;/g, '&');
+        str = str.replace(/&lt;/g, '<');
+        str = str.replace(/&gt;/g, '>');
+        str = str.replace(/&quot;/g, "''");
+        str = str.replace(/&#039;/g, "'");
+        return str;
+      }
     }
   }
 </script>

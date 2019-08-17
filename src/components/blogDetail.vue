@@ -7,11 +7,11 @@
         <div class="article-meta">
           <span class="item item-1">{{detail.createtime}}</span>
           <span class="item item-4">分类：    	<a href="https://iooqp.cn/?sort=9" rel="category tag">技术教程</a></span>
-<!--          <span class="item item-5">-->
-<!--            <a id="ae_bdcx" rel="external nofollow" target="_blank"-->
-<!--               :href='detail.included'-->
-<!--               style="color: rgb(255, 0, 0);">提交收录</a>-->
-<!--          </span>-->
+          <!--          <span class="item item-5">-->
+          <!--            <a id="ae_bdcx" rel="external nofollow" target="_blank"-->
+          <!--               :href='detail.included'-->
+          <!--               style="color: rgb(255, 0, 0);">提交收录</a>-->
+          <!--          </span>-->
 
         </div>
 
@@ -80,7 +80,7 @@
         detail(params).then(res => {
           let href = window.location.href;
           res.data.createtime = YYYYMMDD(res.data.createtime);
-          res.data.content = res.data.content.replace(/fuwenben963/g,'').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+          res.data.content = this.unescapeHTML(res.data.content);
           res.data.url = href;
           res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
           this.detail = res.data;
@@ -88,6 +88,15 @@
         });
 
 
+      },
+      unescapeHTML(str) {
+        str = str.replace(/fuwenben963/g, '');
+        str = str.replace(/&amp;/g, '&');
+        str = str.replace(/&lt;/g, '<');
+        str = str.replace(/&gt;/g, '>');
+        str = str.replace(/&quot;/g, "");
+        str = str.replace(/&#039;/g, "'");
+        return str;
       }
     }
   }
@@ -169,7 +178,7 @@
       text-align: center;
     }
 
-    .ql-syntax{
+    /deep/ pre {
       background: #000;
       color: #fff;
       padding: 5px 10px;
@@ -203,7 +212,6 @@
       color: #ff1493;
     }
   }
-
 
 
 </style>
