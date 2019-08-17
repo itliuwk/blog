@@ -20,7 +20,7 @@
           label="操作">
           <template slot-scope="list">
             <el-button size="small" @click="edit(list.row.id)" type="primary">编辑</el-button>
-            <el-button size="small" type="danger">删除</el-button>
+            <el-button size="small" @click="del(list.row.id)" type="danger">删除</el-button>
 
           </template>
         </el-table-column>
@@ -33,9 +33,10 @@
 </template>
 
 <script>
-  import {list, detail} from '@/api/blog'
+  import {list, detail,del} from '@/api/blog'
   import {YYYYMMDD} from '@/utils/date'
   import PublishArticles from './publish-articles'
+  import Alert from '@/utils/alert'
 
   export default {
     name: "my-article",
@@ -73,6 +74,21 @@
         };
         detail(params).then(res => {
           this.detail = res.data;
+        });
+      },
+      del(id) {
+        let params = {
+          id,
+          username: JSON.parse(localStorage.getItem('userInfo')).username
+        };
+        del(params).then(res => {
+          if (res.errno===0){
+            Alert.success('删除成功');
+            setTimeout(()=>{
+              this.getList();
+            },1000)
+          }
+
         });
       },
 

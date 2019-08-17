@@ -10,9 +10,9 @@
       </quill-editor>
     </div>
 
-  <div>
-    <el-button type="primary" @click="confirm">确定发布</el-button>
-  </div>
+    <div>
+      <el-button type="primary" @click="confirm">确定发布</el-button>
+    </div>
 
   </div>
 </template>
@@ -46,7 +46,7 @@
       return {
         form: {
           title: '',
-          subtitle:'',
+          subtitle: '',
           content: '',
           author: JSON.parse(localStorage.getItem('userInfo')).username,
           createTime: Date.now()
@@ -66,16 +66,20 @@
     mounted() {
 
     },
-    props:['detail'],
+    props: ['detail'],
 
-    watch:{
-      detail(val){
+    watch: {
+      detail(val) {
         this.form = val
       }
     },
     methods: {
 
       confirm() {
+
+        let content = this.unescapeHTML(this.form.content);
+
+        console.log(content);
 
 
         if (!this.form.title) {
@@ -84,7 +88,7 @@
         }
 
 
-        if (this.form.title.length>50) {
+        if (this.form.title.length > 50) {
           Alert.fail('标题太长喔');
           return false;
         }
@@ -95,19 +99,24 @@
         }
 
 
-        if (this.form.subtitle.length>50) {
+        if (this.form.subtitle.length > 50) {
           Alert.fail('副标题太长喔');
           return false;
         }
 
-        if (!this.form.content) {
+        if (!content) {
           Alert.fail('内容不能为空喔');
           return false;
         }
 
+        this.form = {
+          ...this.form,
+          content
+        };
+
 
         add(this.form).then(res => {
-          if(res.errno==0){
+          if (res.errno == 0) {
             Alert.success('发布成功');
             this.form = {
               title: '',
@@ -116,7 +125,7 @@
               createTime: Date.now()
             };
 
-            Alert.confirm('发布成功,要跳转会首页查看嘛？').then(reslut=>{
+            Alert.confirm('发布成功,要跳转会首页查看嘛？').then(reslut => {
               this.$router.push('/')
             })
 
@@ -124,7 +133,11 @@
         })
 
 
-      }
+      },
+      unescapeHTML: function (content) {
+        content = '' + content;
+        return content.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&/g, '&').replace(/"/g, '&quot;').replace(/’/g, '&apos;');
+      },
     }
   }
 </script>

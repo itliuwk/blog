@@ -28,5 +28,13 @@ export function add(params) {
   }).then(res => res.data);
 }
 
+export function del(params) {
+  return request({
+    url: BASE_API + 'blog/del?id='+params.id,
+    method: 'post',
+    data:params,
+  }).then(res => res.data);
+}
+
 
 
