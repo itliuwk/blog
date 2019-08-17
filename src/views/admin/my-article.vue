@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <el-button v-if="isEdit">返回</el-button>
+    <el-button v-if="isEdit" @click="returnUp">返回</el-button>
 
     <div v-if="!isEdit">
       <el-table
@@ -107,9 +107,10 @@
           })
         })
 
-
-
       },
+      returnUp(){
+        this.isEdit = false;
+      }
 
     }
   }
