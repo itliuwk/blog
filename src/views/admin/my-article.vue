@@ -5,8 +5,6 @@
     <div v-if="!isEdit">
       <el-table
         v-loading="loading"
-        element-loading-text="拼命加载中"
-        element-loading-spinner="el-icon-loading"
         :data="list"
         style="width: 100%">
         <el-table-column
@@ -30,6 +28,15 @@
           </template>
         </el-table-column>
       </el-table>
+      <div class="pageCount">
+        <el-pagination
+          background
+          @current-change="currentChange"
+          layout="total, prev, pager, next, jumper"
+          :page-size="params.total"
+          :total="count">
+        </el-pagination>
+      </div>
     </div>
     <div v-else>
       <PublishArticles :detail="detail"></PublishArticles>
@@ -38,7 +45,7 @@
 </template>
 
 <script>
-  import {list, detail,del} from '@/api/blog'
+  import {list, listCount, detail, del} from '@/api/blog'
   import {YYYYMMDD} from '@/utils/date'
   import PublishArticles from './publish-articles'
   import Alert from '@/utils/alert'
@@ -48,6 +55,13 @@
     data() {
       return {
         list: [],
+        isLoading: true,
+        params: {
+          page: 0,
+          total: 10,
+          username:JSON.parse(localStorage.getItem('userInfo')).username
+        },
+        count: 0,
         isEdit: false,
         loading: true,
         detail: {}
@@ -61,21 +75,29 @@
     },
     methods: {
       getList() {
-        let username = JSON.parse(localStorage.getItem('userInfo')).username;
-        if (username == 'liuwk') {
-          username = '';
+        if (this.params.username == 'liuwk') {
+          this.params={
+            ...this.params,
+            username:''
+          }
         }
-        list({username}).then(res => {
+        list(this.params).then(res => {
           this.loading = false;
           this.list = res.data.map(item => {
             item.createtime = YYYYMMDD(item.createtime);
             return item;
           })
         })
+
+
+        listCount(this.params).then(res => {
+
+          this.count = res.data['count(id)'];
+        })
       },
       edit(id) {
         this.loading = true;
-        setTimeout(()=>{
+        setTimeout(() => {
           this.isEdit = true;
           this.loading = false;
           let params = {
@@ -84,7 +106,7 @@
           detail(params).then(res => {
             this.detail = res.data;
           });
-        },1000)
+        }, 1000)
 
       },
       del(id) {
@@ -95,22 +117,33 @@
 
         Alert.confirm('确定删除嘛？').then(reslut => {
           del(params).then(res => {
-            if (res.errno===0){
+            if (res.errno === 0) {
               Alert.success('删除成功');
-              setTimeout(()=>{
+              setTimeout(() => {
                 this.getList();
-              },1000)
+              }, 1000)
             }
 
-          }).catch(err=>{
+          }).catch(err => {
 
           })
         })
 
       },
-      returnUp(){
+      returnUp() {
         this.isEdit = false;
-      }
+      },
+      currentChange(page) {
+        this.loading = true;
+        this.params = {
+          page: (page - 1) * this.params.total,
+          total: this.params.total
+        };
+        this.isLoading = true;
+        setTimeout(() => {
+          this.getList();
+        }, 1000)
+      },
 
     }
   }
@@ -119,5 +152,12 @@
 <style scoped rel="stylesheet/scss" lang="scss">
   .page {
     padding: 20px;
+  }
+
+  .pageCount {
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 50px;
   }
 </style>
