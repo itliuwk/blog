@@ -2,19 +2,27 @@
   <div class="blogList">
 
     <div class="item" @click="toDetail(item.id)" v-for="(item,index) in blogList" :key="index">
-      <img  v-if="item.url" :src="item.url" alt=""/>
+      <img v-if="item.url" :src="item.url" alt=""/>
       <img v-else src="../assets/images/10.jpg" alt=""/>
       <div>
         <h3>{{item.title}}</h3>
-       <div class="view">
-         {{item.subtitle}}
-       </div>
+        <div class="view">
+          {{item.subtitle}}
+        </div>
         <div class="info">
           <span>{{item.author}}</span>
           <span>{{item.createtime}}</span>
         </div>
       </div>
     </div>
+
+    <el-pagination
+      background
+      @current-change="currentChange"
+      layout="prev, pager, next"
+      :page-size="params.total"
+      :total="count">
+    </el-pagination>
 
 
   </div>
@@ -23,13 +31,18 @@
 <script>
   import {random_photo} from '@/utils/index'
   import {YYYYMMDD} from '@/utils/date'
-  import {list} from '@/api/blog'
+  import {list,listCount} from '@/api/blog'
 
   export default {
     name: "blogList",
     data() {
       return {
-        blogList: []
+        blogList: [],
+        params: {
+          page: 0,
+          total: 5
+        },
+        count:0
       }
     },
     mounted() {
@@ -40,18 +53,31 @@
         this.$router.push('./detail?id=' + id);
       },
       getList() {
-        list({page:1,total:5}).then(res => {
-          res.data.map((item,index)=>{
+        list(this.params).then(res => {
+          res.data.map((item, index) => {
             item.createtime = YYYYMMDD(item.createtime);
             item.content = item.content.toString()
             // item.url = random_photo();
-            console.log(item.content);
             return item;
           });
 
           this.blogList = res.data;
+        });
+
+        listCount(this.params).then(res => {
+
+          this.count = res.data['count(id)'];
         })
-      }
+
+      },
+      currentChange(page) {
+        this.params = {
+          page: (page - 1) * this.params.total,
+          total: this.params.total
+        };
+
+        this.getList();
+      },
     }
   }
 </script>

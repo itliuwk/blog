@@ -10,6 +10,15 @@ export function list(params) {
   }).then(res => res.data);
 }
 
+export function listCount(params) {
+  return request({
+    url: BASE_API + 'blog/list/count',
+    method: 'get',
+    params,
+  }).then(res => res.data);
+}
+
+
 
 export function detail(params) {
   return request({
