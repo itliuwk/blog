@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
 
-    <section class="article-focusbox" :style="{backgroundImage: 'url('+bgUrl+')'}">
+    <section class="article-focusbox">  <!-- :style="{backgroundImage: 'url('+bgUrl+')'}" -->
       <header class="article-header">
         <h1 class="article-title">{{detail.title}}</h1>
         <div class="article-meta">

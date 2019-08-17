@@ -23,7 +23,7 @@
           label="操作">
           <template slot-scope="list">
             <el-button size="small" @click="edit(list.row.id)" type="primary">编辑</el-button>
-            <el-button size="small" @click="del(list.row.id)" type="danger">删除</el-button>
+            <el-button size="small" @click="del(list.row)" type="danger">删除</el-button>
 
           </template>
         </el-table-column>
@@ -59,7 +59,7 @@
         params: {
           page: 0,
           total: 10,
-          username:JSON.parse(localStorage.getItem('userInfo')).username
+          username: JSON.parse(localStorage.getItem('userInfo')).username
         },
         count: 0,
         isEdit: false,
@@ -76,9 +76,9 @@
     methods: {
       getList() {
         if (this.params.username == 'liuwk') {
-          this.params={
+          this.params = {
             ...this.params,
-            username:''
+            username: ''
           }
         }
         list(this.params).then(res => {
@@ -109,10 +109,10 @@
         }, 1000)
 
       },
-      del(id) {
+      del(row) {
         let params = {
-          id,
-          username: JSON.parse(localStorage.getItem('userInfo')).username
+          id: row.id,
+          username: row.author || JSON.parse(localStorage.getItem('userInfo')).username
         };
 
         Alert.confirm('确定删除嘛？').then(reslut => {
