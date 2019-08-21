@@ -24,7 +24,7 @@
           </ul>
         </div>
         <div class="login">
-          <el-input v-model="searchValue" clearable class="search" placeholder="输入关键字 Enter键搜索..."></el-input>
+          <el-input v-model="searchValue" clearable class="search" @keyup.enter.native="search" placeholder="输入关键字 Enter键搜索..."></el-input>
 
           <div style="display: inline-block" v-if="userInfo==null||!userInfo">
             <span style="margin-right: 20px">
@@ -109,6 +109,9 @@
           localStorage.clear();
           this.$store.commit('SET_USERINFO', null);
         }, 1500)
+      },
+      search(){
+        this.$store.commit('SET_SEARCH',this.searchValue)
       }
     }
   }

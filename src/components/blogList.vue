@@ -46,9 +46,26 @@
         isLoading: true,
         params: {
           page: 0,
-          total: 10
+          total: 10,
+          keyword:''
         },
         count: 0
+      }
+    },
+    computed:{
+      search(){
+        return this.$store.state.search
+      }
+    },
+    watch:{
+      search(val){
+        this.params= {
+          page: 0,
+          total: 10,
+          keyword:val
+        };
+        this.isLoading = true
+        this.getList();
       }
     },
     mounted() {
@@ -67,8 +84,11 @@
             return item;
           });
 
-          this.blogList = res.data;
-          this.isLoading = false
+          setTimeout(()=>{
+            this.blogList = res.data;
+            this.isLoading = false;
+          },1000);
+
         });
 
         listCount(this.params).then(res => {
