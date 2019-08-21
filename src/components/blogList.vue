@@ -4,7 +4,7 @@
     <div v-loading="isLoading">
       <div class="item" @click="toDetail(item.id)" v-for="(item,index) in blogList" :key="index">
         <img v-if="item.url" :src="item.url" alt=""/>
-        <img v-else src="../assets/images/10.jpg" alt=""/>
+        <img v-else src="../assets/images/8.jpg" alt=""/>
         <div>
           <h3>{{item.title}}</h3>
           <div class="view">
