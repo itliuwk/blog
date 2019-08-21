@@ -47,22 +47,22 @@
         params: {
           page: 0,
           total: 10,
-          keyword:''
+          keyword: ''
         },
         count: 0
       }
     },
-    computed:{
-      search(){
+    computed: {
+      search() {
         return this.$store.state.search
       }
     },
-    watch:{
-      search(val){
-        this.params= {
+    watch: {
+      search(val) {
+        this.params = {
           page: 0,
           total: 10,
-          keyword:val
+          keyword: val
         };
         this.isLoading = true
         this.getList();
@@ -79,15 +79,15 @@
         list(this.params).then(res => {
           res.data.map((item, index) => {
             item.createtime = YYYYMMDD(item.createtime);
-            item.content = item.content.toString()
+            item.content = item.content.toString();
             item.url = random_photo();
             return item;
           });
 
-          setTimeout(()=>{
+          setTimeout(() => {
             this.blogList = res.data;
             this.isLoading = false;
-          },1000);
+          }, 1000);
 
         });
 
