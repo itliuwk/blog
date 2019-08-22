@@ -6,7 +6,10 @@
         <img v-if="item.url" :src="item.url" alt=""/>
         <img v-else src="../assets/images/8.jpg" alt=""/>
         <div>
-          <h3>{{item.title}}</h3>
+          <div class="header">
+            <h3>{{item.title}}</h3>
+            <span><a href="">{{item.label}}</a></span>
+          </div>
           <div class="view">
             {{item.subtitle}}
           </div>
@@ -87,7 +90,7 @@
           setTimeout(() => {
             this.blogList = res.data;
             this.isLoading = false;
-          }, 1000);
+          }, 300);
 
         });
 
@@ -103,9 +106,7 @@
           total: this.params.total
         };
         this.isLoading = true;
-        setTimeout(() => {
-          this.getList();
-        }, 1000)
+        this.getList();
       },
     }
   }
@@ -131,10 +132,40 @@
         height: 90px;
       }
 
+
+      .header {
+        width: 100%;
+
+        h3 {
+          display: inline-block;
+        }
+
+        span {
+          float: right;
+          background-color: #ffbb50;
+          padding: 4px 10px;
+          color: #fff;
+          font-size: 12px;
+          line-height: 1.4;
+          font-weight: 400;
+          margin: 0 5px 5px 0;
+          border-radius: 2px;
+          display: inline-block;
+        }
+
+        span:hover {
+          transition-duration: .2s;
+          background-color: #9759d0;
+
+        }
+      }
+
+
       div {
         margin-left: 20px;
         position: relative;
         width: 80%;
+
 
         .view {
           text-indent: 2em;
@@ -153,6 +184,25 @@
             margin: 0 5px;
           }
         }
+      }
+    }
+
+    .item {
+      animation: upOpacity 0.5s;
+    }
+
+    @keyframes upOpacity {
+      0% {
+        transform: scale(.5);
+      }
+      25% {
+        transform: scale(.7);
+      }
+      50% {
+        transform: scale(.8);
+      }
+      100% {
+        transform: scale(1);
       }
     }
 
@@ -177,14 +227,7 @@
       }
     }
 
-    @keyframes upOpacity {
-      0% {
-        opacity: 0.5;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
+
   }
 
   .pageCount {

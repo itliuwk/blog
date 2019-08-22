@@ -6,12 +6,7 @@
         <h1 class="article-title">{{detail.title}}</h1>
         <div class="article-meta">
           <span class="item item-1">{{detail.createtime}}</span>
-          <span class="item item-4">分类：    	<a href="https://iooqp.cn/?sort=9" rel="category tag">技术教程</a></span>
-          <!--          <span class="item item-5">-->
-          <!--            <a id="ae_bdcx" rel="external nofollow" target="_blank"-->
-          <!--               :href='detail.included'-->
-          <!--               style="color: rgb(255, 0, 0);">提交收录</a>-->
-          <!--          </span>-->
+          <span class="item item-4">分类：    	<a href="https://iooqp.cn/?sort=9" rel="category tag">{{detail.label}}</a></span>
 
         </div>
 
@@ -61,7 +56,8 @@
     data() {
       return {
         bgUrl: '',
-        detail: {}
+        detail: {},
+        classify:{}
       }
     },
     components: {
@@ -77,15 +73,21 @@
         let params = {
           id: this.$route.query.id
         };
+
+        let that = this;
+
         detail(params).then(res => {
           let href = window.location.href;
           res.data.createtime = YYYYMMDD(res.data.createtime);
-          res.data.content = this.unescapeHTML(res.data.content);
+          res.data.content = that.unescapeHTML(res.data.content);
           res.data.url = href;
           res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
-          this.detail = res.data;
-          this.bgUrl = random_photo();
+          that.detail = res.data;
+          that.bgUrl = random_photo();
         });
+
+
+
 
 
       },

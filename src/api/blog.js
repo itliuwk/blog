@@ -56,12 +56,6 @@ export function del(params) {
 
 
 
-export function classify() {
-  return request({
-    url: BASE_API + 'classify/list',
-    method: 'get'
-  }).then(res => res.data);
-}
 
 
 

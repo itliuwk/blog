@@ -11,14 +11,14 @@
     </div>
 
 
-<!--    <el-select style="margin-bottom: 25px" v-model="form.classify" placeholder="请选择文章分类">-->
-<!--      <el-option-->
-<!--        v-for="item in options"-->
-<!--        :key="item.value"-->
-<!--        :label="item.label"-->
-<!--        :value="item.value">-->
-<!--      </el-option>-->
-<!--    </el-select>-->
+    <el-select style="margin-bottom: 25px" v-model="form.classify" placeholder="请选择文章分类">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
 
 
     <div>
@@ -48,7 +48,8 @@
   ];
 
 
-  import {add, update, classify} from '@/api/blog'
+  import {add, update} from '@/api/blog'
+  import {classify} from '@/api/classify'
   import Alert from '@/utils/alert'
 
   export default {
@@ -85,6 +86,7 @@
     watch: {
       detail(val) {
         val.content = this.html_entity_decode(val.content);
+        val.classify = parseInt(val.classify)
         this.form = val;
         this.content = val.content
 
@@ -134,10 +136,10 @@
         }
 
 
-        // if (!this.form.classify) {
-        //   Alert.fail('请选择文章分类');
-        //   return false;
-        // }
+        if (!this.form.classify) {
+          Alert.fail('请选择文章分类');
+          return false;
+        }
 
         this.form = {
           ...this.form,
@@ -152,7 +154,7 @@
               this.form = {
                 title: '',
                 content: '',
-                classify:'',
+                classify: '',
                 author: JSON.parse(localStorage.getItem('userInfo')).username,
                 createTime: Date.now()
               };
@@ -173,7 +175,7 @@
               this.form = {
                 title: '',
                 content: '',
-                classify:'',
+                classify: '',
                 author: JSON.parse(localStorage.getItem('userInfo')).username,
                 createTime: Date.now()
               };
