@@ -1,0 +1,9 @@
+.Copyright{
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  background: #FFF;
+  padding: 10px 0!important;
+}
