@@ -13,38 +13,33 @@
         type="index">
       </el-table-column>
       <el-table-column
-        prop="movie_name"
+        prop="MovieName"
         label="影片">
       </el-table-column>
       <el-table-column
-        prop="duration"
+        prop="movieDay"
         label="上映天数">
       </el-table-column>
       <el-table-column
-        prop="real_office"
-        label="综合票房">
+        prop="sumBoxOffice"
+        label="综合票房（万）">
       </el-table-column>
       <el-table-column
-        prop="totle_office"
-        label="票房">
+        prop="BoxOffice"
+        label="票房（万）">
       </el-table-column>
       <el-table-column
-        prop="office_ratio"
+        prop="boxPer"
         label="票房占比">
       </el-table-column>
       <el-table-column
-        prop="show_rate"
-        label="排片占比">
-      </el-table-column>
-      <el-table-column
-        prop="avg_seat_view"
-        label="上座率">
+        prop="time"
+        label="数据获取时间">
       </el-table-column>
     </el-table>
     <div v-if="isReload" style="text-align: center;background: #fff;">
       <el-button @click="reload()" type="text">刷新页面</el-button>
     </div>
-    <Copyright></Copyright>
   </div>
 
 </template>
@@ -52,7 +47,6 @@
 <script>
   import Axios from 'axios'
   import jsonp from '../../utils/jsonp';
-  import Copyright from './copyright'
 
   export default {
     data() {
@@ -64,9 +58,6 @@
         isReload: false,
         count: 0,
       }
-    },
-    components: {
-      Copyright
     },
     mounted() {
       this.getList();
@@ -87,7 +78,7 @@
           this.loading = true;
         }
         this.count = this.count + 1;
-        let url = 'https://api.shenjian.io/promovie/piaofang?appid=6d2e16b89ef4bbff34b7f69b226c4aa5&date=' + this.filterDate();
+        let url = 'https://api.shenjian.io/?appid=8c440c9ed71c32654bb8265bef23159c&date=' + this.filterDate();
         jsonp(url, '', 'jsonpCallBack').then((response) => {
           this.data = response.data;
           this.cacheData = response.data;

@@ -29,21 +29,16 @@
                  v-clipboard:error="onError">点我复制
       </el-button>
     </div>
-    <Copyright></Copyright>
   </div>
 </template>
 
 <script>
   import Axios from 'axios'
-  import Copyright from './copyright'
 
   export default {
     name: "music",
     mounted() {
 
-    },
-    components: {
-      Copyright
     },
     data() {
       return {

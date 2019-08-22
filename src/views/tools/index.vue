@@ -1,7 +1,7 @@
 ﻿<template>
   <div class="index">
-    <h1>随心工具集合 </h1>
-    <p>(百度搜索：随心it,随心工具,刘伟坤）</p>
+    <h1>随心站长工具集合 </h1>
+    <p>(百度搜索：随心it,随心博客，随心工具,刘伟坤）</p>
     <div class="box">
       <div class="box-card" v-for="(item,index) in list" :key="index">
         <el-card>
@@ -23,7 +23,6 @@
       </div>
     </div>
 
-    <Copyright></Copyright>
   </div>
 </template>
 
@@ -33,13 +32,10 @@
   import dwz from '../../assets/img/dwz.png'
   import bk from '../../assets/img/favicon.png'
   import zqzb from '../../assets/img/zqzb.jpg'
-  import Copyright from './copyright'
 
   export default {
     name: "index",
-    components: {
-      Copyright
-    },
+
     data() {
       return {
         list: [
@@ -84,7 +80,7 @@
   .index {
     padding: 20px;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     box-sizing: border-box;
     position: relative;
 

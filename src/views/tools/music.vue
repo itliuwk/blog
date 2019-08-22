@@ -55,19 +55,15 @@
         </el-table-column>
       </el-table>
 
-    <Copyright></Copyright>
+
   </div>
 </template>
 
 <script>
   import Axios from 'axios'
-  import Copyright from './copyright'
 
   export default {
     name: "music",
-    components: {
-      Copyright
-    },
     mounted() {
 
     },

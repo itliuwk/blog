@@ -17,14 +17,18 @@
               <i class="iconfont icon-shouye"></i>
               技术文章
             </li>
-            <li>
-              <i class="iconfont icon-gongju"></i>
-              站长工具
-            </li>
+            <router-link to="/tools">
+              <li>
+                <i class="iconfont icon-gongju"></i>
+                站长工具
+              </li>
+            </router-link>
+
           </ul>
         </div>
         <div class="login">
-          <el-input v-model="searchValue" clearable class="search" @keyup.enter.native="search" placeholder="输入关键字 Enter键搜索..."></el-input>
+          <el-input v-model="searchValue" clearable class="search" @keyup.enter.native="search"
+                    placeholder="输入关键字 Enter键搜索..."></el-input>
 
           <div style="display: inline-block" v-if="userInfo==null||!userInfo">
             <span style="margin-right: 20px">
@@ -86,7 +90,7 @@
         handler(val) {
           if (val.fullPath == '/admin') {
             if (!this.userInfo && this.userInfo == null) {
-              if (!this.$store.state.isLogin){
+              if (!this.$store.state.isLogin) {
                 Alert.fail('你还没有登录，即将返回首页');
 
                 setTimeout(() => {
@@ -110,8 +114,8 @@
           this.$store.commit('SET_USERINFO', null);
         }, 1500)
       },
-      search(){
-        this.$store.commit('SET_SEARCH',this.searchValue)
+      search() {
+        this.$store.commit('SET_SEARCH', this.searchValue)
       }
     }
   }
