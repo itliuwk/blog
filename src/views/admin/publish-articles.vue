@@ -10,6 +10,17 @@
       </quill-editor>
     </div>
 
+
+<!--    <el-select style="margin-bottom: 25px" v-model="form.classify" placeholder="请选择文章分类">-->
+<!--      <el-option-->
+<!--        v-for="item in options"-->
+<!--        :key="item.value"-->
+<!--        :label="item.label"-->
+<!--        :value="item.value">-->
+<!--      </el-option>-->
+<!--    </el-select>-->
+
+
     <div>
       <el-button type="primary" @click="confirm">确定发布</el-button>
     </div>
@@ -37,7 +48,7 @@
   ];
 
 
-  import {add, update} from '@/api/blog'
+  import {add, update, classify} from '@/api/blog'
   import Alert from '@/utils/alert'
 
   export default {
@@ -49,9 +60,11 @@
           title: '',
           subtitle: '',
           content: '',
+          classify: '',
           author: JSON.parse(localStorage.getItem('userInfo')).username,
           createTime: Date.now()
         },
+        options: [],
 
         editorOption: {
           theme: "snow", // or 'bubble'
@@ -65,7 +78,7 @@
       }
     },
     mounted() {
-
+      this.classify()
     },
     props: ['detail'],
 
@@ -78,6 +91,13 @@
       }
     },
     methods: {
+
+      classify() {
+        classify().then(res => {
+          console.log(res);
+          this.options = res.data
+        })
+      },
 
       confirm() {
 
@@ -114,6 +134,11 @@
         }
 
 
+        // if (!this.form.classify) {
+        //   Alert.fail('请选择文章分类');
+        //   return false;
+        // }
+
         this.form = {
           ...this.form,
           content: 'fuwenben963' + this.unescapeHTML(this.content) + 'fuwenben963'
@@ -127,6 +152,7 @@
               this.form = {
                 title: '',
                 content: '',
+                classify:'',
                 author: JSON.parse(localStorage.getItem('userInfo')).username,
                 createTime: Date.now()
               };
@@ -134,7 +160,7 @@
 
               Alert.confirm('发布成功,要跳转回首页查看嘛？').then(reslut => {
                 this.$router.push('/')
-              }).catch(err=>{
+              }).catch(err => {
 
               })
 
@@ -147,6 +173,7 @@
               this.form = {
                 title: '',
                 content: '',
+                classify:'',
                 author: JSON.parse(localStorage.getItem('userInfo')).username,
                 createTime: Date.now()
               };
@@ -154,7 +181,7 @@
 
               Alert.confirm('修改成功,要跳转回首页查看嘛？').then(reslut => {
                 this.$router.push('/')
-              }).catch(err=>{
+              }).catch(err => {
 
               })
 

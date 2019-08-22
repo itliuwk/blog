@@ -145,8 +145,10 @@
 
   .music {
     text-align: center;
-    margin: 100px auto;
+    margin: 50px auto;
     background: #fff;
+    padding: 50px 0;
+    box-sizing: border-box;
 
     .header {
       font-weight: bolder;

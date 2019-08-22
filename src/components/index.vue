@@ -13,10 +13,10 @@
                 首页
               </li>
             </router-link>
-            <li>
-              <i class="iconfont icon-shouye"></i>
-              技术文章
-            </li>
+<!--            <li>-->
+<!--              <i class="iconfont icon-shouye"></i>-->
+<!--              技术文章-->
+<!--            </li>-->
             <router-link to="/tools">
               <li>
                 <i class="iconfont icon-gongju"></i>

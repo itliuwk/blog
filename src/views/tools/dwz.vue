@@ -119,7 +119,9 @@
     text-align: center;
     margin: 100px auto;
     background: #fff;
-    /*min-width: 500px;*/
+    padding: 50px 0;
+    box-sizing: border-box;
+
 
     .header {
       font-weight: bolder;
