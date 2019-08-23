@@ -174,6 +174,7 @@
   .content .right {
     flex: 4;
     background: #fff;
+    overflow: hidden;
     border-radius: 10px;
   }
 

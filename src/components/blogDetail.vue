@@ -18,7 +18,7 @@
         <div class="content-c">
           <p class="statement">特别声明：文章多为网络转载，资源使用一般不提供任何帮助，特殊资源除外，如有侵权请联系！</p>
 
-          <div v-html="detail.content"></div>
+          <div v-html="detail.content" v-loading="loading"></div>
         </div>
         <div class="content-b">
           <h3>本文版权</h3>
@@ -57,7 +57,8 @@
       return {
         bgUrl: '',
         detail: {},
-        classify:{}
+        loading: true,
+        classify: {}
       }
     },
     components: {
@@ -85,9 +86,6 @@
           that.detail = res.data;
           that.bgUrl = random_photo();
         });
-
-
-
 
 
       },
@@ -188,6 +186,12 @@
 
 
   }
+
+
+  .content-c, .content-b {
+    animation: upScale 0.3s;
+  }
+
 
   .content-b {
     margin: 20px 0 50px;

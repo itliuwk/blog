@@ -188,23 +188,10 @@
     }
 
     .item {
-      animation: upOpacity 0.5s;
+      animation: upScale 0.5s;
     }
 
-    @keyframes upOpacity {
-      0% {
-        transform: scale(.5);
-      }
-      25% {
-        transform: scale(.7);
-      }
-      50% {
-        transform: scale(.8);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
+
 
     .item:hover {
       transition-duration: .5s;

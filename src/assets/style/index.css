@@ -1,3 +1,9 @@
+
+/*html,body {*/
+/*  color: #555;*/
+/*  cursor: url('../img/blue.cur'), default;*/
+/*}*/
+
 .Copyright{
   position: fixed;
   width: 100vw;
@@ -6,4 +12,26 @@
   text-align: center;
   background: #FFF;
   padding: 10px 0!important;
+}
+
+
+@keyframes upScale {
+  0% {
+    transform: scale(.5);
+  }
+  25% {
+    transform: scale(.6);
+  }
+  50% {
+    transform: scale(.7);
+  }
+  75% {
+    transform: scale(.8);
+  }
+  90% {
+    transform: scale(.9);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
