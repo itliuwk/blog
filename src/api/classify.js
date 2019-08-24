@@ -10,4 +10,13 @@ export function classify() {
 }
 
 
+export function classifyCount() {
+  return request({
+    url: BASE_API + 'classify/list/count',
+    method: 'get'
+  }).then(res => res.data);
+}
+
+
+
 

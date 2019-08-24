@@ -18,6 +18,23 @@ export function listCount(params) {
   }).then(res => res.data);
 }
 
+export function listClass(params) {
+  return request({
+    url: BASE_API + 'blog/listClass',
+    method: 'get',
+    params,
+  }).then(res => res.data);
+}
+
+
+export function listClassCount(params) {
+  return request({
+    url: BASE_API + 'blog/listClass/count',
+    method: 'get',
+    params,
+  }).then(res => res.data);
+}
+
 
 
 export function detail(params) {

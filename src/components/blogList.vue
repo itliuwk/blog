@@ -2,13 +2,13 @@
   <div class="blogList">
 
     <div v-loading="isLoading">
-      <div class="item" @click="toDetail(item.id)" v-for="(item,index) in blogList" :key="index">
+      <div class="item" v-for="(item,index) in blogList" :key="index">
         <img v-if="item.url" :src="item.url" alt=""/>
         <img v-else src="../assets/images/8.jpg" alt=""/>
         <div>
           <div class="header">
-            <h3>{{item.title}}</h3>
-            <span><a href="">{{item.label}}</a></span>
+            <h3 @click="toDetail(item.id)">{{item.title}}</h3>
+            <span style="cursor: pointer" @click="toClassDetail(item.value,item.label)">{{item.label}}</span>
           </div>
           <div class="view">
             {{item.subtitle}}
@@ -37,79 +37,85 @@
 </template>
 
 <script>
-  import {random_photo} from '@/utils/index'
-  import {YYYYMMDD} from '@/utils/date'
-  import {list, listCount} from '@/api/blog'
+    import {random_photo} from '@/utils/index'
+    import {YYYYMMDD} from '@/utils/date'
+    import {list, listCount} from '@/api/blog'
 
-  export default {
-    name: "blogList",
-    data() {
-      return {
-        blogList: [],
-        isLoading: true,
-        params: {
-          page: 0,
-          total: 10,
-          keyword: ''
+    export default {
+        name: "blogList",
+        data() {
+            return {
+                blogList: [],
+                isLoading: true,
+                params: {
+                    page: 0,
+                    total: 10,
+                    keyword: ''
+                },
+                count: 0
+            }
         },
-        count: 0
-      }
-    },
-    computed: {
-      search() {
-        return this.$store.state.search
-      }
-    },
-    watch: {
-      search(val) {
-        this.params = {
-          page: 0,
-          total: 10,
-          keyword: val
-        };
-        this.isLoading = true
-        this.getList();
-      }
-    },
-    mounted() {
-      this.getList();
-    },
-    methods: {
-      toDetail(id) {
-        this.$router.push('./detail?id=' + id);
-      },
-      getList() {
-        list(this.params).then(res => {
-          res.data.map((item, index) => {
-            item.createtime = YYYYMMDD(item.createtime);
-            item.content = item.content.toString();
-            item.url = random_photo();
-            return item;
-          });
+        computed: {
+            search() {
+                return this.$store.state.search
+            }
+        },
+        watch: {
+            search(val) {
+                this.params = {
+                    page: 0,
+                    total: 10,
+                    keyword: val
+                };
+                this.isLoading = true;
+                this.getList();
+            }
+        },
+        mounted() {
+            this.getList();
+            this.getCount();
+        },
+        methods: {
+            toDetail(id) {
+                this.$router.push('./detail?id=' + id);
+            },
+            toClassDetail(value,label) {
+                this.$router.push('./classifyDetail?value=' + value+'&label='+label);
+            },
+            getList() {
+                list(this.params).then(res => {
+                    res.data.map((item, index) => {
+                        item.createtime = YYYYMMDD(item.createtime);
+                        item.content = item.content.toString();
+                        item.url = random_photo();
+                        return item;
+                    });
 
-          setTimeout(() => {
-            this.blogList = res.data;
-            this.isLoading = false;
-          }, 300);
+                    setTimeout(() => {
+                        this.blogList = res.data;
+                        this.isLoading = false;
+                    }, 300);
 
-        });
+                });
 
-        listCount(this.params).then(res => {
 
-          this.count = res.data['count(id)'];
-        })
 
-      },
-      currentChange(page) {
-        this.params = {
-          page: (page - 1) * this.params.total,
-          total: this.params.total
-        };
-        this.isLoading = true;
-        this.getList();
-      },
+            },
+            getCount(){
+                listCount(this.params).then(res => {
+                    this.count = res.data['count(id)'];
+                })
+            },
+            currentChange(page) {
+                this.params = {
+                    page: (page - 1) * this.params.total,
+                    total: this.params.total
+                };
+                this.isLoading = true;
+                this.getList();
+            },
+        }
     }
-  }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -123,7 +129,7 @@
       border-radius: 4px;
       border: 1px solid #ccc;
       display: flex;
-      cursor: pointer;
+
       margin: 20px 0;
 
 
@@ -138,6 +144,7 @@
 
         h3 {
           display: inline-block;
+          cursor: pointer;
         }
 
         span {
@@ -190,7 +197,6 @@
     .item {
       animation: upScale 0.5s;
     }
-
 
 
     .item:hover {
