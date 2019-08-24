@@ -80,7 +80,7 @@
         data() {
             return {
                 searchValue: '',
-                isClose:true
+                isClose:false
             }
         },
         props: ['isTop'],
@@ -113,9 +113,6 @@
             }
         },
         methods: {
-            handleSelect(val) {
-                console.log(val);
-            },
             loginOut() {
                 Alert.success('退出成功，即将返回首页');
                 this.$router.push('/');

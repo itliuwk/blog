@@ -129,7 +129,6 @@
       border-radius: 4px;
       border: 1px solid #ccc;
       display: flex;
-
       margin: 20px 0;
 
 

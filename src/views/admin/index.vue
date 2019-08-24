@@ -12,15 +12,15 @@
     <div class="content">
       <div class="left">
         <ul>
-          <li :class="selIdx=='1'?'active':''" @click="selectIndex(1)">用户中心</li>
+<!--          <li :class="selIdx=='1'?'active':''" @click="selectIndex(1)">用户中心</li>-->
           <li :class="selIdx=='2'?'active':''" @click="selectIndex(2)">发布文章</li>
           <li :class="selIdx=='3'?'active':''" @click="selectIndex(3)">管理文章</li>
           <li :class="selIdx=='4'?'active':''" @click="selectIndex(4)">修改资料</li>
-          <li :class="selIdx=='5'?'active':''" @click="selectIndex(5)">退出</li>
+<!--          <li :class="selIdx=='5'?'active':''" @click="selectIndex(5)">退出</li>-->
         </ul>
       </div>
       <div class="right">
-        <User v-if="selIdx==1"></User>
+<!--        <User v-if="selIdx==1"></User>-->
         <PublishArticles v-if="selIdx==2"></PublishArticles>
         <MyArticle v-if="selIdx==3"></MyArticle>
         <Modify v-if="selIdx==4"></Modify>
@@ -45,7 +45,7 @@
     data() {
       return {
         bgUrl: '',
-        selIdx: 1,
+        selIdx: 2,
         detail: {}
       }
     },

@@ -23,7 +23,7 @@
         data() {
             return {
                 isTop: false,
-                isCloseBg:true,
+                isCloseBg:false,
                 transitionName: 'slide-right',
                 enterClass: 'bounceIn',
                 leaveClass: '',
