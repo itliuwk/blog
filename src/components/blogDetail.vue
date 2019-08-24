@@ -1,12 +1,13 @@
 <template>
   <div class="detail">
 
-    <section class="article-focusbox">  <!-- :style="{backgroundImage: 'url('+bgUrl+')'}" -->
+    <section class="article-focusbox" :style="{backgroundImage: 'url('+bgUrl+')'}">  <!-- :style="{backgroundImage: 'url('+bgUrl+')'}" -->
       <header class="article-header">
         <h1 class="article-title">{{detail.title}}</h1>
         <div class="article-meta">
           <span class="item item-1">{{detail.createtime}}</span>
-          <span class="item item-4">分类：    	<a href="https://iooqp.cn/?sort=9" rel="category tag">{{detail.label}}</a></span>
+          <span class="item item-4">分类：
+            <span style="cursor: pointer;color: #188ae2" @click="toClassDetail(detail.value,detail.label)">{{detail.label}}</span></span>
 
         </div>
 
@@ -126,6 +127,9 @@
                 str = str.replace(/"/g, '&quot;');
                 str = str.replace(/'/g, '&#039;');
                 return str;
+            },
+            toClassDetail(value,label) {
+                this.$router.push('./classifyDetail?value=' + value+'&label='+label);
             },
         }
     }
