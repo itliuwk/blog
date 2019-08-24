@@ -22,15 +22,15 @@
       <div class="statistics">
         <div>
           <p>文章</p>
-          <p>10</p>
+          <p>{{$store.state.count}}</p>
         </div>
         <div>
           <p>留言</p>
-          <p>34</p>
+          <p>0</p>
         </div>
         <div>
-          <p>标签</p>
-          <p>5</p>
+          <p>分类</p>
+          <p>12</p>
         </div>
       </div>
     </div>

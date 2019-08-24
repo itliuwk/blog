@@ -30,7 +30,7 @@
         </div>
 
 
-        <div class="pageCount">
+        <div class="pageCount"  style="text-align: center">
           <el-pagination
             background
             @current-change="currentChange"
@@ -105,7 +105,6 @@
 
                 listClassCount(params).then(res => {
                     this.count = res.data['count(id)'];
-                    console.log(res.data);
                 })
 
             },

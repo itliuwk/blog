@@ -1,7 +1,7 @@
 <template>
   <div class="blogList">
 
-    <div v-loading="isLoading">
+    <div v-loading="isLoading" v-if="blogList.length">
       <div class="item" v-for="(item,index) in blogList" :key="index">
         <img v-if="item.url" :src="item.url" alt=""/>
         <img v-else src="../assets/images/8.jpg" alt=""/>
@@ -20,9 +20,12 @@
         </div>
       </div>
     </div>
+    <div v-else style="text-align: center">
+      抱歉，没有符合您查询条件的结果
+    </div>
 
 
-    <div class="pageCount">
+    <div class="pageCount" style="text-align: center">
       <el-pagination
         background
         @current-change="currentChange"
@@ -37,7 +40,7 @@
 </template>
 
 <script>
-    import {random_photo} from '@/utils/index'
+    import {random_photo,random_bg_photo} from '@/utils/index'
     import {YYYYMMDD} from '@/utils/date'
     import {list, listCount} from '@/api/blog'
 
@@ -69,6 +72,7 @@
                 };
                 this.isLoading = true;
                 this.getList();
+                this.getCount();
             }
         },
         mounted() {
@@ -87,7 +91,7 @@
                     res.data.map((item, index) => {
                         item.createtime = YYYYMMDD(item.createtime);
                         item.content = item.content.toString();
-                        item.url = random_photo();
+                        item.url = random_bg_photo();
                         return item;
                     });
 
@@ -98,12 +102,15 @@
 
                 });
 
-
+                listCount().then(res => {
+                    this.$store.commit('SET_COUNT',res.data['count(id)'])
+                })
 
             },
             getCount(){
                 listCount(this.params).then(res => {
                     this.count = res.data['count(id)'];
+                    this.$store.commit('',)
                 })
             },
             currentChange(page) {

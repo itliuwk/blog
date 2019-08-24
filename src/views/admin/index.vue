@@ -15,7 +15,7 @@
 <!--          <li :class="selIdx=='1'?'active':''" @click="selectIndex(1)">用户中心</li>-->
           <li :class="selIdx=='2'?'active':''" @click="selectIndex(2)">发布文章</li>
           <li :class="selIdx=='3'?'active':''" @click="selectIndex(3)">管理文章</li>
-          <li :class="selIdx=='4'?'active':''" @click="selectIndex(4)">修改资料</li>
+<!--          <li :class="selIdx=='4'?'active':''" @click="selectIndex(4)">修改资料</li>-->
 <!--          <li :class="selIdx=='5'?'active':''" @click="selectIndex(5)">退出</li>-->
         </ul>
       </div>
