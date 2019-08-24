@@ -46,60 +46,89 @@
 </template>
 
 <script>
-  import Right from '@/components/right'
-  import {random_photo} from '@/utils/index'
-  import {YYYYMMDD} from '@/utils/date'
-  import {detail} from '@/api/blog'
+    import Right from '@/components/right'
+    import {random_photo} from '@/utils/index'
+    import {YYYYMMDD} from '@/utils/date'
+    import {detail} from '@/api/blog'
 
-  export default {
-    name: "blogDetail",
-    data() {
-      return {
-        bgUrl: '',
-        detail: {},
-        loading: true,
-        classify: {}
-      }
-    },
-    components: {
-      Right
-    },
-    mounted() {
+    export default {
+        name: "blogDetail",
+        data() {
+            return {
+                bgUrl: '',
+                detail: {},
+                loading: true,
+                classify: {}
+            }
+        },
+        components: {
+            Right
+        },
+        mounted() {
+            this.getDetail();
+        },
+        methods: {
 
-      this.getDetail();
-    },
-    methods: {
+            getDetail() {
+                let params = {
+                    id: this.$route.query.id
+                };
 
-      getDetail() {
-        let params = {
-          id: this.$route.query.id
-        };
+                let that = this;
 
-        let that = this;
-
-        detail(params).then(res => {
-          let href = window.location.href;
-          res.data.createtime = YYYYMMDD(res.data.createtime);
-          res.data.content = that.unescapeHTML(res.data.content);
-          res.data.url = href;
-          res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
-          that.detail = res.data;
-          that.bgUrl = random_photo();
-        });
+                detail(params).then(res => {
+                    let href = window.location.href;
+                    res.data.createtime = YYYYMMDD(res.data.createtime);
+                    res.data.content = that.html_entity_decode(res.data.content);
+                    res.data.content = that.parseDom(res.data.content)
+                    res.data.url = href;
+                    res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
+                    document.title= res.data.title;
+                    that.detail = res.data;
+                    that.bgUrl = random_photo();
+                });
 
 
-      },
-      unescapeHTML(str) {
-        str = str.replace(/fuwenben963/g, '');
-        str = str.replace(/&amp;/g, '&');
-        str = str.replace(/&lt;/g, '<');
-        str = str.replace(/&gt;/g, '>');
-        str = str.replace(/&quot;/g, "");
-        str = str.replace(/&#039;/g, "'");
-        return str;
-      }
+            },
+            parseDom(str) {
+                let that = this;
+                let obj = document.createElement("div");
+                obj.innerHTML = str;
+                let newStr = '';
+
+                let childNodes = $(obj)[0].childNodes;
+                for (let i = 0; i < childNodes.length; i++) {
+                    const strElement = childNodes[i];
+                    if (strElement.tagName=='PRE'){
+                        let pre = that.unescapeHTML($(strElement).html());
+                        newStr+='<pre>'+pre+'</pre>'
+                    }else{
+                        newStr+='<p>'+$(strElement).html()+'</p>'
+                    }
+
+                }
+                return newStr;
+            },
+
+            html_entity_decode(str) {
+                str = str.replace(/fuwenben963/g, '');
+                str = str.replace(/&amp;/g, '&');
+                str = str.replace(/&lt;/g, '<');
+                str = str.replace(/&gt;/g, '>');
+                str = str.replace(/&quot;/g, "");
+                str = str.replace(/&#039;/g, "'");
+                return str;
+            },
+            unescapeHTML(str) {
+                str = str.replace(/&/g, '&amp;');
+                str = str.replace(/</g, '&lt;');
+                str = str.replace(/>/g, '&gt;');
+                str = str.replace(/"/g, '&quot;');
+                str = str.replace(/'/g, '&#039;');
+                return str;
+            },
+        }
     }
-  }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -179,10 +208,19 @@
     }
 
     /deep/ pre {
-      background: #000;
-      color: #fff;
+      background-color: #282c34;
+      color: #abb2bf;
       padding: 5px 10px;
+      white-space: pre-wrap!important;
+      word-wrap: break-word!important;
+      *white-space:normal!important;
     }
+
+    /deep/  a{
+      color: #188ae2!important;
+    }
+
+
 
 
   }

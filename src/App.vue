@@ -43,6 +43,7 @@
                 this.closeBg();
             },
             $route(to, from) {
+                document.title= '刘伟坤 - 个人博客 | 随心IT'
                 // this.leaveClass = this.ClassArr[this.random()];
                 // this.enterClass = this.ClassArr[this.random()];
             }
@@ -50,6 +51,7 @@
         mounted() {
             this.closeBg();
             window.addEventListener('scroll', this.handleScroll);
+
         },
         methods: {
             handleScroll(e) {
