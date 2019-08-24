@@ -12,50 +12,69 @@
 </template>
 
 <script>
-  import home from '@/components/index'
-  import {random_photo} from '@/utils/index'
-  export default {
-    name: 'App',
-    components: {
-      home
-    },
-    data() {
-      return {
-        isTop: false,
-        transitionName: 'slide-right',
-        enterClass: 'bounceIn',
-        leaveClass: '',
-        bgUrl: '',
-        ClassArr: ['rollIn', 'rollOut']
-      }
+    import home from '@/components/index'
+    import {random_photo} from '@/utils/index'
 
-    },
-    mounted() {
-      this.bgUrl = random_photo();
-      window.addEventListener('scroll', this.handleScroll);
-    },
-    watch: {
-      $route(to, from) {
-        // this.leaveClass = this.ClassArr[this.random()];
-        // this.enterClass = this.ClassArr[this.random()];
-      }
-    },
-    methods: {
-      handleScroll(e) {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 滚动条偏移量
-        if (scrollTop > 100) {
-          this.isTop = true;
-        } else {
-          this.isTop = false;
+    export default {
+        name: 'App',
+        components: {
+            home
+        },
+        data() {
+            return {
+                isTop: false,
+                isCloseBg:true,
+                transitionName: 'slide-right',
+                enterClass: 'bounceIn',
+                leaveClass: '',
+                bgUrl: '',
+                ClassArr: ['rollIn', 'rollOut']
+            }
+
+        },
+        computed: {
+            CloseBg() {
+                return this.$store.state.isCloseBg
+            }
+        },
+        watch: {
+            CloseBg(val) {
+                this.isCloseBg = val;
+                this.closeBg();
+            },
+            $route(to, from) {
+                // this.leaveClass = this.ClassArr[this.random()];
+                // this.enterClass = this.ClassArr[this.random()];
+            }
+        },
+        mounted() {
+            this.closeBg();
+            window.addEventListener('scroll', this.handleScroll);
+        },
+        methods: {
+            handleScroll(e) {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 滚动条偏移量
+                if (scrollTop > 100) {
+                    this.isTop = true;
+                } else {
+                    this.isTop = false;
+                }
+            },
+            closeBg() {
+                if (this.isCloseBg){
+                    this.bgUrl = random_photo();
+                }else{
+                    this.bgUrl = '';
+                }
+
+            },
+            random() {
+                let n = 2;
+                //定义随机数，对应好 this.ClassArr.length 的长度，我这里 length 是 21
+                return Math.floor(Math.random() * (1 - n) + n)
+            }
         }
-      },
-      random() {
-        let n = 2;
-        //定义随机数，对应好 this.ClassArr.length 的长度，我这里 length 是 21
-        return Math.floor(Math.random() * (1 - n) + n)
-      }
     }
-  }
 </script>
 
 <style>

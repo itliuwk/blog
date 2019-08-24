@@ -13,10 +13,10 @@
                 首页
               </li>
             </router-link>
-<!--            <li>-->
-<!--              <i class="iconfont icon-shouye"></i>-->
-<!--              技术文章-->
-<!--            </li>-->
+            <!--            <li>-->
+            <!--              <i class="iconfont icon-shouye"></i>-->
+            <!--              技术文章-->
+            <!--            </li>-->
             <router-link to="/tools">
               <li>
                 <i class="iconfont icon-gongju"></i>
@@ -48,6 +48,15 @@
                 {{userInfo.realname}}<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item v-show="isClose">
+                  <span @click="updateBg">换张背景图</span>
+                </el-dropdown-item>
+                <el-dropdown-item v-show="!isClose">
+                  <span @click="openBg">开启背景图</span>
+                </el-dropdown-item>
+                <el-dropdown-item v-show="isClose">
+                  <span @click="closeBg">关闭背景图</span>
+                </el-dropdown-item>
                 <el-dropdown-item>
                   <span @click="loginOut">退出</span>
                 </el-dropdown-item>
@@ -64,61 +73,76 @@
 </template>
 
 <script>
-  import Alert from '@/utils/alert'
+    import Alert from '@/utils/alert'
 
-  export default {
-    name: "index",
-    data() {
-      return {
-        searchValue: ''
-      }
-    },
-    props: ['isTop'],
-    mounted() {
-
-    },
-    computed: {
-      userInfo() {
-        return this.$store.state.userInfo || JSON.parse(localStorage.getItem('userInfo'));
-      }
-    },
-    watch: {
-      userInfo(val) {
-      },
-      $route: {
-        deep: true,
-        handler(val) {
-          if (val.fullPath == '/admin') {
-            if (!this.userInfo && this.userInfo == null) {
-              if (!this.$store.state.isLogin) {
-                Alert.fail('你还没有登录，即将返回首页');
-
-                setTimeout(() => {
-                  this.$router.push('/');
-                }, 100)
-              }
+    export default {
+        name: "index",
+        data() {
+            return {
+                searchValue: '',
+                isClose:true
             }
-          }
+        },
+        props: ['isTop'],
+        mounted() {
+
+        },
+        computed: {
+            userInfo() {
+                return this.$store.state.userInfo || JSON.parse(localStorage.getItem('userInfo'));
+            }
+        },
+        watch: {
+            userInfo(val) {
+            },
+            $route: {
+                deep: true,
+                handler(val) {
+                    if (val.fullPath == '/admin') {
+                        if (!this.userInfo && this.userInfo == null) {
+                            if (!this.$store.state.isLogin) {
+                                Alert.fail('你还没有登录，即将返回首页');
+
+                                setTimeout(() => {
+                                    this.$router.push('/');
+                                }, 100)
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        methods: {
+            handleSelect(val) {
+                console.log(val);
+            },
+            loginOut() {
+                Alert.success('退出成功，即将返回首页');
+                this.$router.push('/');
+                setTimeout(() => {
+                    localStorage.clear();
+                    this.$store.commit('SET_USERINFO', null);
+                }, 1500)
+            },
+            search() {
+                this.$store.commit('SET_SEARCH', this.searchValue)
+            },
+            openBg() {
+                this.$store.commit('SET_ISCLOSEBG', true);
+                this.isClose = true;
+            },
+            closeBg() {
+                this.$store.commit('SET_ISCLOSEBG', false);
+                this.isClose = false;
+            },
+            updateBg(){
+                this.$store.commit('SET_ISCLOSEBG', false);
+                setTimeout(()=>{
+                    this.$store.commit('SET_ISCLOSEBG', true);
+                },100)
+            }
         }
-      }
-    },
-    methods: {
-      handleSelect(val) {
-        console.log(val);
-      },
-      loginOut() {
-        Alert.success('退出成功，即将返回首页');
-        this.$router.push('/');
-        setTimeout(() => {
-          localStorage.clear();
-          this.$store.commit('SET_USERINFO', null);
-        }, 1500)
-      },
-      search() {
-        this.$store.commit('SET_SEARCH', this.searchValue)
-      }
     }
-  }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
