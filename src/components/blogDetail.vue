@@ -122,6 +122,7 @@
             },
             unescapeHTML(str) {
                 str = str.replace(/&/g, '&amp;');
+                str = str.replace(/&amp;nbsp;/g, ' ');
                 str = str.replace(/</g, '&lt;');
                 str = str.replace(/>/g, '&gt;');
                 str = str.replace(/"/g, '&quot;');
