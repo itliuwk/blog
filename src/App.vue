@@ -6,6 +6,14 @@
       <transition name="fade-transform" mode="out-in">
         <router-view class="animated"></router-view>
       </transition>
+
+    </div>
+    <div style="text-align: center">
+      <div>
+        <span>Copyright © 刘伟坤 - 博客 版权所有 Powered By liuwk Design.   </span>
+        <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk"><i class="iconfont icon-github"></i></a>
+      </div>
+<!--      <div>本站在每天各种攻击的压力下顽强的存活了：1472天23小时53分58秒</div>-->
     </div>
 
   </div>
@@ -89,7 +97,7 @@
   }
 
   .bg {
-    height: calc(100% - 74px);
+
     background: url('./assets/img/bg.jpg') no-repeat;
     background-size: cover;
     overflow: auto;

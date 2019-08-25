@@ -225,6 +225,10 @@
       color: #188ae2!important;
     }
 
+    /deep/  img{
+     width: 100%;
+    }
+
 
 
 
