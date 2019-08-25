@@ -1,28 +1,30 @@
 <template>
   <div class="blogList">
 
-    <div v-loading="isLoading" v-if="blogList.length">
-      <div class="item" v-for="(item,index) in blogList" :key="index">
-        <img v-if="item.url" :src="item.url" alt=""/>
-        <img v-else src="../assets/images/8.jpg" alt=""/>
-        <div>
-          <div class="header">
-            <h3 @click="toDetail(item.id)">{{item.title}}</h3>
-            <span style="cursor: pointer" @click="toClassDetail(item.value,item.label)">{{item.label}}</span>
-          </div>
-          <div class="view">
-            {{item.subtitle}}
-          </div>
-          <div class="info">
-            <span>{{item.author}}</span>
-            <span>{{item.createtime}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-else style="text-align: center">
-      抱歉，没有符合您查询条件的结果
-    </div>
+   <div  v-loading="isLoading">
+     <div v-if="blogList.length">
+       <div class="item" v-for="(item,index) in blogList" :key="index">
+         <img v-if="item.url" :src="item.url" alt=""/>
+         <img v-else src="../assets/images/8.jpg" alt=""/>
+         <div>
+           <div class="header">
+             <h3 @click="toDetail(item.id)">{{item.title}}</h3>
+             <span style="cursor: pointer" @click="toClassDetail(item.value,item.label)">{{item.label}}</span>
+           </div>
+           <div class="view">
+             {{item.subtitle}}
+           </div>
+           <div class="info">
+             <span>{{item.author}}</span>
+             <span>{{item.createtime}}</span>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div v-else v-show="isLoading" style="text-align: center">
+       抱歉，没有符合您查询条件的结果
+     </div>
+   </div>
 
 
     <div class="pageCount" style="text-align: center">
