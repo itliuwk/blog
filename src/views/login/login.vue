@@ -21,41 +21,57 @@
 </template>
 
 <script>
-  import {login} from "../../api/login";
-  import Alert from '@/utils/alert'
+    import {login} from "../../api/login";
+    import Alert from '@/utils/alert'
 
-  export default {
-    name: "login",
-    data() {
-      return {
-        params: {
-          username: '',
-          password: ''
+    export default {
+        name: "login",
+        data() {
+            return {
+                params: {
+                    username: '',
+                    password: ''
+                }
+            }
+        },
+        watch: {
+            '$router': function (val) {
+                console.log(val);
+            }
+        },
+        methods: {
+            loginClick() {
+
+                if (!this.params.username) {
+
+                    Alert.fail('请输入你的账号');
+                    return false;
+                }
+
+                if (!this.params.password) {
+                    Alert.fail('请输入你的密码');
+                    return false;
+                }
+
+
+                login(this.params).then(res => {
+
+                    if (res.data.errno === 0) {
+                        localStorage.setItem('userInfo', JSON.stringify(res.data.data));
+                        this.$store.commit('SET_USERINFO', res.data.data);
+                        Alert.success('登录成功，即将进入后台页面');
+                        this.$store.commit('SET_ISLOGIN', true);
+                        setTimeout(() => {
+                            this.$router.push('/admin');
+                        }, 2000);
+                    } else {
+                        Alert.fail(res.data.message);
+                    }
+                })
+            }
         }
-      }
-    },
-    watch: {
-      '$router': function (val) {
-        console.log(val);
-      }
-    },
-    methods: {
-      loginClick() {
-        login(this.params).then(res => {
-          localStorage.setItem('userInfo', JSON.stringify(res.data.data));
-          this.$store.commit('SET_USERINFO', res.data.data);
-          if (res.data.errno === 0) {
-            Alert.success('登录成功，即将进入后台页面');
-            this.$store.commit('SET_ISLOGIN',true);
-            setTimeout(() => {
-              this.$router.push('/admin');
-            }, 2000);
-          }
-        })
-      }
-    }
 
-  }
+    }
 </script>
 
 <style scoped>

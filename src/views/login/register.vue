@@ -10,7 +10,15 @@
         <i class="iconfont icon-mima"></i>
         <input type="password" id="password" v-model="params.password" placeholder="请输入密码">
         <i class="iconfont icon-mima confirm"></i>
-        <input type="text" id="confirm-password" v-model="params.realname" placeholder="真实姓名">
+        <input type="text" id="confirm-password" v-model="params.realname" placeholder="昵称">
+      </div>
+
+      <div id="code">
+        <input type="text"  v-model="code" class="code" placeholder="请输入验证码"/>
+      </div>
+      <div class="login-code" @click="refreshCode">
+        <!--验证码组件-->
+        <SIdentify :identifyCode="identifyCode"></SIdentify>
       </div>
       <button type="submit" class="user_login_btn user_register_btn" @click="registerClick">注册</button>
       <p class="register1">
@@ -22,39 +30,102 @@
 </template>
 
 <script>
-  import {register} from "../../api/login";
-  import Alert from '@/utils/alert'
+    import {register} from "../../api/login";
+    import Alert from '@/utils/alert'
+    import SIdentify from './sidentify'
 
-  export default {
-    name: "register",
-    data() {
-      return {
-        params: {
-          username: '',
-          password: '',
-          realname: '',
-          createDate: ''
+    export default {
+        name: "register",
+        data() {
+            return {
+                params: {
+                    username: '',
+                    password: '',
+                    realname: '',
+                    createDate: ''
+                },
+                identifyCodes: "1234567890",
+                identifyCode: "",
+                code: "",//text框输入的验证码
+            }
+        },
+        components:{
+            SIdentify
+        },
+        mounted() {
+            this.identifyCode = "";
+            this.makeCode(this.identifyCodes, 4);
+        },
+        methods: {
+            registerClick() {
+
+                if (!this.params.username) {
+
+                    Alert.fail('请输入你要注册的账号');
+                    return false;
+                }
+
+                if (!this.params.password) {
+                    Alert.fail('请输入你的密码');
+                    return false;
+                }
+
+                if (!this.params.realname) {
+                    Alert.fail('请输入你的昵称');
+                    return false;
+                }
+
+                if (!this.code) {
+                    Alert.fail('请输入验证码');
+                    return false;
+                }
+
+                if (this.identifyCode !== this.code) {
+                    this.code = ''
+                    this.refreshCode();
+                    Alert.fail('请输入正确的验证码');
+                    return false;
+                }
+
+
+
+
+
+
+                let params = {
+                    ...this.params,
+                    createDate: Date.now()
+                };
+                register(params).then(res => {
+                    if (res.data.errno == -1) {
+                        Alert.fail(res.data.message);
+                        return false;
+                    }
+                    setTimeout(() => {
+                        this.$router.push('/login');
+                    }, 2000);
+                })
+            },
+            //验证码
+            randomNum(min, max) {
+                return Math.floor(Math.random() * (max - min) + min);
+            },
+
+            refreshCode() {
+                this.identifyCode = "";
+                this.makeCode(this.identifyCodes, 4);
+            },
+            makeCode(o, l) {
+                for (let i = 0; i < l; i++) {
+                    this.identifyCode += this.identifyCodes[
+                        this.randomNum(0, this.identifyCodes.length)
+                        ];
+                }
+                console.log(this.identifyCode);
+            },
+
         }
-      }
-    },
-    methods: {
-      registerClick() {
-        let params = {
-          ...this.params,
-          createDate: Date.now()
-        };
-        register(params).then(res => {
-          if (res.data.errno == -1) {
-            Alert.fail(res.data.message);
-            return false;
-          }
-          setTimeout(() => {
-            this.$router.push('/login');
-          }, 2000);
-        })
-      }
     }
-  }
 </script>
 
 <style scoped>
@@ -68,7 +139,7 @@
 
   #box {
     width: 400px;
-    height: 380px;
+    height: 460px;
     position: fixed;
     /*background: rgb(255, 248, 235);*/
     padding: 30px;
@@ -83,8 +154,8 @@
   }
 
   .box-ipt {
-    height: 120px;
     position: relative;
+    height: 180px;
     margin-top: 30px;
   }
 
@@ -183,4 +254,26 @@
   .register a {
     color: #188ae2;
   }
+
+  #code{
+    margin-bottom: 20px;
+  }
+
+  .code {
+    border: 1px solid #e6e6e6;
+    width: 50%;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 35px;
+    color: #525252;
+    font-size: 15px;
+  }
+
+  .login-code {
+    cursor: pointer;
+    position: relative;
+    top: -15px;
+  }
+
 </style>

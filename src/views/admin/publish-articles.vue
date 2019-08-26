@@ -88,6 +88,7 @@
             detail(val) {
                 val.content = this.html_entity_decode(val.content);
                 val.classify = parseInt(val.classify)
+                console.log(val.content);
                 this.form = val;
                 this.content = val.content
 
@@ -97,7 +98,6 @@
 
             classify() {
                 classify().then(res => {
-                    console.log(res);
                     this.options = res.data
                 })
             },
@@ -145,7 +145,7 @@
 
                 this.form = {
                     ...this.form,
-                   content: 'fuwenben963' + this.unescapeHTML(`"${this.content}"`) + 'fuwenben963'
+                   content: 'fuwenben963' + this.unescapeHTML(`${this.content}`) + 'fuwenben963'
                 };
 
 

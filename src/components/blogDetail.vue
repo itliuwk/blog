@@ -124,7 +124,7 @@
                 str = str.replace(/&/g, '&amp;');
                 str = str.replace(/&amp;nbsp;/g, ' ');
                 str = str.replace(/</g, '&lt;');
-                str = str.replace(/>/g, '&gt;');
+                str = str.replace(/&amp;gt;/g, '>');
                 str = str.replace(/"/g, '&quot;');
                 str = str.replace(/'/g, '&#039;');
                 return str;
@@ -215,7 +215,8 @@
     /deep/ pre {
       background-color: #282c34;
       color: #abb2bf;
-      padding: 5px 10px;
+      padding: 8px 10px;
+      font-size: 15px;
       white-space: pre-wrap!important;
       word-wrap: break-word!important;
       *white-space:normal!important;
