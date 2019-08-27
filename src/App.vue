@@ -54,11 +54,26 @@
                 document.title= '刘伟坤 - 个人博客 | 随心IT'
                 // this.leaveClass = this.ClassArr[this.random()];
                 // this.enterClass = this.ClassArr[this.random()];
+
+                if (window._czc) {
+                    let location = window.location;
+                    let contentUrl = location.pathname + location.hash;
+                    let refererUrl = '/';
+                    window._czc.push(['_trackPageview', contentUrl, refererUrl])
+                }
+
             }
         },
         mounted() {
             this.closeBg();
             window.addEventListener('scroll', this.handleScroll);
+
+            window._czc = window._czc || [];
+            const script = document.createElement('script');
+            script.src = 'https://s19.cnzz.com/z_stat.php?id=1270854462&web_id=1270854462';
+            script.type="text/javascript";
+            script.language = 'JavaScript';
+            document.body.appendChild(script);
 
         },
         methods: {
