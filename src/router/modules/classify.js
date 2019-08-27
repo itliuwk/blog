@@ -3,7 +3,8 @@ const classify = [
     path: '/classifyDetail',
     name: '分类详情',
     meta: {title: '分类详情'},
-    component: () => import('@/components/classifyDetail')
+    component: resolve => require(['@/components/classifyDetail'], resolve),
+    // component: () => import('@/components/classifyDetail')
   }
 ];
 
