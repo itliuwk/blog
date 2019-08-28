@@ -22,6 +22,12 @@ export default new Router({
       component: resolve => require(['@/views/admin/index'], resolve),
       // component: () => import('@/views/admin/index')
     },
+    {
+      path: '/about',
+      name: 'about',
+      component: resolve => require(['@/views/about/index'], resolve),
+      // component: () => import('@/views/admin/index')
+    },
     ...login,
     ...blog,
     ...tools,

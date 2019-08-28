@@ -24,6 +24,13 @@
               </li>
             </router-link>
 
+            <router-link to="/about">
+              <li>
+                <i class="iconfont icon-iconset0103"></i>
+                关于本站
+              </li>
+            </router-link>
+
           </ul>
         </div>
         <div class="login">
