@@ -8,19 +8,21 @@
       </transition>
 
     </div>
-    <div style="text-align: center">
+    <div class="copyright">
       <div>
         <span>Copyright © 刘伟坤 - 博客 版权所有 Powered By liuwk Design.   </span>
-        <a target="_blank" href="javascript:void(0)"><img src="./assets/img/icp1.png"> 粤ICP备19106134号</a>
+        <a target="_blank" href="http://www.beian.miit.gov.cn"><img src="./assets/img/icp1.png"> 粤ICP备19106134号</a>
         <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk"><i class="iconfont icon-github"></i></a>
       </div>
-      <div style="margin-top: 10px;">
-        <a href="https://www.yunaq.com/new_analytics/report/login/?site=www.sxitw.cn" title="创宇云安全" target="_blank"><img src="./assets/img/jsl.png" width="127px" height="47px" style="margin:0px 5px;"></a>
-        <a href="http://www.qcloud.com/redirect.php?redirect=1001&amp;cps_key=8c96bc9f7c143bf40b60cfd558885a8d" title="腾讯云安全认证" target="_blank"><img src="./assets/img/qcloud.png" width="127px" height="47px" style="margin:0px 5px;"></a>
+      <div style="padding-top: 20px;">
+        <a href="https://www.yunaq.com/new_analytics/report/login/?site=www.sxitw.cn" title="创宇云安全" target="_blank"><img
+          src="./assets/img/jsl.png" width="127px" height="47px" style="margin:0px 5px;"></a>
+        <a href="http://www.qcloud.com/redirect.php?redirect=1001&amp;cps_key=8c96bc9f7c143bf40b60cfd558885a8d"
+           title="腾讯云安全认证" target="_blank"><img src="./assets/img/qcloud.png" width="127px" height="47px"
+                                                style="margin:0px 5px;"></a>
       </div>
-<!--      <div>本站在每天各种攻击的压力下顽强的存活了：1472天23小时53分58秒</div>-->
     </div>
-
+    <div id="top-img"></div>
   </div>
 </template>
 
@@ -36,7 +38,7 @@
         data() {
             return {
                 isTop: false,
-                isCloseBg:false,
+                isCloseBg: false,
                 transitionName: 'slide-right',
                 enterClass: 'bounceIn',
                 leaveClass: '',
@@ -56,7 +58,7 @@
                 this.closeBg();
             },
             $route(to, from) {
-                document.title= '刘伟坤 - 个人博客 | 随心IT'
+                document.title = '刘伟坤 - 个人博客 | 随心IT'
                 // this.leaveClass = this.ClassArr[this.random()];
                 // this.enterClass = this.ClassArr[this.random()];
 
@@ -76,7 +78,7 @@
             window._czc = window._czc || [];
             const script = document.createElement('script');
             script.src = 'https://s19.cnzz.com/z_stat.php?id=1270854462&web_id=1270854462';
-            script.type="text/javascript";
+            script.type = "text/javascript";
             script.language = 'JavaScript';
             document.body.appendChild(script);
 
@@ -91,9 +93,9 @@
                 }
             },
             closeBg() {
-                if (this.isCloseBg){
+                if (this.isCloseBg) {
                     this.bgUrl = random_photo();
-                }else{
+                } else {
                     this.bgUrl = '';
                 }
 
@@ -127,20 +129,18 @@
     min-width: 1400px;
   }
 
+  #top-img {
+    background: url('./assets/img/top.png');
+    height: 4px;
+    top: 0px;
+    width: 100%;
+    Z-index: 9999;
+  }
 
-  /*.child-view {*/
-  /*  position: absolute;*/
-  /*  max-width: 1300px;*/
-  /*  transition: all 1s;*/
-  /*}*/
-
-  /*.slide-left-enter, .slide-right-leave-active {*/
-  /*  opacity: 0;*/
-  /*  transform: translate(100px, 100px) scale(0.3) rotate(45deg);*/
-  /*}*/
-
-  /*.slide-left-leave-active, .slide-right-enter {*/
-  /*  opacity: 0;*/
-  /*  transform: translate(100px, 100px) scale(0.3) rotate(45deg);*/
-  /*}*/
+  .copyright {
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+    /*box-shadow: 0 0 2px rgba(37, 45, 51, 0.5);*/
+    padding: 20px 0;
+  }
 </style>

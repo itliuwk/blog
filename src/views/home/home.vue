@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <div class="left">
-      <div class="carousel">
-        <el-carousel :interval="5000" arrow="always">
-          <el-carousel-item v-for="(item,index) in items" :key="index">
-            <img :src="item.src" alt="">
-          </el-carousel-item>
-        </el-carousel>
-      </div>
+<!--      <div class="carousel">-->
+<!--        <el-carousel :interval="5000" arrow="always">-->
+<!--          <el-carousel-item v-for="(item,index) in items" :key="index">-->
+<!--            <img :src="item.src" alt="">-->
+<!--          </el-carousel-item>-->
+<!--        </el-carousel>-->
+<!--      </div>-->
       <BlogList></BlogList>
     </div>
     <div class="right">

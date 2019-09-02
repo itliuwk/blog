@@ -21,13 +21,13 @@
          </div>
        </div>
      </div>
-     <div v-else v-show="isLoading" style="text-align: center">
+     <div v-else v-show="!isLoading" style="text-align: center">
        抱歉，没有符合您查询条件的结果
      </div>
    </div>
 
 
-    <div class="pageCount" style="text-align: center">
+    <div class="pageCount" v-show="!isLoading"  style="text-align: center">
       <el-pagination
         background
         @current-change="currentChange"
@@ -100,7 +100,7 @@
                     setTimeout(() => {
                         this.blogList = res.data;
                         this.isLoading = false;
-                    }, 300);
+                    }, 100);
 
                 });
 
@@ -129,7 +129,7 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .blogList {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 
     .item {
       padding: 20px;
@@ -205,11 +205,15 @@
     .item {
       animation: upScale 0.5s;
     }
+    .item:nth-child(1){
+      margin-top: 0;
+    }
 
 
     .item:hover {
       transition-duration: .5s;
-      background: #000;
+      background: rgba(22,192,248,.1);
+      border-color: #88d3f9;
 
       h3 {
         transition-duration: .5s;
@@ -217,10 +221,10 @@
         color: #188ae2;
       }
 
-      .view {
-        transition-duration: .5s;
-        color: #fff;
-      }
+      /*.view {*/
+      /*  transition-duration: .5s;*/
+      /*  color: #fff;*/
+      /*}*/
 
       img {
         transition-duration: .5s;

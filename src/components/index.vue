@@ -1,6 +1,5 @@
 <template>
   <div :class="isTop==true?'blog':'blog-none'">
-    <div id="top-img"></div>
     <div class="blog-nav">
       <div class="content">
         <router-link to="/"><a title="刘伟坤博客-刘伟坤博客,分享网站seo优化教程，网站源码下载，网站搭建教程，专注互联网资讯，新手站长起点资源网站！" href="#"><img
@@ -13,10 +12,6 @@
                 首页
               </li>
             </router-link>
-            <!--            <li>-->
-            <!--              <i class="iconfont icon-shouye"></i>-->
-            <!--              技术文章-->
-            <!--            </li>-->
             <router-link to="/tools">
               <li>
                 <i class="iconfont icon-gongju"></i>
@@ -76,6 +71,7 @@
         </div>
       </div>
     </div>
+    <div id="top-img"></div>
   </div>
 </template>
 
@@ -197,12 +193,10 @@
       height: 70px;
       top: 0;
       box-sizing: border-box;
-      /*max-width: 1300px;*/
-
-      margin: 0 20px;
-      padding-left: 0;
-      padding-right: 0;
-
+      max-width: 1300px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
       img {
         height: 35px;
         display: inline-block;
