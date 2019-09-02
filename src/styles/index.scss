@@ -221,20 +221,20 @@ h1, h2, h3 {
 /*滚动条设置，仅对chrome生效*/
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   background-color: #F5F5F5;
 }
 
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
-  border-radius: 6px;
+  border-radius: 10px;
   background-color: #F5F5F5;
 }
 
 /*定义滑块 内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
-  border-radius: 6px;
+  border-radius: 10px;
   background-color: #16c0f8!important;
 }
 
