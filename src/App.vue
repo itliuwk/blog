@@ -44,7 +44,7 @@
                 this.closeBg();
             },
             $route(to, from) {
-                document.title = '刘伟坤 - 个人博客 | 随心IT'
+                document.title = '刘伟坤 - 个人博客 | 随心IT | 一个分享技术文章,热门资源的博客'
                 // this.leaveClass = this.ClassArr[this.random()];
                 // this.enterClass = this.ClassArr[this.random()];
 

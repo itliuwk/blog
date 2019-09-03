@@ -140,6 +140,10 @@
     }
   }
 
+  .content{
+    margin-bottom: 20px;
+  }
+
   .content .left {
     flex: 1;
     height: 600px;
