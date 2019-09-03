@@ -69,6 +69,30 @@
               <p>随心博客</p>
             </a>
           </li>
+          <li>
+            <a target="_blank" href="http://www.sanshi30.cn/">
+              <img class="favicon" src="http://www.sanshi30.cn/static/img/logo.jpg" alt="" style="border: 1px solid #ccc">
+              <p>Sanshi 博客</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="http://e-art.top/">
+              <img class="favicon" src="http://e-art.top/img/logo_v0.1_w.png" alt="" style="border: 1px solid #ccc">
+              <p>关中刀客在青岛</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="http://e-art.top/">
+              <img class="favicon" src="https://www.yangqq.com/favicon.ico" alt="" style="border: 1px solid #ccc">
+              <p>杨青个人博客</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.ilxin.cn/">
+              <img class="favicon" src="http://ilxin.cn/wp-content/uploads/2019/04/tx3.jpg" alt="" style="border: 1px solid #ccc">
+              <p>鑫-个人博客</p>
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -90,7 +114,7 @@
         name: "about",
         data() {
             return {
-                active: 1
+                active: 3
             }
         },
         components: {
@@ -215,10 +239,14 @@
 
       .friends {
         padding: 20px 80px;
-
+        text-align: center;
         li {
           display: inline-block;
           text-align: center;
+          margin: 0 10px;
+          p:hover{
+            color: #188ae2;
+          }
         }
       }
     }
