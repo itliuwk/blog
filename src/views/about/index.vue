@@ -58,7 +58,7 @@
 
     <div v-if="active==3" class="layui-content">
       <div class="info" style="text-align: center;">
-        <p>这里展示本站所有友情站点，排列不分先后；如需友链，请先添加本站首页链接后，在留言墙告知，谢谢!</p>
+        <p>这里展示本站所有友情站点，排列不分先后；如需友链，请先添加本站首页链接后，在留言墙告知，或者首页加本人微信或者QQ，谢谢!</p>
       </div>
 
       <div class="friends">
