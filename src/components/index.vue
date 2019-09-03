@@ -193,7 +193,7 @@
       height: 70px;
       top: 0;
       box-sizing: border-box;
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
       padding-left: 20px;
       padding-right: 20px;

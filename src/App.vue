@@ -100,7 +100,7 @@
     position: relative;
   }
   .routerView {
-    max-width: 1300px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 0;

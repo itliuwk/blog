@@ -53,6 +53,26 @@
     </div>
 
 
+    <div v-show="active==3" class="layui-content">
+      <div class="info" style="text-align: center;">
+        <p>这里展示本站所有友情站点，排列不分先后；如需友链，请先添加本站首页链接后再留言墙告知，谢谢!</p>
+      </div>
+
+      <div class="friends">
+        <ul>
+          <li>
+            <a target="_blank" href="http://www.sxitw.cn">
+              <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc">
+              <p>随心博客</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+    </div>
+
+
     <!-- 来必力City版安装代码 -->
     <div v-show="active==4" id="lv-container" data-id="city" style="width: 100%;"
          data-uid="MTAyMC80NjQ2MC8yMjk3MQ=="></div>
@@ -67,7 +87,7 @@
         name: "about",
         data() {
             return {
-                active: 2
+                active: 3
             }
         },
         components: {
@@ -140,6 +160,7 @@
       background: #fff;
       padding-top: 20px;
 
+
       .favicon,.author {
         width: 120px;
         height: 120px;
@@ -152,7 +173,7 @@
         margin: 20px 0;
       }
 
-      p {
+      >p {
         margin-top: 30px;
       }
 
@@ -178,9 +199,25 @@
         padding: 0 80px;
         line-height: 30px;
 
+        p{
+          border-radius: 10px;
+          padding: 10px;
+          border-color: #4d9de0;
+          background-color: #4d9de0;
+          color: #fff;
+        }
+
         a {
           color: #188ae2;
           padding: 0 5px;
+        }
+      }
+
+      .friends{
+        padding: 20px 80px;
+        li{
+          display: inline-block;
+          text-align: center;
         }
       }
     }
