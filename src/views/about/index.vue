@@ -50,6 +50,7 @@
         刘伟坤，90后前端开发人员，广东五华人，出厂26年有余，此博客站长，地地道道农村出生，已有小姐姐青睐和一个可爱的儿子。
       </p>
       <img class="son" src="../../assets/img/son.png" alt="">
+      <h3 style="text-align:center;margin-top: 20px;">end</h3>
     </div>
 
 
@@ -87,7 +88,7 @@
         name: "about",
         data() {
             return {
-                active: 3
+                active: 1
             }
         },
         components: {
@@ -119,15 +120,14 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .about {
-
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 0;
-    padding-right: 0;
     height: 100%;
     min-height: 900px;
     box-shadow: 0 0 10px 2px #666;
+    background: rgb(238,238,238);
+    padding: 20px;
 
     .layui-tab {
       background: #fff;
@@ -159,7 +159,7 @@
     .layui-content {
       background: #fff;
       padding-top: 20px;
-
+      min-height: 1100px;
 
       .favicon,.author {
         width: 120px;
@@ -224,6 +224,8 @@
 
     #lv-container {
       padding: 20px;
+      min-height: 1100px;
+      background: #fff;
     }
   }
 
