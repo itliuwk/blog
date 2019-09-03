@@ -7,7 +7,6 @@
       </transition>
     </div>
     <copyright></copyright>
-    <div id="top-img"></div>
   </div>
 </template>
 
@@ -73,7 +72,7 @@
         methods: {
             handleScroll(e) {
                 let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop // 滚动条偏移量
-                if (scrollTop > 100) {
+                if (scrollTop > 50) {
                     this.isTop = true;
                 } else {
                     this.isTop = false;
@@ -97,6 +96,9 @@
 </script>
 
 <style>
+  #app{
+    position: relative;
+  }
   .routerView {
     max-width: 1300px;
     margin-left: auto;
@@ -116,13 +118,7 @@
     min-width: 1400px;
   }
 
-  #top-img {
-    background: url('./assets/img/top.png');
-    height: 4px;
-    top: 0px;
-    width: 100%;
-    Z-index: 9999;
-  }
+
 
 
 </style>
