@@ -10,11 +10,13 @@
       </ul>
     </div>
 
-    <div v-show="active==1" class="layui-content" style="text-align: center">
+    <div v-if="active==1" class="layui-content" style="text-align: center">
       <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc">
-      <h3>随心博客</h3>
-      <p>前端开发人员的个人博客，记录工作上，生活上的知识，并分享前端方面技术和一些趣事。</p>
-      <p>www.sxitw.cn</p>
+      <div class="animate">
+        <h3>随心博客</h3>
+        <p style="margin: 20px 0;">前端开发人员的个人博客，记录工作上，生活上的知识，并分享前端方面技术和一些趣事。</p>
+        <p>www.sxitw.cn</p>
+      </div>
       <p class="synopsis">
         <span>简介</span>
       </p>
@@ -34,10 +36,10 @@
     </div>
 
 
-    <div v-show="active==2" class="layui-content" style="text-align: center">
+    <div v-if="active==2" class="layui-content" style="text-align: center">
       <img class="author" src="../../assets/img/author.png" alt="">
       <h3>刘伟坤</h3>
-      <p class="info">
+      <p class="animate">
         90后 <strong>前端开发</strong> 大军中的一员，懂点Node知识，本博客后台基于
         <a target="_blank" href="https://koajs.com/">koa2</a>
         +
@@ -54,7 +56,7 @@
     </div>
 
 
-    <div v-show="active==3" class="layui-content">
+    <div v-if="active==3" class="layui-content">
       <div class="info" style="text-align: center;">
         <p>这里展示本站所有友情站点，排列不分先后；如需友链，请先添加本站首页链接后再留言墙告知，谢谢!</p>
       </div>
@@ -126,7 +128,7 @@
     height: 100%;
     min-height: 900px;
     box-shadow: 0 0 10px 2px #666;
-    background: rgb(238,238,238);
+    background: rgb(238, 238, 238);
     padding: 20px;
 
     .layui-tab {
@@ -161,19 +163,20 @@
       padding-top: 20px;
       min-height: 1100px;
 
-      .favicon,.author {
+      .favicon, .author {
         width: 120px;
         height: 120px;
         border-radius: 50%;
       }
-      .son{
+
+      .son {
         width: 40%;
         height: 500px;
         border-radius: 10px;
         margin: 20px 0;
       }
 
-      >p {
+      > p {
         margin-top: 30px;
       }
 
@@ -199,7 +202,7 @@
         padding: 0 80px;
         line-height: 30px;
 
-        p{
+        p {
           border-radius: 10px;
           padding: 10px;
           border-color: #4d9de0;
@@ -207,15 +210,13 @@
           color: #fff;
         }
 
-        a {
-          color: #188ae2;
-          padding: 0 5px;
-        }
+
       }
 
-      .friends{
+      .friends {
         padding: 20px 80px;
-        li{
+
+        li {
           display: inline-block;
           text-align: center;
         }
@@ -226,6 +227,39 @@
       padding: 20px;
       min-height: 1100px;
       background: #fff;
+    }
+  }
+
+  a {
+    color: #188ae2;
+    padding: 0 5px;
+  }
+
+  body .animate {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+    animation: CircleAni 1.5s ease-in-out;
+  }
+
+  body .info {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+    animation: Circle 1.5s ease-in-out;
+  }
+
+  @keyframes CircleAni {
+    0% {
+      transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1)
+    }
+    100% {
+      transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1)
+    }
+  }
+
+  @keyframes Circle {
+    0% {
+      transform: translateX(-1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1)
+    }
+    100% {
+      transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1)
     }
   }
 
