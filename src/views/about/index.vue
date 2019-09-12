@@ -1,62 +1,61 @@
 <template>
   <div class="about">
-
     <div class="layui-tab">
       <ul class="layui-tab-title">
-        <li lay-id="1" @click="layClick(1)" :class="active==1?'layui-this':''">关于本站</li>
-        <li lay-id="2" @click="layClick(2)" :class="active==2?'layui-this':''">关于本人</li>
-        <li lay-id="3" @click="layClick(3)" :class="active==3?'layui-this':''">友情链接</li>
-        <li lay-id="4" @click="layClick(4)" :class="active==4?'layui-this':''">留言墙</li>
+        <li lay-id="1" @click="layClick(1)" :class="active == 1 ? 'layui-this' : ''">关于本站</li>
+        <li lay-id="2" @click="layClick(2)" :class="active == 2 ? 'layui-this' : ''">关于本人</li>
+        <li lay-id="3" @click="layClick(3)" :class="active == 3 ? 'layui-this' : ''">友情链接</li>
+        <li lay-id="4" @click="layClick(4)" :class="active == 4 ? 'layui-this' : ''">留言墙</li>
       </ul>
     </div>
 
-    <div v-if="active==1" class="layui-content" style="text-align: center">
-      <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc">
+    <div v-if="active == 1" class="layui-content" style="text-align: center">
+      <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc" />
       <div class="animate">
         <h3>随心博客</h3>
         <p style="margin: 20px 0;">前端开发人员的个人博客，记录工作上，生活上的知识，并分享前端方面技术和一些趣事。</p>
         <p>www.sxitw.cn</p>
       </div>
-      <p class="synopsis">
-        <span>简介</span>
-      </p>
+      <p class="synopsis"><span>简介</span></p>
       <p class="info">
         前端人员开发的个人博客网站，诞生于2019年8月24日，前端页面使用
         <a target="_blank" href="https://cn.vuejs.org/">vue</a>
         +
-        <a target="_blank" href="https://element.eleme.cn/#/zh-CN">Element</a>，后台使用
+        <a target="_blank" href="https://element.eleme.cn/#/zh-CN">Element</a>
+        ，后台使用
         <a target="_blank" href="https://koajs.com/">koa2</a>
         +
-        <a target="_blank" href="https://www.mysql.com/">mysql</a>，
-        <a target="_blank" href="https://buy.cloud.tencent.com/cvm?tab=lite&loginSet=SET_PASSWORD">linux CentOS</a> 部署，
-        基本功能已经完成，后续将会继续完善功能和页面的优化！
+        <a target="_blank" href="https://www.mysql.com/">mysql</a>
+        ，
+        <a target="_blank" href="https://buy.cloud.tencent.com/cvm?tab=lite&loginSet=SET_PASSWORD">linux CentOS</a>
+        部署， 基本功能已经完成，后续将会继续完善功能和页面的优化！
       </p>
-      <p>本博客所有前后端代码已放在 <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk">Github</a></p>
+      <p>
+        本博客所有前后端代码已放在
+        <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk">Github</a>
+      </p>
       <h3 style="text-align:center;margin-top: 20px;">end</h3>
     </div>
 
-
-    <div v-if="active==2" class="layui-content" style="text-align: center">
-      <img class="author" src="../../assets/img/author.png" alt="">
+    <div v-if="active == 2" class="layui-content" style="text-align: center">
+      <img class="author" src="../../assets/img/author.png" alt="" />
       <h3>刘伟坤</h3>
       <p class="animate">
-        90后 <strong>前端开发</strong> 大军中的一员，懂点Node知识，本博客后台基于
+        90后
+        <strong>前端开发</strong>
+        大军中的一员，懂点Node知识，本博客后台基于
         <a target="_blank" href="https://koajs.com/">koa2</a>
         +
-        <a target="_blank" href="https://www.mysql.com/">mysql</a>搭建
+        <a target="_blank" href="https://www.mysql.com/">mysql</a>
+        搭建
       </p>
-      <p class="synopsis">
-        <span>简介</span>
-      </p>
-      <p class="info">
-        刘伟坤，90后前端开发人员，广东五华人，出厂26年有余，此博客站长，地地道道农村出生，已有小姐姐青睐和一个可爱的儿子。
-      </p>
-      <img class="son" src="../../assets/img/son.png" alt="">
+      <p class="synopsis"><span>简介</span></p>
+      <p class="info">刘伟坤，90后前端开发人员，广东五华人，出厂26年有余，此博客站长，地地道道农村出生，已有小姐姐青睐和一个可爱的儿子。</p>
+      <img class="son" src="../../assets/img/son.png" alt="" />
       <h3 style="text-align:center;margin-top: 20px;">end</h3>
     </div>
 
-
-    <div v-if="active==3" class="layui-content">
+    <div v-if="active == 3" class="layui-content">
       <div class="info" style="text-align: center;">
         <p>这里展示本站所有友情站点，排列不分先后；如需友链，请先添加本站首页链接后，在留言墙告知，或者首页加本人微信或者QQ，谢谢!</p>
       </div>
@@ -65,231 +64,218 @@
         <ul>
           <li>
             <a target="_blank" href="http://www.sxitw.cn">
-              <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc">
+              <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc" />
               <p>随心博客</p>
             </a>
           </li>
           <li>
             <a target="_blank" href="http://www.sanshi30.cn/">
-              <img class="favicon" src="http://www.sanshi30.cn/static/img/logo.jpg" alt="" style="border: 1px solid #ccc">
+              <img class="favicon" src="http://www.sanshi30.cn/static/img/logo.jpg" alt="" style="border: 1px solid #ccc" />
               <p>Sanshi 博客</p>
             </a>
           </li>
           <li>
-            <a target="_blank" href="http://e-art.top/">
-              <img class="favicon" src="http://e-art.top/img/logo_v0.1_w.png" alt="" style="border: 1px solid #ccc">
-              <p>关中刀客在青岛</p>
-            </a>
-          </li>
-          <li>
-            <a target="_blank" href="http://e-art.top/">
-              <img class="favicon" src="https://www.yangqq.com/favicon.ico" alt="" style="border: 1px solid #ccc">
-              <p>杨青个人博客</p>
+            <a target="_blank" href="https://www.yangqq.com/">
+              <img class="favicon" src="https://www.yangqq.com/favicon.ico" alt="" style="border: 1px solid #ccc" />
+              <p>杨青青个人博客</p>
             </a>
           </li>
           <li>
             <a target="_blank" href="https://www.ilxin.cn/">
-              <img class="favicon" src="http://ilxin.cn/wp-content/uploads/2019/04/tx3.jpg" alt="" style="border: 1px solid #ccc">
+              <img class="favicon" src="http://ilxin.cn/wp-content/uploads/2019/04/tx3.jpg" alt="" style="border: 1px solid #ccc" />
               <p>鑫-个人博客</p>
             </a>
           </li>
         </ul>
       </div>
-
-
     </div>
 
-
     <!-- 来必力City版安装代码 -->
-    <div v-show="active==4" id="lv-container" data-id="city" style="width: 100%;"
-         data-uid="MTAyMC80NjQ2MC8yMjk3MQ=="></div>
+    <div v-show="active == 4" id="lv-container" data-id="city" style="width: 100%;" data-uid="MTAyMC80NjQ2MC8yMjk3MQ=="></div>
     <!-- City版安装代码已完成 -->
   </div>
 </template>
 
 <script>
-    import Right from '@/components/right'
+import Right from '@/components/right';
 
-    export default {
-        name: "about",
-        data() {
-            return {
-                active: 3
-            }
-        },
-        components: {
-            Right
-        },
-        mounted() {
+export default {
+  name: 'about',
+  data() {
+    return {
+      active: 1
+    };
+  },
+  components: {
+    Right
+  },
+  mounted() {
+    (function(d, s) {
+      let j,
+        e = d.getElementsByTagName(s)[0];
 
-            (function (d, s) {
-                let j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') {
+        return;
+      }
 
-                if (typeof LivereTower === 'function') {
-                    return;
-                }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
 
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        },
-        methods: {
-            layClick(idx) {
-                this.active = idx;
-            }
-        }
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  },
+  methods: {
+    layClick(idx) {
+      this.active = idx;
     }
+  }
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  .about {
-    max-width: 1000px;
+.about {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  min-height: 900px;
+  box-shadow: 0 0 10px 2px #666;
+  background: rgb(238, 238, 238);
+  padding: 20px;
+  border-radius: 5px;
+
+  .layui-tab {
+    background: #fff;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    height: 100%;
-    min-height: 900px;
-    box-shadow: 0 0 10px 2px #666;
-    background: rgb(238, 238, 238);
-    padding: 20px;
+    padding-top: 20px;
 
-    .layui-tab {
-      background: #fff;
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: 20px;
+    .layui-tab-title {
+      text-align: center;
+      border-bottom: 1px solid #5fb878;
 
-      .layui-tab-title {
-        text-align: center;
+      li {
+        display: inline-block;
+        width: 100px;
+        cursor: pointer;
+        height: 40px;
+        line-height: 40px;
+      }
+
+      .layui-this {
         border-bottom: 1px solid #5fb878;
-
-        li {
-          display: inline-block;
-          width: 100px;
-          cursor: pointer;
-          height: 40px;
-          line-height: 40px;
-        }
-
-        .layui-this {
-          border-bottom: 1px solid #5fb878;
-          transition-duration: .3s;
-        }
+        transition-duration: 0.3s;
       }
     }
+  }
 
+  .layui-content {
+    background: #fff;
+    padding-top: 20px;
+    min-height: 1100px;
 
-    .layui-content {
-      background: #fff;
-      padding-top: 20px;
-      min-height: 1100px;
+    .favicon,
+    .author {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
 
-      .favicon, .author {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-      }
+    .son {
+      width: 40%;
+      height: 500px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
 
-      .son {
-        width: 40%;
-        height: 500px;
-        border-radius: 10px;
-        margin: 20px 0;
-      }
+    > p {
+      margin-top: 30px;
+    }
 
-      > p {
-        margin-top: 30px;
-      }
+    .synopsis {
+      border-top: 1px solid #ccc;
+      position: relative;
+      text-align: center;
+      box-sizing: border-box;
 
-      .synopsis {
-        border-top: 1px solid #ccc;
-        position: relative;
+      span {
+        position: absolute;
+        top: -10px;
+        margin-left: -50px;
+        display: inline-block;
+        width: 100px;
         text-align: center;
+        background: #fff;
         box-sizing: border-box;
-
-        span {
-          position: absolute;
-          top: -10px;
-          margin-left: -50px;
-          display: inline-block;
-          width: 100px;
-          text-align: center;
-          background: #fff;
-          box-sizing: border-box;
-        }
       }
+    }
 
-      .info {
-        padding: 0 80px;
-        line-height: 30px;
+    .info {
+      padding: 0 80px;
+      line-height: 30px;
 
-        p {
-          border-radius: 10px;
-          padding: 10px;
-          border-color: #4d9de0;
-          background-color: #4d9de0;
-          color: #fff;
-        }
-
-
+      p {
+        border-radius: 10px;
+        padding: 10px;
+        border-color: #4d9de0;
+        background-color: #4d9de0;
+        color: #fff;
       }
+    }
 
-      .friends {
-        padding: 20px 80px;
+    .friends {
+      padding: 20px 80px;
+
+      li {
+        display: inline-block;
         text-align: center;
-        li {
-          display: inline-block;
-          text-align: center;
-          margin: 0 10px;
-          p:hover{
-            color: #188ae2;
-          }
+        margin: 0 10px;
+        p:hover {
+          color: #188ae2;
         }
       }
     }
-
-    #lv-container {
-      padding: 20px;
-      min-height: 1100px;
-      background: #fff;
-    }
   }
 
-  a {
-    color: #188ae2;
-    padding: 0 5px;
+  #lv-container {
+    padding: 20px;
+    min-height: 1100px;
+    background: #fff;
   }
+}
 
-  body .animate {
-    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-    animation: CircleAni 1.5s ease-in-out;
+a {
+  color: #188ae2;
+  padding: 0 5px;
+}
+
+body .animate {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  animation: CircleAni 1.5s ease-in-out;
+}
+
+body .info {
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  animation: Circle 1.5s ease-in-out;
+}
+
+@keyframes CircleAni {
+  0% {
+    transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
   }
-
-  body .info {
-    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
-    animation: Circle 1.5s ease-in-out;
+  100% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
   }
+}
 
-  @keyframes CircleAni {
-    0% {
-      transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1)
-    }
-    100% {
-      transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1)
-    }
+@keyframes Circle {
+  0% {
+    transform: translateX(-1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
   }
-
-  @keyframes Circle {
-    0% {
-      transform: translateX(-1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1)
-    }
-    100% {
-      transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1)
-    }
+  100% {
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
   }
-
-
+}
 </style>

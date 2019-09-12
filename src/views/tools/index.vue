@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="index">
     <h1>随心站长工具集合 </h1>
     <p>(百度搜索：随心it,随心博客，随心工具,刘伟坤）</p>
@@ -82,6 +82,7 @@
     height: 100vh;
     box-sizing: border-box;
     position: relative;
+    color:#fff;
 
 
     h1 {

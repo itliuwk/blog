@@ -83,7 +83,7 @@
     color: #fff;
     /*margin-top: 20px;*/
     text-align: center;
-    border-top: 1px solid #eaeaea;
+    // border-top: 1px solid #eaeaea;
     /*box-shadow: 0 0 2px rgba(37, 45, 51, 0.5);*/
     padding-top: 20px;
   }

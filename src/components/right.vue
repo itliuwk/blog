@@ -51,7 +51,9 @@
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
     background: url("../assets/bordergif.gif") no-repeat;
-    background-size: cover;
+    background-size:100% 100%;
+
+;
 
     h3 {
       padding: 20px 0 10px 20px;

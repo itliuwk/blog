@@ -50,7 +50,7 @@
                 {{userInfo.realname}}<i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item v-show="isClose">
+          <!--      <el-dropdown-item v-show="isClose">
                   <span @click="updateBg">换张背景图</span>
                 </el-dropdown-item>
                 <el-dropdown-item v-show="!isClose">
@@ -58,7 +58,7 @@
                 </el-dropdown-item>
                 <el-dropdown-item v-show="isClose">
                   <span @click="closeBg">关闭背景图</span>
-                </el-dropdown-item>
+                </el-dropdown-item> -->
                 <el-dropdown-item>
                   <span @click="loginOut">退出</span>
                 </el-dropdown-item>
