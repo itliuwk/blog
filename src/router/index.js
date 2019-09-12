@@ -4,6 +4,7 @@ import login from '@/router/modules/login'
 import blog from '@/router/modules/blog'
 import tools from '@/router/modules/tools'
 import classify from '@/router/modules/classify'
+import author from '@/router/modules/author'
 import test from '@/router/modules/test'
 
 Vue.use(Router)
@@ -32,6 +33,7 @@ export default new Router({
     ...blog,
     ...tools,
     ...classify,
+    ...author,
     ...test
   ]
 })

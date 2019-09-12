@@ -5,7 +5,7 @@
 
         <section class="article-focusbox">  <!-- :style="{backgroundImage: 'url('+bgUrl+')'}" -->
           <header class="article-header">
-            <h1 class="article-title">{{$route.query.label}}</h1>
+            <h1 class="article-title">作者: {{$route.query.author}}</h1>
           </header>
         </section>
 
@@ -43,9 +43,6 @@
 
       </div>
     </div>
-    <div class="right">
-      <Right></Right>
-    </div>
   </div>
 
 
@@ -55,7 +52,7 @@
     import Right from '@/components/right'
     import {random_photo} from '@/utils/index'
     import {YYYYMMDD} from '@/utils/date'
-    import {listClass,listClassCount} from '@/api/blog'
+    import {list,listCount} from '@/api/blog'
 
     export default {
         name: "classifyDetail",
@@ -85,12 +82,12 @@
             getDetail() {
                 let params = {
                     ...this.params,
-                    classify: this.$route.query.value
+                    author: this.$route.query.author
                 };
 
                 let that = this;
 
-                listClass(params).then(res => {
+                list(params).then(res => {
                     res.data.map((item, index) => {
                         item.createtime = YYYYMMDD(item.createtime);
                         item.content = item.content.toString();
@@ -103,7 +100,7 @@
                     }, 300);
                 });
 
-                listClassCount(params).then(res => {
+                listCount(params).then(res => {
                     this.count = res.data['count(id)'];
                 })
 

@@ -33,7 +33,7 @@
             本文链接：<a :href="detail.url">{{detail.url}}</a>
           </div>
           <div>
-            版权声明：文章为《 <a href="javascript:void (0)">{{detail.author}}</a>》原创，转载请保留出处！
+            版权声明：文章为《 <a href="javascript:void (0)" @click="authorDetail(detail.author)">{{detail.author}}</a>》原创，转载请保留出处！
           </div>
         </div>
 
@@ -132,6 +132,9 @@
             toClassDetail(value,label) {
                 this.$router.push('./classifyDetail?value=' + value+'&label='+label);
             },
+            authorDetail(value) {
+              this.$router.push('./author?author=' + value);
+            }
         }
     }
 </script>
