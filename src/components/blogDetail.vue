@@ -8,7 +8,7 @@
           <span class="item item-1">{{detail.createtime}}</span>
           <span class="item item-4">分类：
             <span style="cursor: pointer;color: #188ae2" @click="toClassDetail(detail.value,detail.label)">{{detail.label}}</span></span>
-
+<span class="item item-5"><a id="ae_bdcx" rel="external nofollow" target="_blank" :href="detail.included" style="color: rgb(255, 0, 0);">提交收录</a></span>
         </div>
 
       </header>

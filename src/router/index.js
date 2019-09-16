@@ -10,8 +10,8 @@ import test from '@/router/modules/test'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  mode: 'history',
+  routes: [{
       path: '/',
       name: 'home',
       component: resolve => require(['@/views/home/home'], resolve),

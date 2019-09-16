@@ -18,5 +18,13 @@ export function classifyCount() {
 }
 
 
+export function classifylen() {
+  return request({
+    url: BASE_API + 'classify/length',
+    method: 'get'
+  }).then(res => res.data);
+}
+
+
 
 
