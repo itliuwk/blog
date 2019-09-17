@@ -1,17 +1,16 @@
-
 /*html,body {*/
 /*  color: #555;*/
 /*  cursor: url('../img/blue.cur'), default;*/
 /*}*/
 
-.Copyright{
+.Copyright {
   position: fixed;
   width: 100vw;
   left: 0;
   bottom: 0;
   text-align: center;
   background: #FFF;
-  padding: 10px 0!important;
+  padding: 10px 0 !important;
 }
 
 
@@ -19,19 +18,33 @@
   0% {
     transform: scale(.5);
   }
+
   25% {
     transform: scale(.6);
   }
+
   50% {
     transform: scale(.7);
   }
+
   75% {
     transform: scale(.8);
   }
+
   90% {
     transform: scale(.9);
   }
+
   100% {
     transform: scale(1);
   }
+}
+
+
+#feedAv {
+  display: none;
+}
+
+#pop_ad {
+  display: none;
 }

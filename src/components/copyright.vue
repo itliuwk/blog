@@ -25,7 +25,7 @@
         name: "copyright",
         data() {
             return {
-                time:'8天22小时43分60秒'
+                time:'0天0小时0分0秒'
             }
         },
         mounted() {

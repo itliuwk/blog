@@ -40,7 +40,7 @@
 
 <script>
 import Right from '@/components/right';
-import { random_photo } from '@/utils/index';
+import { random_bg_photo } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { listClass, listClassCount } from '@/api/blog';
 
@@ -86,7 +86,7 @@ export default {
         res.data.map((item, index) => {
           item.createtime = YYYYMMDD(item.createtime);
           item.content = item.content.toString();
-          item.url = random_photo();
+          item.url = random_bg_photo();
           return item;
         });
         setTimeout(() => {

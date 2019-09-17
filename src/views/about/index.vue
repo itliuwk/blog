@@ -90,8 +90,8 @@
       </div>
     </div>
 
-    <div v-show="active == 4">
-      <div id="SOHUCS" sid="请将此处替换为配置SourceID的语句"></div>
+    <div v-show="active == 4" style="background: #fff;padding: 20px;">
+      <div id="SOHUCS" sid="T99999999999999"></div>
 
       <!-- 来必力City版安装代码 -->
       <!-- <div v-show="active == 4" id="lv-container" data-id="city" style="width: 100%;" data-uid="MTAyMC80NjQ2MC8yMjk3MQ=="></div> -->
@@ -106,7 +106,7 @@ export default {
   name: 'about',
   data() {
     return {
-      active: 4
+      active: 1
     };
   },
   components: {
@@ -146,6 +146,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+
 .about {
   max-width: 1000px;
   margin-left: auto;

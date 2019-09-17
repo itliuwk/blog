@@ -25,7 +25,7 @@
         </div>
         <div>
           <p>留言</p>
-          <p>0</p>
+          <p><span id="sourceId::T99999999999999" class="cy_cmt_count"></span></p>
         </div>
         <div>
           <p>分类</p>
@@ -59,6 +59,14 @@ export default {
   },
   mounted() {
     this.classifylen();
+
+   setTimeout(()=>{
+     const script = document.createElement('script');
+     script.src = 'https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysWFxvAX';
+     script.type = 'text/javascript';
+     script.language = 'JavaScript';
+     document.body.appendChild(script);
+   },2000)
   },
   methods: {
     classifylen() {
