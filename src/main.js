@@ -13,6 +13,27 @@ Vue.use(VueClipboard);
 
 Vue.use(VueAxios, Axios);
 
+
+Vue.prototype.$loadScript = (url, callback) => {
+    let script = document.createElement('script');
+    if (script.readyState) { 
+    	// IE浏览器
+        script.onreadystatechange = function () {
+            if (script.readyState === 'loaded' || script.readyState === 'complete') {
+                script.onreadystatechange = null;
+                callback();
+            }
+        }
+    } else { 
+    	// 其他浏览器
+        script.onload = function () {
+            callback();
+        }
+    }
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
+
 import './assets/style/index.css'
 
 

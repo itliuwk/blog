@@ -90,9 +90,12 @@
       </div>
     </div>
 
-    <!-- 来必力City版安装代码 -->
-    <div v-show="active == 4" id="lv-container" data-id="city" style="width: 100%;" data-uid="MTAyMC80NjQ2MC8yMjk3MQ=="></div>
-    <!-- City版安装代码已完成 -->
+    <div v-show="active == 4">
+      <div id="SOHUCS" sid="请将此处替换为配置SourceID的语句"></div>
+
+      <!-- 来必力City版安装代码 -->
+      <!-- <div v-show="active == 4" id="lv-container" data-id="city" style="width: 100%;" data-uid="MTAyMC80NjQ2MC8yMjk3MQ=="></div> -->
+    </div>
   </div>
 </template>
 
@@ -103,27 +106,36 @@ export default {
   name: 'about',
   data() {
     return {
-      active: 1
+      active: 4
     };
   },
   components: {
     Right
   },
   mounted() {
-    (function(d, s) {
-      let j,
-        e = d.getElementsByTagName(s)[0];
+    //     (function(d, s) {
+    //       let j,
+    //         e = d.getElementsByTagName(s)[0];
+    //
+    //       if (typeof LivereTower === 'function') {
+    //         return;
+    //       }
+    //
+    //       j = d.createElement(s);
+    //       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    //       j.async = true;
+    //
+    //       e.parentNode.insertBefore(j, e);
+    //     })(document, 'script');
 
-      if (typeof LivereTower === 'function') {
-        return;
-      }
-
-      j = d.createElement(s);
-      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-      j.async = true;
-
-      e.parentNode.insertBefore(j, e);
-    })(document, 'script');
+    window.changyan = undefined;
+    window.cyan = undefined;
+    this.$loadScript('https://changyan.sohu.com/upload/changyan.js', () => {
+      window.changyan.api.config({
+        appid: 'cysWFxvAX', // 此处换成你的畅言应用的appid,
+        conf: 'prod_02e199e651f0597818eb703cd2db9ebe' // 此处换成你畅言应用的conf。
+      });
+    });
   },
   methods: {
     layClick(idx) {
