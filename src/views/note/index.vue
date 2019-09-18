@@ -1,38 +1,47 @@
 <template>
   <div class="note">
-    <div style="text-align: center;">
-      <el-input v-model="title" @keyup.enter.native="seacrch" style="width: 30%;" placeholder="输入标题关键字 Enter键搜索..."></el-input>
-        <el-button style="margin:0 0 0 20px;" @click='seacrch'>搜索</el-button>
 
-      <el-button type="primary"  @click="add">添加笔记</el-button>
-    </div>
-    <div class="box">
-      <el-card class="box-card" v-for="item in list" :key="item.id">
-        <div slot="header" class="clearfix">
-          <span>{{ item.title }}</span>
-        </div>
-        <div class="text item" style="white-space: pre-wrap;">{{ item.content }}</div>
-        <div class="btn">
-          <span>{{ item.createtime | filterDate }}</span>
-          <el-button type="danger" size="mini" @click="del(item.id)">删除</el-button>
-          <el-button type="primary" size="mini" @click="detail(item)">详情</el-button>
-        </div>
-      </el-card>
-    </div>
+    <div v-if='userInfo!=null&&userInfo.username=="liuwk"'>
+      <div style="text-align: center;">
+        <el-input v-model="title" @keyup.enter.native="seacrch" style="width: 30%;" placeholder="输入标题关键字 Enter键搜索..."></el-input>
+        <el-button style="margin:0 0 0 20px;" @click="seacrch">搜索</el-button>
 
-    <el-dialog :title="info" :visible.sync="isDetail" :close-on-click-modal='false'>
-      <el-form :model="form">
-        <el-form-item label="标题"><el-input v-model="form.title" placeholder="请输入标题"></el-input></el-form-item>
-        <el-form-item label="内容"><el-input type="textarea" :rows="3" placeholder="请输入内容" v-model="form.content"></el-input></el-form-item>
-        <el-form-item label="">
-          <p style="white-space: pre-wrap;">{{ form.content }}</p>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="cantch">取 消</el-button>
-        <el-button type="primary" @click="confirm">确 定</el-button>
+        <el-button type="primary" @click="add">添加笔记</el-button>
       </div>
-    </el-dialog>
+      <div class="box">
+        <el-card class="box-card" v-for="item in list" :key="item.id">
+          <div slot="header" class="clearfix">
+            <span>{{ item.title }}</span>
+          </div>
+          <div class="text item" style="white-space: pre-wrap;">{{ item.content }}</div>
+          <div class="btn">
+            <span>{{ item.createtime | filterDate }}</span>
+            <el-button type="danger" size="mini" @click="del(item.id)">删除</el-button>
+            <el-button type="primary" size="mini" @click="detail(item)">详情</el-button>
+          </div>
+        </el-card>
+      </div>
+
+      <el-dialog :title="info" :visible.sync="isDetail" :close-on-click-modal="false">
+        <el-form :model="form">
+          <el-form-item label="标题"><el-input v-model="form.title" placeholder="请输入标题"></el-input></el-form-item>
+          <el-form-item label="内容"><el-input type="textarea" :rows="3" placeholder="请输入内容" v-model="form.content"></el-input></el-form-item>
+          <el-form-item label="">
+            <p style="white-space: pre-wrap;">{{ form.content }}</p>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="cantch">取 消</el-button>
+          <el-button type="primary" @click="confirm">确 定</el-button>
+        </div>
+      </el-dialog>
+    </div>
+    <div v-else style="text-align: center;font-size: 30px;margin-top: 50px;color: #ccc;">
+      功能受限，无法查看，请登录试试。
+    </div>
+
+
+
   </div>
 </template>
 
@@ -55,7 +64,13 @@ export default {
       }
     };
   },
+  computed: {
+    userInfo() {
+      return this.$store.state.userInfo || JSON.parse(localStorage.getItem('userInfo'));
+    }
+  },
   mounted() {
+    console.log(this.userInfo)
     this.getList();
   },
   methods: {
@@ -77,7 +92,7 @@ export default {
       });
     },
     detail(item) {
-      this.info = '详情'
+      this.info = '详情';
       this.form = JSON.parse(JSON.stringify(item));
       this.isDetail = true;
     },
@@ -88,20 +103,19 @@ export default {
       this.getList();
     },
     confirm() {
-      if(this.form.id){
+      if (this.form.id) {
         update(this.form).then(res => {
           Alert.success('更新成功');
           this.isDetail = false;
           this.getList();
         });
-      }else{
+      } else {
         add(this.form).then(res => {
           Alert.success('添加成功');
           this.isDetail = false;
           this.getList();
         });
       }
-
     },
     cantch() {
       this.isDetail = false;
