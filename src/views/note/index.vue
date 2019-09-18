@@ -1,7 +1,6 @@
 <template>
   <div class="note">
-
-    <div v-if='userInfo!=null&&userInfo.username=="liuwk"'>
+    <div v-if="userInfo != null && userInfo.username == 'liuwk'">
       <div style="text-align: center;">
         <el-input v-model="title" @keyup.enter.native="seacrch" style="width: 30%;" placeholder="输入标题关键字 Enter键搜索..."></el-input>
         <el-button style="margin:0 0 0 20px;" @click="seacrch">搜索</el-button>
@@ -36,12 +35,7 @@
         </div>
       </el-dialog>
     </div>
-    <div v-else style="text-align: center;font-size: 30px;margin-top: 50px;color: #ccc;">
-      功能受限，无法查看，请登录试试。
-    </div>
-
-
-
+    <div v-else style="text-align: center;font-size: 30px;margin-top: 50px;color: #ccc;">功能受限，无法查看，请登录试试。</div>
   </div>
 </template>
 
@@ -117,6 +111,11 @@ export default {
       }
     },
     cantch() {
+      this.form = {
+        id: '',
+        title: '',
+        content: ''
+      };
       this.isDetail = false;
       this.getList();
     }
