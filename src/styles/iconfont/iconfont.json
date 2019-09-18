@@ -48,6 +48,13 @@
       "unicode_decimal": 58935
     },
     {
+      "icon_id": "1440886",
+      "name": "返回顶部 ",
+      "font_class": "fanhuidingbu",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
       "icon_id": "2471360",
       "name": "工具",
       "font_class": "gongju",

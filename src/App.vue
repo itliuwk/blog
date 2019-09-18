@@ -5,6 +5,7 @@
       <transition name="fade-transform" mode="out-in"><router-view class="animated"></router-view></transition>
     </div>
     <copyright></copyright>
+    <div v-show="returnTop" class="top" @click="returnTo"><i class="iconfont icon-fanhuidingbu"></i></div>
   </div>
 </template>
 
@@ -22,12 +23,14 @@ export default {
   data() {
     return {
       isTop: false,
+      returnTop: false,
       isCloseBg: false,
       transitionName: 'slide-right',
       enterClass: 'bounceIn',
       leaveClass: '',
       bgUrl: '',
-      ClassArr: ['rollIn', 'rollOut']
+      ClassArr: ['rollIn', 'rollOut'],
+      timer:null
     };
   },
   computed: {
@@ -82,6 +85,12 @@ export default {
       } else {
         this.isTop = false;
       }
+
+      if (scrollTop > 300) {
+        this.returnTop = true;
+      } else {
+        this.returnTop = false;
+      }
     },
     closeBg() {
       if (this.isCloseBg) {
@@ -94,12 +103,27 @@ export default {
       let n = 2;
       //定义随机数，对应好 this.ClassArr.length 的长度，我这里 length 是 21
       return Math.floor(Math.random() * (1 - n) + n);
+    },
+    returnTo() {
+      let that =this
+      that.timer = setInterval(function() {
+        //获取滚动条的滚动高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        //用于设置速度差，产生缓动的效果
+        var speed = Math.floor(-scrollTop / 3);
+        document.documentElement.scrollTop = document.body.scrollTop = scrollTop + speed;
+
+        if (scrollTop == 0) {
+          clearInterval(that.timer);
+        }
+      }, 50);
     }
   }
 };
 </script>
 
-<style>
+<style rel="stylesheet/scss" lang="scss" scoped>
 #app {
   position: relative;
 }
@@ -119,5 +143,17 @@ export default {
 
 body {
   min-width: 1400px;
+}
+
+.top {
+  position: fixed;
+  bottom: 50px;
+  right: 100px;
+  color: #fff;
+  i {
+    font-size: 50px;
+    color: #188ae2;
+    cursor: pointer;
+  }
 }
 </style>

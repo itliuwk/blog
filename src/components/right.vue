@@ -60,13 +60,13 @@ export default {
   mounted() {
     this.classifylen();
 
-   setTimeout(()=>{
-     const script = document.createElement('script');
-     script.src = 'https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysWFxvAX';
-     script.type = 'text/javascript';
-     script.language = 'JavaScript';
-     document.body.appendChild(script);
-   },2000)
+   // setTimeout(()=>{
+   //   const script = document.createElement('script');
+   //   script.src = 'https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysWFxvAX';
+   //   script.type = 'text/javascript';
+   //   script.language = 'JavaScript';
+   //   document.body.appendChild(script);
+   // },2000)
   },
   methods: {
     classifylen() {
