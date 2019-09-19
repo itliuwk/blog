@@ -93,7 +93,7 @@ export default {
         res.data.content = that.parseDom(res.data.content);
         res.data.url = href;
         res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
-        document.title = res.data.title;
+        document.title = res.data.title + ' - 刘伟坤 - 个人博客 | 随心IT | 刘伟坤IT | 刘伟坤博客 | 一个分享技术文章,热门资源的博客';
         that.detail = res.data;
         that.bgUrl = random_photo();
       });

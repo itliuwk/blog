@@ -5,7 +5,7 @@
       <transition name="fade-transform" mode="out-in"><router-view class="animated"></router-view></transition>
     </div>
     <copyright></copyright>
-    <div v-show="returnTop" class="top" @click="returnTo"><i class="iconfont icon-fanhuidingbu"></i></div>
+    <div v-show="returnTop" class="top" :style="{ bottom: scrollTop + 'px' }" @click="returnTo"><i class="iconfont icon-fanhuidingbu"></i></div>
   </div>
 </template>
 
@@ -30,7 +30,9 @@ export default {
       leaveClass: '',
       bgUrl: '',
       ClassArr: ['rollIn', 'rollOut'],
-      timer:null
+      timer: null,
+      scrollTop: 50,
+      count: 5
     };
   },
   computed: {
@@ -44,7 +46,7 @@ export default {
       this.closeBg();
     },
     $route(to, from) {
-      document.title = '刘伟坤 - 个人博客 | 随心IT | 一个分享技术文章,热门资源的博客';
+      document.title = '刘伟坤 - 个人博客 | 随心IT | 刘伟坤IT | 刘伟坤博客 | 一个分享技术文章,热门资源的博客';
       // this.leaveClass = this.ClassArr[this.random()];
       // this.enterClass = this.ClassArr[this.random()];
 
@@ -88,9 +90,10 @@ export default {
 
       if (scrollTop > 300) {
         this.returnTop = true;
-      } else {
-        this.returnTop = false;
       }
+      // if (scrollTop < 10) {
+      //   this.returnTop = false;
+      // }
     },
     closeBg() {
       if (this.isCloseBg) {
@@ -105,16 +108,21 @@ export default {
       return Math.floor(Math.random() * (1 - n) + n);
     },
     returnTo() {
-      let that =this
+      let that = this;
+
       that.timer = setInterval(function() {
+        that.count+=2;
         //获取滚动条的滚动高度
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
         //用于设置速度差，产生缓动的效果
         var speed = Math.floor(-scrollTop / 3);
         document.documentElement.scrollTop = document.body.scrollTop = scrollTop + speed;
-
+        that.scrollTop = that.count * 30;
         if (scrollTop == 0) {
+          that.returnTop = false;
+          that.scrollTop = 50;
+          that.count= 5;
           clearInterval(that.timer);
         }
       }, 50);
@@ -145,14 +153,18 @@ body {
   min-width: 1400px;
 }
 
+.top:hover {
+  color: #0086b3;
+  transition: all 0.5s;
+  transform: rotate(360deg) scale(1.2);
+}
 .top {
   position: fixed;
   bottom: 50px;
   right: 100px;
-  color: #fff;
+  color: #188ae2;
   i {
     font-size: 50px;
-    color: #188ae2;
     cursor: pointer;
   }
 }
