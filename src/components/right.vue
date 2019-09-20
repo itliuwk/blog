@@ -18,6 +18,7 @@
           <a target="_blank" href="https://weibo.com/u/2433275163"><i class="iconfont icon-weibo"></i></a>
         </div>
       </div>
+      <p style="color: #fff;font-size: 10px;">随心it,刘伟坤it,刘伟坤博客,刘伟坤,随心博客</p>
       <div class="statistics">
         <div>
           <p>文章</p>

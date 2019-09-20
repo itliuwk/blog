@@ -237,6 +237,13 @@ export default {
     color: #188ae2 !important;
   }
 
+
+  /deep/ p {
+    text-indent: 2em;
+    color: #666 !important;
+    line-height: 30px;
+  }
+
   /deep/ img {
     width: 100%;
   }
