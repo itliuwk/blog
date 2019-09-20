@@ -30,6 +30,16 @@ export default new Router({
       component: resolve => require(['@/views/about/index'], resolve),
       // component: () => import('@/views/admin/index')
     },
+    {
+    	path: '*',
+    	redirect: '/404',
+    	hidden: true
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: resolve => require(['@/components/404'], resolve)
+    },
     ...login,
     ...blog,
     ...tools,

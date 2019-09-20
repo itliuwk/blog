@@ -14,7 +14,6 @@
       :style="{ bottom: scrollTop + 'px', backgroundPosition: -position + 'px 0' }"
       @click="returnTo"
     >
-      <!--      <i class="iconfont icon-fanhuidingbu"></i> -->
     </div>
   </div>
 </template>

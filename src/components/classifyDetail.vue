@@ -128,11 +128,12 @@ export default {
 
 .article-focusbox {
   position: relative;
-  padding: 50px 0;
+  // padding: 50px 0;
   background-position: center 50%;
   background-size: cover;
   background-repeat: repeat;
   background-attachment: fixed;
+  border-radius:5px;
 
   .article-header {
     text-align: center;
@@ -171,7 +172,7 @@ export default {
 
 .article-focusbox:before {
   content: '';
-  background-image: url(../assets/img/pattern.png);
+  // background-image: url(../assets/img/pattern.png);
   background-repeat: repeat;
   height: 100%;
   left: 0;
@@ -179,6 +180,7 @@ export default {
   top: 0;
   width: 100%;
   z-index: 1;
+  background: #373d41;
 }
 
 .blogList {
