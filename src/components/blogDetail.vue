@@ -1,6 +1,7 @@
 <template>
   <div class="detail">
-    <section class="article-focusbox" :style="{ backgroundImage: 'url(' + bgUrl + ')' }">
+    <!--    <section class="article-focusbox" :style="{ backgroundImage: 'url(' + bgUrl + ')' }"> -->
+    <section class="article-focusbox">
       <!-- :style="{backgroundImage: 'url('+bgUrl+')'}" -->
       <header class="article-header">
         <h1 class="article-title">{{ detail.title }}</h1>
@@ -8,7 +9,7 @@
           <span class="item item-1">{{ detail.createtime }}</span>
           <span class="item item-4">
             分类：
-            <span style="cursor: pointer;color: #188ae2" @click="toClassDetail(detail.value, detail.label)">{{ detail.label }}</span>
+            <span style="cursor: pointer;color: #188AE2" @click="toClassDetail(detail.value, detail.label)">{{ detail.label }}</span>
           </span>
           <span class="item item-5"><a id="ae_bdcx" rel="external nofollow" target="_blank" :href="detail.included" style="color: rgb(255, 0, 0);">提交收录</a></span>
         </div>
@@ -193,7 +194,8 @@ export default {
 
 .article-focusbox:before {
   content: '';
-  background-image: url(../assets/img/pattern.png);
+  // background-image: url(../assets/img/pattern.png);
+  background: #373d41;
   background-repeat: repeat;
   height: 100%;
   left: 0;

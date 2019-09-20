@@ -76,7 +76,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .copyright {
-  background: #373d41;
+  background: #121a1d;
   color: #fff;
   /*margin-top: 20px;*/
   text-align: center;

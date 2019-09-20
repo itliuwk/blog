@@ -81,15 +81,15 @@ export default {
     script.language = 'JavaScript';
     document.body.appendChild(script);
 
-    const script1 = document.createElement('script');
-    script1.src = '//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js';
-    script1.type = 'text/javascript';
-    script1.language = 'JavaScript';
-    script1.pointColor = '0,0,255';
-    script1.clolor = '24,138,226';
-    script1.zIndex = '999';
-    script1.count = '599';
-    document.body.appendChild(script1);
+    // const script1 = document.createElement('script');
+    // script1.src = '//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js';
+    // script1.type = 'text/javascript';
+    // script1.language = 'JavaScript';
+    // script1.pointColor = '0,0,255';
+    // script1.clolor = '24,138,226';
+    // script1.zIndex = '999';
+    // script1.count = '599';
+    // document.body.appendChild(script1);
   },
   methods: {
     handleScroll(e) {
@@ -103,9 +103,9 @@ export default {
       if (scrollTop > 300) {
         this.returnTop = true;
       }
-      // if (scrollTop < 10) {
-      //   this.returnTop = false;
-      // }
+      if (scrollTop < 10) {
+        this.returnTop = false;
+      }
     },
     closeBg() {
       if (this.isCloseBg) {
@@ -153,9 +153,9 @@ export default {
       }, 20);
     },
     leave() {
-      setTimeout(()=>{
+      setTimeout(() => {
         this.position = 0;
-      },100)
+      }, 300);
       clearInterval(this.positionTimer);
     }
   }
@@ -175,7 +175,7 @@ export default {
 }
 
 .bg {
-  background: url('./assets/img/bg.jpg') no-repeat;
+  background: #373d41 url('./assets/img/bg.jpg') no-repeat;
   background-size: cover;
   overflow: auto;
 }
@@ -202,6 +202,6 @@ body {
 
 #rocket-to-top:hover {
   background-position: -149px 0;
-   opacity: 1;
+  opacity: 1;
 }
 </style>
