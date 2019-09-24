@@ -87,7 +87,7 @@
     width: 400px;
     height: 350px;
     position: fixed;
-    /*background: rgb(255, 248, 235);*/
+    background: #fff;
     padding: 30px;
     top: 0;
     bottom: 0;

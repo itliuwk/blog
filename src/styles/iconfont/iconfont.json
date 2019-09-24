@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1208",
+      "name": "标签",
+      "font_class": "biaoqian",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "288984",
       "name": "微信",
       "font_class": "weixin",
@@ -41,11 +48,32 @@
       "unicode_decimal": 58882
     },
     {
+      "icon_id": "637470",
+      "name": "时间",
+      "font_class": "shijian",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "845828",
+      "name": "眼睛",
+      "font_class": "yanjing",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
       "icon_id": "1244100",
       "name": "首页",
       "font_class": "shouye",
       "unicode": "e637",
       "unicode_decimal": 58935
+    },
+    {
+      "icon_id": "1319970",
+      "name": "人",
+      "font_class": "ren",
+      "unicode": "e604",
+      "unicode_decimal": 58884
     },
     {
       "icon_id": "1440886",

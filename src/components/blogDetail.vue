@@ -7,6 +7,10 @@
         <h1 class="article-title">{{ detail.title }}</h1>
         <div class="article-meta">
           <span class="item item-1">{{ detail.createtime }}</span>
+		  <span style="font-size: 14px;margin-left: 10px;">
+		    <i class="iconfont icon-yanjing" style="vertical-align: middle;"></i>
+		    阅读({{detail.count}})
+		  </span>
           <span class="item item-4">
             分类：
             <span style="cursor: pointer;color: #188AE2" @click="toClassDetail(detail.value, detail.label)">{{ detail.label }}</span>

@@ -4,7 +4,7 @@
 @import './element-ui.scss';
 @import './sidebar.scss';
 @import './btn.scss';
-@import "iconfont/iconfont.css";
+@import 'iconfont/iconfont.css';
 
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -95,7 +95,7 @@ div:focus {
     visibility: hidden;
     display: block;
     font-size: 0;
-    content: " ";
+    content: ' ';
     clear: both;
     height: 0;
   }
@@ -108,7 +108,7 @@ code {
   display: block;
   line-height: 36px;
   font-size: 15px;
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
 
   a {
     color: #337ab7;
@@ -121,12 +121,12 @@ code {
 }
 
 .warn-content {
-  background: rgba(66, 185, 131, .1);
+  background: rgba(66, 185, 131, 0.1);
   border-radius: 2px;
   padding: 16px;
   padding: 1rem;
   line-height: 1.6rem;
-  word-spacing: .05rem;
+  word-spacing: 0.05rem;
 
   a {
     color: #42b983;
@@ -149,7 +149,7 @@ code {
 }
 
 .text-center {
-  text-align: center
+  text-align: center;
 }
 
 .sub-navbar {
@@ -206,38 +206,52 @@ code {
 }
 
 //reset dl dd
-dl, dd {
+dl,
+dd {
   padding: 0;
   margin: 0;
 }
 
 //reset h1,h2
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   padding: 0;
 }
-
 
 /*滚动条设置，仅对chrome生效*/
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
   border-radius: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 /*定义滑块 内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #16c0f8!important;
+  background-color: #16c0f8 !important;
 }
 
 .el-date-editor .el-range-separator {
   width: 7%;
+}
+
+@media screen and (max-width: 1170px){
+  .login {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1030px){
+  .right {
+    display: none;
+  }
 }

@@ -1,27 +1,18 @@
 <template>
   <div id="app">
     <home :isTop="isTop"></home>
-    <div class="bg" :style="{ backgroundImage: 'url(' + bgUrl + ')' }">
+    <div class="bg">
       <transition name="fade-transform" mode="out-in"><router-view class="animated"></router-view></transition>
     </div>
     <copyright></copyright>
-    <div
-      v-show="returnTop"
-      @mouseenter="enter()"
-      @mouseleave="leave()"
-      class="top"
-      id="rocket-to-top"
-      :style="{ bottom: scrollTop + 'px', backgroundPosition: -position + 'px 0' }"
-      @click="returnTo"
-    >
-    </div>
+    <div v-show="returnTop" class="top" :style="{ bottom: scrollTop + 'px' }" @click="returnTo"><i class="iconfont icon-fanhuidingbu"></i></div>
   </div>
 </template>
 
 <script>
 import home from '@/components/index';
 import copyright from '@/components/copyright';
-import { random, random_photo } from '@/utils/index';
+import { random_photo } from '@/utils/index';
 
 export default {
   name: 'App',
@@ -40,10 +31,8 @@ export default {
       bgUrl: '',
       ClassArr: ['rollIn', 'rollOut'],
       timer: null,
-      positionTimer: null,
-      scrollTop: 50,
-      count: 5,
-      position: 0
+      scrollTop: 100,
+      count: 5
     };
   },
   computed: {
@@ -80,15 +69,15 @@ export default {
     script.language = 'JavaScript';
     document.body.appendChild(script);
 
-    // const script1 = document.createElement('script');
-    // script1.src = '//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js';
-    // script1.type = 'text/javascript';
-    // script1.language = 'JavaScript';
-    // script1.pointColor = '0,0,255';
-    // script1.clolor = '24,138,226';
-    // script1.zIndex = '999';
-    // script1.count = '599';
-    // document.body.appendChild(script1);
+    const script1 = document.createElement('script');
+    script1.src = '//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js';
+    script1.type = 'text/javascript';
+    script1.language = 'JavaScript';
+    script1.pointColor = '0,0,255';
+    script1.clolor = '24,138,226';
+    script1.zIndex = '999';
+    script1.count = '599';
+    document.body.appendChild(script1);
   },
   methods: {
     handleScroll(e) {
@@ -132,75 +121,44 @@ export default {
         that.scrollTop = that.count * 30;
         if (scrollTop == 0) {
           that.returnTop = false;
-          that.scrollTop = 50;
+          that.scrollTop = 100;
           that.count = 5;
           clearInterval(that.timer);
-          clearInterval(that.positionTimer);
-          that.position = 0;
         }
       }, 50);
-    },
-    enter() {
-      let arr = [149, 298, 447, 596];
-      let count = 0;
-      this.positionTimer = setInterval(() => {
-        this.position = arr[count];
-        count++;
-        if (count > 3) {
-          count = 0;
-        }
-      }, 20);
-    },
-    leave() {
-      setTimeout(() => {
-        this.position = 0;
-      }, 300);
-      clearInterval(this.positionTimer);
     }
   }
 };
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
 #app {
   position: relative;
-}
-.routerView {
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0;
-  padding-right: 0;
+
+  .bg {
+    background: #373d41;
+    background-size: cover;
+    overflow: auto;
+  }
 }
 
-.bg {
-  background: #373d41 url('./assets/img/bg.jpg') no-repeat;
-  background-size: cover;
-  overflow: auto;
-}
+// body {
+//   min-width: 1400px;
+// }
 
-body {
-  min-width: 1400px;
+.top:hover {
+  color: #0086b3;
+  transition: all 0.5s;
+  transform: rotate(360deg) scale(1.2);
 }
-
-#rocket-to-top {
-  cursor: pointer;
-  background: url('./assets/rocket_button_up.png') no-repeat scroll -298px 0 transparent;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
+.top {
   position: fixed;
-  right: 50px;
-  bottom: 50px;
-  width: 149px;
-  z-index: 11;
-  opacity: 0.5;
-}
-
-#rocket-to-top:hover {
-  background-position: -149px 0;
-  opacity: 1;
+  bottom: 100px;
+  right: 100px;
+  color: #188ae2;
+  i {
+    font-size: 50px;
+    cursor: pointer;
+  }
 }
 </style>

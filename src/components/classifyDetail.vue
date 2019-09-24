@@ -19,10 +19,19 @@
                   <span>{{ item.label }}</span>
                 </div>
                 <div class="view">{{ item.subtitle }}</div>
-                <div class="info">
-                  <span>{{ item.author }}</span>
-                  <span>{{ item.createtime }}</span>
-                </div>
+            <div class="info">
+              <span style="color: #188AE2;cursor: pointer;vertical-align: top;" @click="authorDetail(item.author)">
+                <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;">    {{ item.author }}</i>
+              </span>
+              <span style="margin-left: 10px;font-size: 14px;">
+                <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;"> {{ item.createtime }}</i>
+              </span>
+
+              <span style="margin-left: 10px;">
+                <i class="iconfont icon-yanjing" style="vertical-align: top;font-size: 14px;">   阅读({{ item.count }})</i>
+
+              </span>
+            </div>
               </div>
             </div>
           </div>
@@ -240,7 +249,7 @@ export default {
 
       .info {
         position: absolute;
-        bottom: -15px;
+        bottom: -13px;
         left: -20px;
         color: #999;
 
