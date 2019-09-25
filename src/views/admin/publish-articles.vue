@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <el-input v-model="form.title" placeholder="请输入标题，50字以内"></el-input>
-    <el-input style="margin-top: 20px" v-model="form.subtitle" placeholder="请输入副标题，50字以内"></el-input>
+    <el-input style="margin-top: 20px" v-model="form.subtitle" placeholder="请输入副标题"></el-input>
     <div style="margin: 25px 0;">
       <quill-editor
         v-model="content"
@@ -127,10 +127,10 @@
                 }
 
 
-                if (this.form.subtitle.length > 50) {
-                    Alert.fail('副标题太长喔');
-                    return false;
-                }
+                // if (this.form.subtitle.length > 50) {
+                //     Alert.fail('副标题太长喔');
+                //     return false;
+                // }
 
                 if (!this.content) {
                     Alert.fail('内容不能为空喔');

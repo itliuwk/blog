@@ -71,7 +71,6 @@
           </div>
         </div>
         <div class="member-center">
-          <i class="el-icon-search" style="cursor: pointer;margin-right: 15px;" @click="isShowSearch = !isShowSearch"></i>
           <div class="member-center-search" v-show="isShowSearch">
             <el-input v-model="searchValue" clearable class="search" @keyup.enter.native="search" placeholder="输入关键字 Enter键搜索..."></el-input>
             <el-button type="primary" @click="search" icon="el-icon-search">搜索</el-button>
@@ -83,6 +82,8 @@
           </div>
 
           <div v-else>
+            <i class="el-icon-search" style="cursor: pointer;" @click="isShowSearch = !isShowSearch"></i>
+
             <el-dropdown trigger="click">
               <span class="el-dropdown-link" style="cursor: pointer">
                 <img src="../assets/img/default.png" style="border-radius: 50%;margin-left: 20px" alt="" />
@@ -330,7 +331,7 @@ export default {
         opacity: 0.9;
         text-align: center;
         .search {
-          width: 80%;
+          width: 60%;
         }
       }
     }

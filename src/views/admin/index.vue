@@ -19,7 +19,7 @@
 <!--          <li :class="selIdx=='5'?'active':''" @click="selectIndex(5)">退出</li>-->
         </ul>
       </div>
-      <div class="right">
+      <div class="right-s">
 <!--        <User v-if="selIdx==1"></User>-->
         <PublishArticles v-if="selIdx==2"></PublishArticles>
         <MyArticle v-if="selIdx==3"></MyArticle>
@@ -175,7 +175,7 @@
     }
   }
 
-  .content .right {
+  .content .right-s {
     flex: 4;
     background: #fff;
     overflow: hidden;

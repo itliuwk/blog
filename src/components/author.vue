@@ -36,7 +36,7 @@
         </div>
 
         <div class="pageCount" style="text-align: center">
-          <el-pagination background @current-change="currentChange" layout="total, prev, pager, next, jumper" :page-size="params.total" :total="count"></el-pagination>
+          <el-pagination background @current-change="currentChange" layout="total, prev, pager, next" :page-size="params.total" :total="count"></el-pagination>
         </div>
       </div>
     </div>

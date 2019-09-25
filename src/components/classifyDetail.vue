@@ -38,7 +38,7 @@
         <div v-else v-show="!isLoading" style="text-align: center">抱歉，没有符合您查询条件的结果</div>
 
         <div class="pageCount" v-if="classify.length" style="text-align: center">
-          <el-pagination background @current-change="currentChange" layout="total, prev, pager, next, jumper" :page-size="params.total" :total="count"></el-pagination>
+          <el-pagination background @current-change="currentChange" layout="total, prev, pager, next" :page-size="params.total" :total="count"></el-pagination>
         </div>
       </div>
     </div>
