@@ -16,7 +16,7 @@
               <div>
                 <div class="header">
                   <h3 @click="toDetail(item.id)">{{ item.title }}</h3>
-                  <span>{{ item.label }}</span>
+                  <span style="cursor: pointer" @click="toClassDetail(item.value, item.label)">{{ item.label }}</span>
                 </div>
                 <div class="view">{{ item.subtitle }}</div>
                 <div class="info">
@@ -48,7 +48,7 @@
 
 <script>
 import Right from '@/components/right';
-import { random_bg_photo,updateTitle } from '@/utils/index';
+import { random_bg_photo, updateTitle } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { listClass, listClassCount } from '@/api/blog';
 
@@ -101,7 +101,7 @@ export default {
         ...this.params,
         classify: this.value || this.$route.query.value
       };
-	  updateTitle(this.$route.query.label)
+      updateTitle(this.$route.query.label);
 
       let that = this;
 
@@ -124,6 +124,9 @@ export default {
     },
     authorDetail(value) {
       this.$router.push('./author?author=' + value);
+    },
+    toClassDetail(value, label) {
+      this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
     },
     toDetail(id) {
       this.$router.push('./detail?id=' + id);
@@ -151,7 +154,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import '@/views/home/home.scss';
-
+@import '@/components/styles/blogList.scss';
 .article-focusbox {
   position: relative;
   // padding: 50px 0;
@@ -207,100 +210,6 @@ export default {
   width: 100%;
   z-index: 1;
   background: #373d41;
-}
-
-.blogList {
-  .item {
-    padding: 20px;
-    width: 100%;
-    background: #fff;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    display: flex;
-
-    margin: 20px 0;
-
-    img {
-      width: 130px;
-      height: 90px;
-    }
-
-    .header {
-      width: 100%;
-
-      h3 {
-        display: inline-block;
-        cursor: pointer;
-      }
-
-      span {
-        float: right;
-        background-color: #ffbb50;
-        padding: 4px 10px;
-        color: #fff;
-        font-size: 12px;
-        line-height: 1.4;
-        font-weight: 400;
-        margin: 0 20px 5px 0;
-        border-radius: 2px;
-        display: inline-block;
-      }
-
-      span:hover {
-        transition-duration: 0.2s;
-        background-color: #9759d0;
-      }
-    }
-
-    div {
-      margin-left: 20px;
-      position: relative;
-      width: 80%;
-
-      .view {
-        text-indent: 2em;
-        margin-top: 10px;
-        font-size: 14px;
-        color: #999;
-      }
-
-      .info {
-        position: absolute;
-        bottom: -13px;
-        left: -20px;
-        color: #999;
-
-        span {
-          margin: 0 5px;
-        }
-      }
-    }
-  }
-
-  .item {
-    animation: upScale 0.5s;
-  }
-
-  .item:hover {
-    transition-duration: 0.5s;
-    background: #000;
-
-    h3 {
-      transition-duration: 0.5s;
-      font-size: 20px;
-      color: #188ae2;
-    }
-
-    .view {
-      transition-duration: 0.5s;
-      color: #fff;
-    }
-
-    img {
-      transition-duration: 0.5s;
-      transform: scale(1.2);
-    }
-  }
 }
 
 .pageCount {

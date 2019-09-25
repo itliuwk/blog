@@ -79,7 +79,6 @@
 
   .index {
     padding: 20px;
-    height: 100vh;
     box-sizing: border-box;
     position: relative;
     color:#fff;
