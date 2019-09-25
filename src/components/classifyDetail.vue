@@ -19,19 +19,18 @@
                   <span>{{ item.label }}</span>
                 </div>
                 <div class="view">{{ item.subtitle }}</div>
-            <div class="info">
-              <span style="color: #188AE2;cursor: pointer;vertical-align: top;" @click="authorDetail(item.author)">
-                <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;">    {{ item.author }}</i>
-              </span>
-              <span style="margin-left: 10px;font-size: 14px;">
-                <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;"> {{ item.createtime }}</i>
-              </span>
+                <div class="info">
+                  <span style="color: #188AE2;cursor: pointer;vertical-align: top;" @click="authorDetail(item.author)">
+                    <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;">{{ item.author }}</i>
+                  </span>
+                  <span style="margin-left: 10px;font-size: 14px;">
+                    <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;">{{ item.createtime }}</i>
+                  </span>
 
-              <span style="margin-left: 10px;">
-                <i class="iconfont icon-yanjing" style="vertical-align: top;font-size: 14px;">   阅读({{ item.count }})</i>
-
-              </span>
-            </div>
+                  <span style="margin-left: 10px;">
+                    <i class="iconfont icon-yanjing" style="vertical-align: top;font-size: 14px;">阅读({{ item.count }})</i>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -49,7 +48,7 @@
 
 <script>
 import Right from '@/components/right';
-import { random_bg_photo } from '@/utils/index';
+import { random_bg_photo,updateTitle } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { listClass, listClassCount } from '@/api/blog';
 
@@ -75,6 +74,20 @@ export default {
   watch: {
     $route(to, from) {
       this.getDetail();
+    },
+    search(val) {
+      this.params = {
+        page: 0,
+        total: 10,
+        keyword: val
+      };
+      this.isLoading = true;
+      this.getDetail();
+    }
+  },
+  computed: {
+    search() {
+      return this.$store.state.search;
     }
   },
 
@@ -88,6 +101,7 @@ export default {
         ...this.params,
         classify: this.value || this.$route.query.value
       };
+	  updateTitle(this.$route.query.label)
 
       let that = this;
 
@@ -107,6 +121,9 @@ export default {
       listClassCount(params).then(res => {
         this.count = res.data['count(id)'];
       });
+    },
+    authorDetail(value) {
+      this.$router.push('./author?author=' + value);
     },
     toDetail(id) {
       this.$router.push('./detail?id=' + id);
@@ -142,7 +159,7 @@ export default {
   background-size: cover;
   background-repeat: repeat;
   background-attachment: fixed;
-  border-radius:5px;
+  border-radius: 5px;
 
   .article-header {
     text-align: center;

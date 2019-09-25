@@ -4,12 +4,21 @@
  * @param n
  * @returns {number}
  */
-export function random(m,n) {
+export function random(m, n) {
   return Math.floor(Math.random() * (m - n) + n)
 }
 
 
+export function updateTitle(title = '') {
+  if (title) {
+    title = title + ' - '
+  }
+  document.title = title + '刘伟坤 - 个人博客 | 随心IT | 刘伟坤IT | 刘伟坤博客 | 一个分享技术文章,热门资源的博客'
+}
 
+/**
+ * 随机图片
+ */
 export function random_photo() {
   // return `https://wallpaper.infinitynewtab.com/wallpaper/${random(1, 1000)}.jpg`
   // return `http://api.laolibab.cn/king/tupian/tpdm/${random(1, 500)}.jpg`
@@ -20,7 +29,9 @@ export function random_photo() {
 
 
 
-
+/**
+ * 随机图片
+ */
 export function random_bg_photo() {
   // return `https://wallpaper.infinitynewtab.com/wallpaper/${random(1, 1000)}.jpg`
   // return `http://api.laolibab.cn/king/tupian/tpdm/${random(1, 500)}.jpg`

@@ -54,7 +54,7 @@
 
 <script>
 import Right from '@/components/right';
-import { random_photo } from '@/utils/index';
+import { random_photo,updateTitle  } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { detail } from '@/api/blog';
 
@@ -98,7 +98,7 @@ export default {
         res.data.content = that.parseDom(res.data.content);
         res.data.url = href;
         res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
-        document.title = res.data.title + ' - 刘伟坤 - 个人博客 | 随心IT | 刘伟坤IT | 刘伟坤博客 | 一个分享技术文章,热门资源的博客';
+		updateTitle(res.data.title)
         that.detail = res.data;
         that.bgUrl = random_photo();
       });

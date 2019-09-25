@@ -12,7 +12,7 @@
 <script>
 import home from '@/components/index';
 import copyright from '@/components/copyright';
-import { random_photo } from '@/utils/index';
+import { random_photo,updateTitle } from '@/utils/index';
 
 export default {
   name: 'App',
@@ -46,7 +46,7 @@ export default {
       this.closeBg();
     },
     $route(to, from) {
-      document.title = '刘伟坤 - 个人博客 | 随心IT | 刘伟坤IT | 刘伟坤博客 | 一个分享技术文章,热门资源的博客';
+      updateTitle()
       // this.leaveClass = this.ClassArr[this.random()];
       // this.enterClass = this.ClassArr[this.random()];
 
