@@ -124,7 +124,7 @@ export default {
 }
 
 #box {
-  width: 400px;
+  max-width: 400px;
   height: 460px;
   position: fixed;
   background: #fff;
@@ -133,7 +133,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 250px auto;
+  margin: 150px auto;
   display: inline-block;
   border-radius: 4px;
   box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.3);

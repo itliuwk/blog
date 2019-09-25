@@ -248,6 +248,14 @@ h3 {
   .login {
     display: none;
   }
+  .member-center {
+    display: inline-block !important;
+  }
+  .box {
+    .box-card {
+      width: 400px;
+    }
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -259,6 +267,20 @@ h3 {
   }
 }
 
+@media screen and (max-width: 888px) {
+  .box {
+    justify-content: center;
+  }
+
+  .menu {
+    display: inline-block!important;
+  }
+
+  .nav-u {
+    display: none!important;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .blogList .item {
     display: block !important;
@@ -266,5 +288,9 @@ h3 {
       width: 100% !important;
       margin-bottom: 15px;
     }
+  }
+
+  .logo-info{
+    margin-left: 20px;
   }
 }

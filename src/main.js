@@ -13,10 +13,15 @@ Vue.use(VueClipboard);
 
 Vue.use(VueAxios, Axios);
 
+let userInfo = localStorage.getItem('userInfo');
+
+if(!userInfo||userInfo==null){
+localStorage.clear()
+}
 
 Vue.prototype.$loadScript = (url, callback) => {
     let script = document.createElement('script');
-    if (script.readyState) { 
+    if (script.readyState) {
     	// IE浏览器
         script.onreadystatechange = function () {
             if (script.readyState === 'loaded' || script.readyState === 'complete') {
@@ -24,7 +29,7 @@ Vue.prototype.$loadScript = (url, callback) => {
                 callback();
             }
         }
-    } else { 
+    } else {
     	// 其他浏览器
         script.onload = function () {
             callback();
