@@ -244,14 +244,27 @@ h3 {
   width: 7%;
 }
 
-@media screen and (max-width: 1170px){
+@media screen and (max-width: 1170px) {
   .login {
     display: none;
   }
 }
 
-@media screen and (max-width: 1030px){
+@media screen and (max-width: 850px) {
   .right {
     display: none;
+  }
+  .left {
+    margin-right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .blogList .item {
+    display: block !important;
+    img {
+      width: 100% !important;
+      margin-bottom: 15px;
+    }
   }
 }

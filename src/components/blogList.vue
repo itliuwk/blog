@@ -147,12 +147,15 @@ export default {
       h3 {
         display: inline-block;
         cursor: pointer;
+        width: 80%;
       }
 
       span {
+        position: absolute;
         float: right;
         background-color: #ffbb50;
-        padding: 4px 10px;
+        text-align: center;
+        padding: 4px;
         color: #fff;
         font-size: 12px;
         line-height: 1.4;
@@ -160,6 +163,7 @@ export default {
         margin: 0 20px 5px 0;
         border-radius: 2px;
         display: inline-block;
+        min-width: 60px;
       }
 
       span:hover {
@@ -168,7 +172,7 @@ export default {
       }
     }
 
-    div {
+    >div {
       margin-left: 20px;
       position: relative;
       width: 80%;
@@ -181,9 +185,7 @@ export default {
       }
 
       .info {
-        position: absolute;
-        bottom: -13px;
-        left: -20px;
+        margin-top: 15px;
         color: #999;
 
         span {
