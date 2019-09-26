@@ -2,7 +2,9 @@
   <div id="app">
     <home :isTop="isTop"></home>
     <div class="bg">
-      <transition name="fade-transform" mode="out-in"><router-view class="animated"></router-view></transition>
+      <keep-alive>
+        <transition name="fade-transform" mode="out-in"><router-view class="animated"></router-view></transition>
+      </keep-alive>
     </div>
     <copyright></copyright>
     <div v-show="returnTop" class="top" :style="{ bottom: scrollTop + 'px' }" @click="returnTo"><i class="iconfont icon-fanhuidingbu"></i></div>
@@ -12,7 +14,7 @@
 <script>
 import home from '@/components/index';
 import copyright from '@/components/copyright';
-import { random_photo,updateTitle } from '@/utils/index';
+import { random_photo, updateTitle } from '@/utils/index';
 
 export default {
   name: 'App',
@@ -46,7 +48,7 @@ export default {
       this.closeBg();
     },
     $route(to, from) {
-      updateTitle()
+      updateTitle();
       // this.leaveClass = this.ClassArr[this.random()];
       // this.enterClass = this.ClassArr[this.random()];
 

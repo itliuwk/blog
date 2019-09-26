@@ -1,11 +1,24 @@
 <template>
   <div class="copyright">
     <div>
-      <span>Copyright © 刘伟坤 - 个人博客 版权所有 Powered By liuwk Design.</span>
+      <span>
+        Copyright © 刘伟坤 - 个人博客 版权所有
+        <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk"><i class="iconfont icon-github"></i></a>
+        Powered By liuwk Design.
+      </span>
       <a target="_blank" href="http://www.beian.miit.gov.cn">粤ICP备19106134号</a>
-      <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk"><i class="iconfont icon-github"></i></a>
     </div>
-    <div style="margin-top: 10px;">本站低调运行已经有 {{ time }}</div>
+    <div style="margin: 10px; 0">
+      <a
+        target="_blank"
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011302002188"
+        style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"
+      >
+        <img src="../assets/img/备案图标.png" style="float:left;" /> 
+        <p style="float:left;height:20px;line-height:20px; ">  粤公网安备 44011302002188号</p>
+      </a>
+    </div>
+    <div>本站低调运行已经有 {{ time }}</div>
     <div style="padding: 20px 0">
       <a href="https://www.yunaq.com/new_analytics/report/login/?site=www.sxitw.cn" title="创宇云安全" target="_blank">
         <img src="../assets/img/jsl.png" width="127px" height="47px" style="margin:0px 5px;" />
@@ -85,7 +98,6 @@ export default {
   padding-top: 20px;
   position: relative;
 }
-
 
 #top-img {
   background: url('../assets/img/top.png');

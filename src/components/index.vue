@@ -164,6 +164,7 @@ export default {
     $route: {
       deep: true,
       handler(val) {
+        document.documentElement.scrollTop = 0
         this.drawer = false
         if (val.fullPath == '/admin') {
           if (!this.userInfo && this.userInfo == null) {
