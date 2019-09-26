@@ -43,6 +43,7 @@
 import { list, add, update, del } from '../../api/note.js';
 import { YYYYMMDD } from '@/utils/date';
 import Alert from '@/utils/alert';
+import { updateTitle } from '@/utils/index';
 export default {
   name: 'note',
   data() {
@@ -62,6 +63,9 @@ export default {
     userInfo() {
       return this.$store.state.userInfo || JSON.parse(localStorage.getItem('userInfo'));
     }
+  },
+  beforeCreate() {
+    updateTitle('个人笔记');
   },
   mounted() {
     this.getList();

@@ -2,7 +2,7 @@
   <div :class="isTop == true ? 'blog' : 'blog-none'">
     <div class="blog-nav">
       <div class="content">
-        <div class="menu"><i class="el-icon-menu" @click="drawer = true"></i></div>
+        <div class="menu"><i class="iconfont icon-caidan" @click="drawer = true"></i></div>
         <router-link to="/" class="logo-info">
           <a title="刘伟坤博客-刘伟坤博客,分享网站seo优化教程，网站源码下载，网站搭建教程，专注互联网资讯，新手站长起点资源网站！" href="#">
             <img src="../assets/img/logo.jpg" alt="刘伟坤博客" />
@@ -104,7 +104,7 @@
     </div>
     <div id="top-img"></div>
 
-    <el-drawer  :visible.sync="drawer" :show-close='false' style='width: 200%;' direction="ltr">
+    <el-drawer  :visible.sync="drawer" title="刘伟坤博客" :show-close='false' style='width: 200%;' direction="ltr">
           <div class="menu-s">
             <ul>
               <router-link to="/">
@@ -364,13 +364,20 @@ export default {
   background: #373d41;
 }
 
+/deep/ #el-drawer__title {
+  text-align: center;
+}
+
 .menu-s{
   ul{
     li{
-      padding: 10px 15px;
-      text-align: center;
+      padding: 15px 15px;
       color: #fff;
       font-size: 20px;
+      i{
+        font-size: 20px;
+        padding-right: 15px;
+      }
     }
   }
 }

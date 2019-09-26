@@ -101,6 +101,7 @@
 
 <script>
 import Right from '@/components/right';
+import { updateTitle } from '@/utils/index';
 
 export default {
   name: 'about',
@@ -111,6 +112,9 @@ export default {
   },
   components: {
     Right
+  },
+  beforeCreate() {
+    updateTitle('关于本站');
   },
   mounted() {
     //     (function(d, s) {
@@ -146,7 +150,6 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-
 .about {
   max-width: 1000px;
   margin-left: auto;

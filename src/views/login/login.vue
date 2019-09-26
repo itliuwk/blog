@@ -21,6 +21,7 @@
 <script>
 import { login } from '../../api/login';
 import Alert from '@/utils/alert';
+import { updateTitle } from '@/utils/index';
 
 export default {
   name: 'login',
@@ -36,6 +37,9 @@ export default {
     $router: function(val) {
       console.log(val);
     }
+  },
+  beforeCreate() {
+    updateTitle('注册');
   },
   methods: {
     loginClick() {

@@ -251,19 +251,19 @@ h3 {
   .member-center {
     display: inline-block !important;
   }
-  .box {
-    .box-card {
-      width: 400px;
-    }
-  }
+  // .box {
+  //   .box-card {
+  //     width: 400px;
+  //   }
+  // }
 }
 
 @media screen and (max-width: 850px) {
   .right {
     display: none;
   }
-  .top{
-      display: none;
+  .top {
+    display: none;
   }
   .left {
     margin-right: 0 !important;
@@ -276,11 +276,11 @@ h3 {
   }
 
   .menu {
-    display: inline-block!important;
+    display: inline-block !important;
   }
 
   .nav-u {
-    display: none!important;
+    display: none !important;
   }
 }
 
@@ -291,9 +291,20 @@ h3 {
       width: 100% !important;
       margin-bottom: 15px;
     }
+    > div {
+      margin-left: 0 !important;
+    }
   }
 
-  .logo-info{
+  .logo-info {
     margin-left: 20px;
+  }
+
+  
+}
+
+@media screen and (max-width: 600px) {
+.friends {
+    text-align: center;
   }
 }

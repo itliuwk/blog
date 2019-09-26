@@ -32,6 +32,7 @@
   import dwz from '../../assets/img/dwz.png'
   import bk from '../../assets/img/favicon.png'
   import zqzb from '../../assets/img/zqzb.jpg'
+  import { updateTitle } from '@/utils/index';
 
   export default {
     name: "index",
@@ -67,6 +68,9 @@
           }
         ]
       }
+    },
+    beforeCreate() {
+      updateTitle('站长工具');
     }
   }
 </script>

@@ -30,6 +30,7 @@
 import { register } from '../../api/login';
 import Alert from '@/utils/alert';
 import SIdentify from './sidentify';
+import { updateTitle } from '@/utils/index';
 
 export default {
   name: 'register',
@@ -45,6 +46,9 @@ export default {
       identifyCode: '',
       code: '' //text框输入的验证码
     };
+  },
+  beforeCreate() {
+    updateTitle('注册')
   },
   components: {
     SIdentify
