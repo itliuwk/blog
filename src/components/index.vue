@@ -23,10 +23,10 @@
               <i class="iconfont icon-biji"></i>
               个人笔记
             </router-link>
-            <router-link to="/whisper" tag="li">
+     <!--       <router-link to="/whisper" tag="li">
               <i class="iconfont icon-speak"></i>
               微语
-            </router-link>
+            </router-link> -->
 
             <router-link to="/about" tag="li">
               <i class="iconfont icon-about"></i>
