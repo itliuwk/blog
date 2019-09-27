@@ -10,31 +10,27 @@
         </router-link>
         <div class="nav-u">
           <ul>
-            <router-link to="/">
-              <li>
-                <i class="iconfont icon-shouye"></i>
-                首页
-              </li>
+            <router-link to="/" tag="li"  >
+              <i class="iconfont icon-shouye"></i>
+              首页
             </router-link>
-            <router-link to="/tools">
-              <li>
-                <i class="iconfont icon-gongju"></i>
-                站长工具
-              </li>
+            <router-link to="/tools" tag="li">
+              <i class="iconfont icon-gongju"></i>
+              站长工具
             </router-link>
 
-            <router-link to="/note">
-              <li>
-                <i class="iconfont icon-biji"></i>
-                个人笔记
-              </li>
+            <router-link to="/note" tag="li">
+              <i class="iconfont icon-biji"></i>
+              个人笔记
+            </router-link>
+            <router-link to="/whisper" tag="li">
+              <i class="iconfont icon-speak"></i>
+              微语
             </router-link>
 
-            <router-link to="/about">
-              <li>
-                <i class="iconfont icon-iconset0103"></i>
-                关于本站
-              </li>
+            <router-link to="/about" tag="li">
+              <i class="iconfont icon-about"></i>
+              关于本站
             </router-link>
           </ul>
         </div>
@@ -77,6 +73,7 @@
           </div>
 
           <div style="display: inline-block" v-if="userInfo == null || !userInfo">
+            <i class="el-icon-search" style="cursor: pointer;margin-right: 15px;" @click="isShowSearch = !isShowSearch"></i>
             <span style="margin-right: 20px"><router-link to="/login">登录</router-link></span>
             <router-link to="/register"><el-button type="primary" round>我要注册</el-button></router-link>
           </div>
@@ -104,38 +101,30 @@
     </div>
     <div id="top-img"></div>
 
-    <el-drawer  :visible.sync="drawer" title="刘伟坤博客" :show-close='false' style='width: 200%;' direction="ltr">
-          <div class="menu-s">
-            <ul>
-              <router-link to="/">
-                <li>
-                  <i class="iconfont icon-shouye"></i>
-                  首页
-                </li>
-              </router-link>
-              <router-link to="/tools">
-                <li>
-                  <i class="iconfont icon-gongju"></i>
-                  站长工具
-                </li>
-              </router-link>
+    <el-drawer :visible.sync="drawer" title="刘伟坤博客" :show-close="false" style="width: 200%;" direction="ltr">
+      <div class="menu-s">
+        <ul>
+          <router-link to="/" tag="li">
+            <i class="iconfont icon-shouye"></i>
+            首页
+          </router-link>
+          <router-link to="/tools" tag="li">
+            <i class="iconfont icon-gongju"></i>
+            站长工具
+          </router-link>
 
-              <router-link to="/note">
-                <li>
-                  <i class="iconfont icon-biji"></i>
-                  个人笔记
-                </li>
-              </router-link>
+          <router-link to="/note" tag="li">
+            <i class="iconfont icon-biji"></i>
+            个人笔记
+          </router-link>
 
-              <router-link to="/about">
-                <li>
-                  <i class="iconfont icon-iconset0103"></i>
-                  关于本站
-                </li>
-              </router-link>
-            </ul>
-          </div>
-      </el-drawer>
+          <router-link to="/about" tag="li">
+            <i class="iconfont icon-about"></i>
+            关于本站
+          </router-link>
+        </ul>
+      </div>
+    </el-drawer>
   </div>
 </template>
 
@@ -164,8 +153,8 @@ export default {
     $route: {
       deep: true,
       handler(val) {
-        document.documentElement.scrollTop = 0
-        this.drawer = false
+        document.documentElement.scrollTop = 0;
+        this.drawer = false;
         if (val.fullPath == '/admin') {
           if (!this.userInfo && this.userInfo == null) {
             if (!this.$store.state.isLogin) {
@@ -253,6 +242,7 @@ export default {
     display: none;
     line-height: 70px;
     font-size: 20px;
+    cursor: pointer;
   }
 
   .content {
@@ -286,7 +276,7 @@ export default {
 
         li {
           float: left;
-          margin-right: 30px;
+          margin-right: 10px;
           cursor: pointer;
           font-size: 16px;
           color: #99a9bf;
@@ -294,10 +284,15 @@ export default {
           padding: 0 10px;
         }
 
-        li:hover {
+       li:hover {
           color: #fff;
           background: #289ee2;
           animation: upOpacity 0.3s;
+        }
+
+        /deep/ li.router-link-exact-active{
+          color: #fff;
+          background: #289ee2;
         }
 
         @keyframes upOpacity {
@@ -361,7 +356,7 @@ export default {
   }
 }
 
-/deep/ .el-drawer__container div{
+/deep/ .el-drawer__container div {
   background: #373d41;
 }
 
@@ -369,13 +364,14 @@ export default {
   text-align: center;
 }
 
-.menu-s{
-  ul{
-    li{
+.menu-s {
+  ul {
+    li {
       padding: 15px 15px;
       color: #fff;
       font-size: 20px;
-      i{
+      cursor: pointer;
+      i {
         font-size: 20px;
         padding-right: 15px;
       }

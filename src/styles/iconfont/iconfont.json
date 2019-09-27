@@ -43,7 +43,7 @@
     {
       "icon_id": "553885",
       "name": "关于",
-      "font_class": "iconset0103",
+      "font_class": "about",
       "unicode": "e602",
       "unicode_decimal": 58882
     },
@@ -60,6 +60,13 @@
       "font_class": "shijian",
       "unicode": "e697",
       "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "760264",
+      "name": "说话speak",
+      "font_class": "speak",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
     },
     {
       "icon_id": "845828",
