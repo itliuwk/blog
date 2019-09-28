@@ -49,6 +49,7 @@ export default {
     },
     $route(to, from) {
       updateTitle();
+      document.documentElement.scrollTop = 0;
       // this.leaveClass = this.ClassArr[this.random()];
       // this.enterClass = this.ClassArr[this.random()];
 

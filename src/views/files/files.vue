@@ -47,6 +47,7 @@ export default {
 }
 .files {
   text-align: left;
+  padding: 20px;
   ul {
     li {
       margin: 5px 0;

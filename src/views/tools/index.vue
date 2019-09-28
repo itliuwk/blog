@@ -59,12 +59,17 @@
             src: dwz
           },
           {
+            name: '文件',
+            path: '/files',
+            info: '免费、稳定有效的在线文件链接生成',
+            src: bk
+          },
+          {
             name: '个人博客',
             path: 'https://itliuwk.github.io/',
             info: '刘伟坤 - 小前端前往后端的路上的博客',
             src: bk,
             target:'_blank'
-
           }
         ]
       }

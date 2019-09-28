@@ -158,6 +158,5 @@
     background: #fff;
     padding: 10px;
     border-radius: 4px;
-    margin-bottom: 50px;
   }
 </style>

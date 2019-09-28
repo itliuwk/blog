@@ -21,14 +21,14 @@
               <div class="view">{{ item.subtitle }}</div>
               <div class="info">
                 <span style="color: #188AE2;cursor: pointer;vertical-align: top;">
-                  <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;"> {{ item.author }}</i>
+                  <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;">{{ item.author }}</i>
                 </span>
                 <span style="margin-left: 10px;font-size: 14px;">
-                  <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;"> {{ item.createtime }}</i>
+                  <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;">{{ item.createtime }}</i>
                 </span>
 
                 <span style="margin-left: 10px;">
-                  <i class="iconfont icon-yanjing" style="vertical-align: top;font-size: 14px;"> 阅读({{ item.count }})</i>
+                  <i class="iconfont icon-yanjing" style="vertical-align: top;font-size: 14px;">阅读({{ item.count }})</i>
                 </span>
               </div>
             </div>
@@ -45,7 +45,7 @@
 
 <script>
 import Right from '@/components/right';
-import { random_photo ,updateTitle } from '@/utils/index';
+import { random_photo, updateTitle } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { list, listCount } from '@/api/blog';
 
@@ -94,7 +94,7 @@ export default {
         ...this.params,
         author: this.$route.query.author
       };
-	  updateTitle(this.$route.query.author)
+      updateTitle(this.$route.query.author);
       let that = this;
 
       list(params).then(res => {
@@ -127,6 +127,7 @@ export default {
       };
       this.isLoading = true;
       this.getDetail();
+      document.documentElement.scrollTop = 0;
     },
     unescapeHTML(str) {
       str = str.replace(/fuwenben963/g, '');
@@ -143,7 +144,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 @import '@/views/home/home.scss';
-  @import "@/components/styles/blogList.scss";
+@import '@/components/styles/blogList.scss';
 
 .article-focusbox {
   position: relative;
@@ -198,11 +199,9 @@ export default {
   z-index: 1;
 }
 
-
 .pageCount {
   background: #fff;
   padding: 10px;
   border-radius: 4px;
-  margin-bottom: 50px;
 }
 </style>

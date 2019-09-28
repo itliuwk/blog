@@ -21,14 +21,14 @@
                 <div class="view">{{ item.subtitle }}</div>
                 <div class="info">
                   <span style="color: #188AE2;cursor: pointer;vertical-align: top;" @click="authorDetail(item.author)">
-                    <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;"> {{ item.author }}</i>
+                    <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;">{{ item.author }}</i>
                   </span>
                   <span style="margin-left: 10px;font-size: 14px;">
-                    <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;"> {{ item.createtime }}</i>
+                    <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;">{{ item.createtime }}</i>
                   </span>
 
                   <span style="margin-left: 10px;">
-                    <i class="iconfont icon-yanjing" style="vertical-align: top;font-size: 14px;"> 阅读({{ item.count }})</i>
+                    <i class="iconfont icon-yanjing" style="vertical-align: top;font-size: 14px;">阅读({{ item.count }})</i>
                   </span>
                 </div>
               </div>
@@ -138,6 +138,7 @@ export default {
       };
       this.isLoading = true;
       this.getDetail();
+      document.documentElement.scrollTop = 0;
     },
     unescapeHTML(str) {
       str = str.replace(/fuwenben963/g, '');
@@ -216,6 +217,5 @@ export default {
   background: #fff;
   padding: 10px;
   border-radius: 4px;
-  margin-bottom: 50px;
 }
 </style>

@@ -200,7 +200,6 @@ export default {
     }
 
     .son {
-      width: 40%;
       height: 500px;
       border-radius: 10px;
       margin: 20px 0;
