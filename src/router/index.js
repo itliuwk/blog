@@ -6,6 +6,7 @@ import tools from '@/router/modules/tools'
 import classify from '@/router/modules/classify'
 import author from '@/router/modules/author'
 import note from '@/router/modules/note'
+import whisper from '@/router/modules/whisper'
 import files from '@/router/modules/files'
 
 Vue.use(Router)
@@ -46,6 +47,7 @@ export default new Router({
     ...classify,
     ...author,
     ...note,
+    ...whisper,
     ...files
   ]
 })

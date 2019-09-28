@@ -39,3 +39,13 @@ export function random_bg_photo() {
   return `https://raw.githubusercontent.com/itliuwk/blog/master/src/assets/bg/${random(1, 59)}.jpg`
   // return `http://imgae.sxitw.cn/${random(1, 39)}.jpg`
 }
+
+
+
+/**
+ * 随机微语图片
+ */
+export function random_whisper_photo() {
+
+  return `http://www.3652ww.com/content/templates/bowenguangji/images/weiyu/touxiang${random(1, 10)}.jpg`
+}

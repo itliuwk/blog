@@ -18,7 +18,7 @@
           <a target="_blank" href="https://weibo.com/u/2433275163"><i class="iconfont icon-weibo"></i></a>
         </div>
       </div>
-      <p style="color: #fff;font-size: 10px;">随心it,刘伟坤it,刘伟坤博客,刘伟坤,随心博客</p>
+      <p style="color: #fff;font-size: 10px;padding-left: 5px;">随心it,刘伟坤it,刘伟坤博客,刘伟坤,随心博客</p>
       <div class="statistics">
         <div>
           <p>文章</p>
@@ -30,7 +30,7 @@
         </div>
         <div>
           <p>分类</p>
-          <p>12</p>
+          <p>{{ classify.length }}</p>
         </div>
       </div>
     </div>
@@ -61,13 +61,13 @@ export default {
   mounted() {
     this.classifylen();
 
-   // setTimeout(()=>{
-   //   const script = document.createElement('script');
-   //   script.src = 'https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysWFxvAX';
-   //   script.type = 'text/javascript';
-   //   script.language = 'JavaScript';
-   //   document.body.appendChild(script);
-   // },2000)
+    // setTimeout(()=>{
+    //   const script = document.createElement('script');
+    //   script.src = 'https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cysWFxvAX';
+    //   script.type = 'text/javascript';
+    //   script.language = 'JavaScript';
+    //   document.body.appendChild(script);
+    // },2000)
   },
   methods: {
     classifylen() {
@@ -83,13 +83,13 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+
 .personal {
-  background: #fff;
   position: relative;
   height: 300px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
-  background: url('../assets/bordergif.gif') no-repeat;
+  background: #fff url('../assets/bordergif.gif') no-repeat;
   background-size: 100% 100%;
 
   h3 {
