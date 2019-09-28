@@ -112,8 +112,8 @@ export default {
   background: #fff;
   margin: 20px 0;
   img {
-    // width: 82px;
-    // height: 82px;
+    width: 82px;
+    height: 82px;
     border-radius: 50%;
   }
 

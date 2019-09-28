@@ -47,5 +47,5 @@ export function random_bg_photo() {
  */
 export function random_whisper_photo() {
 
-  return `http://www.3652ww.com/content/templates/bowenguangji/images/weiyu/touxiang${random(1, 10)}.jpg`
+  return `https://raw.githubusercontent.com/itliuwk/blog/master/src/assets/whisper/${random(1, 20)}.jpeg`
 }
