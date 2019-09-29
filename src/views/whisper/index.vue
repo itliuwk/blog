@@ -36,6 +36,7 @@ import { random_whisper_photo } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { list, add, update, del } from '@/api/whisper.js';
 import Alert from '@/utils/alert';
+import { updateTitle } from '@/utils/index';
 export default {
   name: 'home',
   data() {
@@ -49,6 +50,9 @@ export default {
   },
   components: {
     Right
+  },
+  beforeCreate() {
+    updateTitle('微语');
   },
   mounted() {
     this.getList();

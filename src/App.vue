@@ -27,6 +27,7 @@ export default {
       isTop: false,
       returnTop: false,
       isCloseBg: false,
+      disabled: false,
       transitionName: 'slide-right',
       enterClass: 'bounceIn',
       leaveClass: '',
@@ -113,8 +114,12 @@ export default {
     returnTo() {
       let that = this;
 
+      if (this.disabled) {
+        return false;
+      }
+      this.disabled = true;
       that.timer = setInterval(function() {
-        that.count += 2;
+        that.count += 4;
         //获取滚动条的滚动高度
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 
@@ -127,6 +132,7 @@ export default {
           that.scrollTop = 100;
           that.count = 5;
           clearInterval(that.timer);
+          that.disabled = false;
         }
       }, 50);
     }
