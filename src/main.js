@@ -9,34 +9,35 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueJsonp from 'vue-jsonp'
 import VueClipboard from 'vue-clipboard2'
+
 Vue.use(VueClipboard);
 
 Vue.use(VueAxios, Axios);
 
 let userInfo = localStorage.getItem('userInfo');
 
-if(!userInfo||userInfo==null){
-localStorage.clear()
+if (!userInfo || userInfo == null) {
+  localStorage.clear()
 }
 
 Vue.prototype.$loadScript = (url, callback) => {
-    let script = document.createElement('script');
-    if (script.readyState) {
-    	// IE浏览器
-        script.onreadystatechange = function () {
-            if (script.readyState === 'loaded' || script.readyState === 'complete') {
-                script.onreadystatechange = null;
-                callback();
-            }
-        }
-    } else {
-    	// 其他浏览器
-        script.onload = function () {
-            callback();
-        }
+  let script = document.createElement('script');
+  if (script.readyState) {
+    // IE浏览器
+    script.onreadystatechange = function () {
+      if (script.readyState === 'loaded' || script.readyState === 'complete') {
+        script.onreadystatechange = null;
+        callback();
+      }
     }
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
+  } else {
+    // 其他浏览器
+    script.onload = function () {
+      callback();
+    }
+  }
+  script.src = url;
+  document.getElementsByTagName('head')[0].appendChild(script);
 }
 
 import './assets/style/index.css'
@@ -54,8 +55,6 @@ import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
 
 
-
-
 Vue.use(Element, {
   size: 'medium'
 });
@@ -70,5 +69,8 @@ window._vm = new Vue({
   router,
   store,
   components: {App},
-  template: '<App/>'
+  template: '<App/>',
+  mounted() {
+    document.dispatchEvent(new Event('render-event'))
+  }
 })

@@ -11,6 +11,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const Renderer =PrerenderSPAPlugin.PuppeteerRenderer
+
 const env = require('../config/prod.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -116,7 +119,19 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    new PrerenderSPAPlugin({  // 预渲染
+      staticDir: path.join(__dirname, '../dist'),//我用的是vue-cli2如果用的是vue-cli3则不用加../
+      routes: ['/','/author','/detail','/classifyDetail','/note','/tools','/whisper'],//这里是写的是要预渲染的页面，注意一定要和router里path一致
+      renderer: new Renderer({
+        inject: {
+          foo: 'bar'
+        },
+        headless: false,
+        renderAfterDocumentEvent: 'render-event'//这里是必填的，需要在main里调用
+      })
+    }),
   ]
 })
 
