@@ -121,17 +121,17 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     ]),
 
-    new PrerenderSPAPlugin({  // 预渲染
-      staticDir: path.join(__dirname, '../dist'),//我用的是vue-cli2如果用的是vue-cli3则不用加../
-      routes: ['/','/author','/detail','/classifyDetail','/note','/tools','/whisper'],//这里是写的是要预渲染的页面，注意一定要和router里path一致
-      renderer: new Renderer({
-        inject: {
-          foo: 'bar'
-        },
-        headless: false,
-        renderAfterDocumentEvent: 'render-event'//这里是必填的，需要在main里调用
-      })
-    }),
+    // new PrerenderSPAPlugin({  // 预渲染
+    //   staticDir: path.join(__dirname, '../dist'),//我用的是vue-cli2如果用的是vue-cli3则不用加../
+    //   routes: ['/','/author','/detail','/classifyDetail','/note','/tools','/whisper'],//这里是写的是要预渲染的页面，注意一定要和router里path一致
+    //   renderer: new Renderer({
+    //     inject: {
+    //       foo: 'bar'
+    //     },
+    //     headless: false,
+    //     renderAfterDocumentEvent: 'render-event'//这里是必填的，需要在main里调用
+    //   })
+    // }),
   ]
 })
 

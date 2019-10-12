@@ -70,7 +70,7 @@ window._vm = new Vue({
   store,
   components: {App},
   template: '<App/>',
-  mounted() {
-    document.dispatchEvent(new Event('render-event'))
-  }
+  // mounted() {
+  //   document.dispatchEvent(new Event('render-event'))
+  // }
 })
