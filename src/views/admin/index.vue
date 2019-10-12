@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       bgUrl: '',
-      selIdx: 6,
+      selIdx: 2,
       detail: {}
     };
   },

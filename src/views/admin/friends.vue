@@ -4,8 +4,8 @@
     <div>
       <el-table v-loading="loading" :data="list" style="width: 100%">
         <el-table-column prop="name" label="名称"></el-table-column>
-        <el-table-column prop="url" label="链接"></el-table-column>
-        <el-table-column prop="src" label="logo"></el-table-column>
+        <el-table-column prop="url" label="网站链接"></el-table-column>
+        <el-table-column prop="src" label="logo链接"></el-table-column>
         <el-table-column prop="createtime" label="创建时间"></el-table-column>
         <el-table-column label="操作">
           <template slot-scope="list">
@@ -45,7 +45,7 @@ export default {
       isDetail: false,
       info: '创建友链',
       params: {
-        name:''
+        name: ''
       },
       form: {
         id: '',
@@ -82,6 +82,7 @@ export default {
     },
     add() {
       this.isDetail = true;
+       this.info = '创建友链'
     },
     confirm() {
       if (this.form.id) {
@@ -95,11 +96,18 @@ export default {
           Alert.success('创建成功');
           this.isDetail = false;
           this.getList();
+          this.form = {
+            id: '',
+            name: '',
+            src: '',
+            url: ''
+          };
         });
       }
     },
     cantch() {
       this.form = {
+        id: '',
         name: '',
         src: '',
         url: ''
@@ -110,6 +118,7 @@ export default {
     edit(row) {
       this.form = row;
       this.isDetail = true;
+      this.info = '更新友链'
     },
     del(row) {
       let params = {

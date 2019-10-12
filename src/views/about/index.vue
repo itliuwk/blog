@@ -84,44 +84,14 @@
 <script>
 import Right from '@/components/right';
 import { updateTitle } from '@/utils/index';
-
+import { list } from '@/api/friends';
+import { YYYYMMDD } from '@/utils/date';
 export default {
   name: 'about',
   data() {
     return {
       active: 1,
-      friends: [
-        {
-          name: '随心博客',
-          url: 'http://www.sxitw.cn',
-          src: 'http://sxitw.cn/favicon.ico'
-        },
-        {
-          name: 'Sanshi 博客',
-          url: 'http://www.sanshi30.cn/',
-          src: 'http://www.sanshi30.cn/static/img/logo.jpg'
-        },
-        {
-          name: '杨青青个人博客',
-          url: 'https://www.yangqq.com/',
-          src: 'https://www.yangqq.com/favicon.ico'
-        },
-        {
-          name: '鑫-个人博客',
-          url: 'https://www.ilxin.cn/',
-          src: 'http://ilxin.cn/wp-content/uploads/2019/04/tx3.jpg'
-        },
-        {
-          name: '一个努力奋斗的少年',
-          url: 'https://blog.ci0n.cn/',
-          src: 'https://blog.ci0n.cn/images/avatar.jpg'
-        },
-        {
-          name: '学习中的小萌新',
-          url: 'https://www.huangxin.work/',
-          src: 'https://www.huangxin.work/resource/images/favicon.ico'
-        },
-      ]
+      friends: []
     };
   },
   components: {
@@ -154,10 +124,19 @@ export default {
         conf: 'prod_02e199e651f0597818eb703cd2db9ebe' // 此处换成你畅言应用的conf。
       });
     });
+    this.getList();
   },
   methods: {
     layClick(idx) {
       this.active = idx;
+    },
+    getList() {
+      list(this.params).then(res => {
+        this.friends = res.data.map(item => {
+          item.createtime = YYYYMMDD(parseInt(item.createtime));
+          return item;
+        });
+      });
     }
   }
 };
@@ -206,10 +185,11 @@ export default {
     padding-top: 20px;
     min-height: 1100px;
 
+
     .favicon,
     .author {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
     }
 
@@ -264,6 +244,14 @@ export default {
         p:hover {
           color: #188ae2;
         }
+      }
+
+      li:hover {
+        img{
+          transition: all 1s;
+          transform: rotate(360deg);
+        }
+       
       }
     }
   }
