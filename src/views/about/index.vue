@@ -62,28 +62,10 @@
 
       <div class="friends">
         <ul>
-          <li>
-            <a target="_blank" href="http://www.sxitw.cn">
-              <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc" />
-              <p>随心博客</p>
-            </a>
-          </li>
-          <li>
-            <a target="_blank" href="http://www.sanshi30.cn/">
-              <img class="favicon" src="http://www.sanshi30.cn/static/img/logo.jpg" alt="" style="border: 1px solid #ccc" />
-              <p>Sanshi 博客</p>
-            </a>
-          </li>
-          <li>
-            <a target="_blank" href="https://www.yangqq.com/">
-              <img class="favicon" src="https://www.yangqq.com/favicon.ico" alt="" style="border: 1px solid #ccc" />
-              <p>杨青青个人博客</p>
-            </a>
-          </li>
-          <li>
-            <a target="_blank" href="https://www.ilxin.cn/">
-              <img class="favicon" src="http://ilxin.cn/wp-content/uploads/2019/04/tx3.jpg" alt="" style="border: 1px solid #ccc" />
-              <p>鑫-个人博客</p>
+          <li v-for="(item, index) in friends" :key="index">
+            <a target="_blank" :href="item.url">
+              <img class="favicon" :src="item.src" alt="" style="border: 1px solid #ccc" />
+              <p>{{ item.name }}</p>
             </a>
           </li>
         </ul>
@@ -107,7 +89,39 @@ export default {
   name: 'about',
   data() {
     return {
-      active: 1
+      active: 1,
+      friends: [
+        {
+          name: '随心博客',
+          url: 'http://www.sxitw.cn',
+          src: 'http://sxitw.cn/favicon.ico'
+        },
+        {
+          name: 'Sanshi 博客',
+          url: 'http://www.sanshi30.cn/',
+          src: 'http://www.sanshi30.cn/static/img/logo.jpg'
+        },
+        {
+          name: '杨青青个人博客',
+          url: 'https://www.yangqq.com/',
+          src: 'https://www.yangqq.com/favicon.ico'
+        },
+        {
+          name: '鑫-个人博客',
+          url: 'https://www.ilxin.cn/',
+          src: 'http://ilxin.cn/wp-content/uploads/2019/04/tx3.jpg'
+        },
+        {
+          name: '一个努力奋斗的少年',
+          url: 'https://blog.ci0n.cn/',
+          src: 'https://blog.ci0n.cn/images/avatar.jpg'
+        },
+        {
+          name: '学习中的小萌新',
+          url: 'https://www.huangxin.work/',
+          src: 'https://www.huangxin.work/resource/images/favicon.ico'
+        },
+      ]
     };
   },
   components: {

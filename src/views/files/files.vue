@@ -51,6 +51,7 @@ export default {
   ul {
     li {
       margin: 5px 0;
+      text-align: center;
       a {
         color: #188ae2;
       }

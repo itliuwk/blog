@@ -13,6 +13,7 @@
           <!--          <li :class="selIdx=='1'?'active':''" @click="selectIndex(1)">用户中心</li>-->
           <li :class="selIdx == '2' ? 'active' : ''" @click="selectIndex(2)">发布文章</li>
           <li :class="selIdx == '3' ? 'active' : ''" @click="selectIndex(3)">管理文章</li>
+          <li v-if="userInfo.username=='liuwk'" :class="selIdx == '6' ? 'active' : ''" @click="selectIndex(6)">管理友链</li>
           <!--          <li :class="selIdx=='4'?'active':''" @click="selectIndex(4)">修改资料</li>-->
           <!--          <li :class="selIdx=='5'?'active':''" @click="selectIndex(5)">退出</li>-->
         </ul>
@@ -22,6 +23,7 @@
         <PublishArticles v-if="selIdx == 2"></PublishArticles>
         <MyArticle v-if="selIdx == 3"></MyArticle>
         <Modify v-if="selIdx == 4"></Modify>
+        <Friends v-if="selIdx == 6"></Friends>
       </div>
     </div>
   </div>
@@ -33,6 +35,7 @@ import Modify from './modify';
 import MyArticle from './my-article';
 import PublishArticles from './publish-articles';
 import User from './user';
+import Friends from './friends';
 import { random_photo, updateTitle } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { detail } from '@/api/blog';
@@ -42,7 +45,7 @@ export default {
   data() {
     return {
       bgUrl: '',
-      selIdx: 2,
+      selIdx: 6,
       detail: {}
     };
   },
@@ -51,7 +54,8 @@ export default {
     Modify,
     MyArticle,
     PublishArticles,
-    User
+    User,
+    Friends
   },
   computed: {
     userInfo() {
