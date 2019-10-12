@@ -14,7 +14,8 @@
         href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011302002188"
         style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"
       >
-        <img src="../assets/img/备案图标.png" style="float:left;width: 16px;" /> 
+        <img src="../assets/img/备案图标.png" style="float:left;width: 16px;position: relative; top: 1px;left: -5px;
+" /> 
         <p style="float:left;height:20px;line-height:20px; ">  粤公网安备 44011302002188号</p>
       </a>
     </div>

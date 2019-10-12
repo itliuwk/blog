@@ -10,6 +10,10 @@ import VueAxios from 'vue-axios'
 import VueJsonp from 'vue-jsonp'
 import VueClipboard from 'vue-clipboard2'
 
+import Copyright from './components/copyright.vue'
+
+Vue.component('Copyright',Copyright)
+
 Vue.use(VueClipboard);
 
 Vue.use(VueAxios, Axios);

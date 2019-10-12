@@ -6,21 +6,19 @@
         <transition name="fade-transform" mode="out-in"><router-view class="animated"></router-view></transition>
       </keep-alive>
     </div>
-    <copyright></copyright>
+    <Copyright></Copyright>
     <div v-show="returnTop" class="top" :style="{ bottom: scrollTop + 'px' }" @click="returnTo"><i class="iconfont icon-fanhuidingbu"></i></div>
   </div>
 </template>
 
 <script>
 import home from '@/components/index';
-import copyright from '@/components/copyright';
 import { random_photo, updateTitle } from '@/utils/index';
 
 export default {
   name: 'App',
   components: {
-    home,
-    copyright
+    home
   },
   data() {
     return {
