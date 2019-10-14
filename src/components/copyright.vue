@@ -14,12 +14,25 @@
         href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44011302002188"
         style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"
       >
-        <img src="../assets/img/备案图标.png" style="float:left;width: 16px;position: relative; top: 1px;left: -5px;
-" /> 
-        <p style="float:left;height:20px;line-height:20px; ">  粤公网安备 44011302002188号</p>
+        <img
+          src="../assets/img/备案图标.png"
+          style="float:left;width: 16px;position: relative; top: 1px;left: -5px;
+"
+        />
+        <p style="float:left;height:20px;line-height:20px; ">粤公网安备 44011302002188号</p>
       </a>
     </div>
-    <div>本站低调运行已经有 {{ time }}</div>
+    <div>
+      <span>本站低调运行已经有 {{ time }}</span>
+      <span style="margin: 0 20px;">
+        <!-- <i class="iconfont icon-yanjing"></i> -->
+        {{ statistics[0].name }} : {{ statistics[0].count }}
+      </span>
+      <span>
+        <!--  <i class="iconfont icon-ren"></i> -->
+        {{ statistics[1].name }} : {{ statistics[1].count }}
+      </span>
+    </div>
     <div style="padding: 20px 0">
       <a href="https://www.yunaq.com/new_analytics/report/login/?site=www.sxitw.cn" title="创宇云安全" target="_blank">
         <img src="../assets/img/jsl.png" width="127px" height="47px" style="margin:0px 5px;" />
@@ -34,17 +47,30 @@
 </template>
 
 <script>
+import { detail, update } from '@/api/statistics.js';
 export default {
   name: 'copyright',
   data() {
     return {
-      time: '0天0小时0分0秒'
+      time: '0天0小时0分0秒',
+      statistics: []
     };
   },
   mounted() {
     this.showtime();
+    this.updateStatistics();
   },
   methods: {
+    updateStatistics() {
+      update().then(res => {
+        this.detailStatistics();
+      });
+    },
+    detailStatistics() {
+      detail().then(res => {
+        this.statistics = res.data;
+      });
+    },
     showtime(biryear = 2019, birmonth = 8, birday = 24) {
       setInterval(() => {
         let that = this;

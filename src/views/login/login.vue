@@ -22,6 +22,7 @@
 import { login } from '../../api/login';
 import Alert from '@/utils/alert';
 import { updateTitle } from '@/utils/index';
+import { YYYYMMDD } from '@/utils/date';
 
 export default {
   name: 'login',
@@ -55,6 +56,8 @@ export default {
 
       login(this.params).then(res => {
         if (res.data.errno === 0) {
+          res.data.data.logintime = YYYYMMDD(parseInt(res.data.data.logintime));
+          res.data.data.createDate = YYYYMMDD(parseInt(res.data.data.createDate));
           localStorage.setItem('userInfo', JSON.stringify(res.data.data));
           this.$store.commit('SET_USERINFO', res.data.data);
           Alert.success('登录成功，即将进入后台页面');

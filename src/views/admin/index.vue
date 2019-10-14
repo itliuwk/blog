@@ -3,7 +3,11 @@
     <section class="article-focusbox" style="background-image: url(https://cy-pic.kuaizhan.com/g3/ac/71/4dc8-80b8-40c0-9600-9d30118b967a24);">
       <header class="article-header">
         <img src="../../assets/img/tx.png" style="z-index: 999" width="80" alt="" />
-        <h3 class="article-title" v-if="userInfo">账号：{{ userInfo.username || '' }}</h3>
+        <div style="    margin-top: 10px;">
+          <span class="article-title" v-if="userInfo">账号：{{ userInfo.username || '' }}</span>
+          <span class="article-title" v-if="userInfo">创建时间：{{ userInfo.createDate || '' }}</span>
+          <span class="article-title" v-if="userInfo">最近登录时间：{{ userInfo.logintime || '' }}</span>
+        </div>
       </header>
     </section>
 
@@ -104,7 +108,6 @@ export default {
     margin: 0;
     color: #47bcf9;
     font-weight: normal;
-    display: block;
     padding: 10px 20px;
     z-index: 2;
   }
