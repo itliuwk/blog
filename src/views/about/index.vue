@@ -74,9 +74,6 @@
 
     <div v-show="active == 4" style="background: #fff;padding: 20px;">
       <div id="SOHUCS" sid="T99999999999999"></div>
-
-      <!-- 来必力City版安装代码 -->
-      <!-- <div v-show="active == 4" id="lv-container" data-id="city" style="width: 100%;" data-uid="MTAyMC80NjQ2MC8yMjk3MQ=="></div> -->
     </div>
   </div>
 </template>
@@ -249,9 +246,12 @@ export default {
       li:hover {
         img{
           transition: all 1s;
-          transform: rotate(360deg);
+          transform: rotate(720deg);
         }
-       
+        p{
+          color: #188AE2;
+        }
+
       }
     }
   }

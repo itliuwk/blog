@@ -36,7 +36,7 @@
     </div>
 
     <div class="article">
-      <p class="title">热门标签</p>
+      <p class="title">热门分类</p>
       <div>
         <ul>
           <li v-for="(item, index) in classify" :key="index" @click="toClassDetail(item.value, item.label)">
