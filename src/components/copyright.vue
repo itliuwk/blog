@@ -24,10 +24,13 @@
     </div>
     <div>
       <span>本站低调运行已经有 {{ time }}</span>
-      <span style="margin: 0 20px;">
+    </div>
+    <div style="margin: 10px; 0">
+      <span>
         <!-- <i class="iconfont icon-yanjing"></i> -->
         {{ statistics[0].name }} : {{ statistics[0].count }}
       </span>
+      <span style="margin: 0 20px;">最近访问时间：{{ statistics[0].logintime }}</span>
       <span>
         <!--  <i class="iconfont icon-ren"></i> -->
         {{ statistics[1].name }} : {{ statistics[1].count }}
@@ -48,6 +51,7 @@
 
 <script>
 import { detail, update } from '@/api/statistics.js';
+import { YYYYMMDD } from '@/utils/date';
 export default {
   name: 'copyright',
   data() {
@@ -58,17 +62,20 @@ export default {
   },
   mounted() {
     this.showtime();
-    this.updateStatistics();
+    this.detailStatistics();
   },
   methods: {
     updateStatistics() {
-      update().then(res => {
-        this.detailStatistics();
-      });
+      update().then(res => {});
     },
     detailStatistics() {
       detail().then(res => {
+        res.data.map(item => {
+          item.logintime = YYYYMMDD(parseInt(item.logintime));
+          return item;
+        });
         this.statistics = res.data;
+        this.updateStatistics();
       });
     },
     showtime(biryear = 2019, birmonth = 8, birday = 24) {
