@@ -118,7 +118,8 @@ export default {
       this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
     },
     toDetail(id) {
-      this.$router.push('./detail?id=' + id);
+      // this.$router.push('./detail?id=' + id);
+      window.open(`http://sxitw.cn:8000/detail_${id}.html`);
     },
     currentChange(page) {
       this.params = {

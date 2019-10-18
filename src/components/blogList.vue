@@ -77,7 +77,8 @@ export default {
   },
   methods: {
     toDetail(id) {
-      this.$router.push('./detail?id=' + id);
+      // this.$router.push('./detail?id=' + id);
+     window.open(`http://sxitw.cn:8000/detail_${id}.html`);
     },
     toClassDetail(value, label) {
       this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
