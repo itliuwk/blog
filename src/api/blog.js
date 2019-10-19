@@ -74,5 +74,10 @@ export function del(params) {
 
 
 
-
-
+export function detailHtml(params) {
+  return request({
+    url: BASE_API + 'blog/detailHtml',
+    method: 'get',
+    params,
+  }).then(res => res.data);
+}

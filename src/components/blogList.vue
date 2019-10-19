@@ -38,7 +38,7 @@
 <script>
 import { random_photo, random_bg_photo } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
-import { list, listCount } from '@/api/blog';
+import { list, listCount,detailHtml } from '@/api/blog';
 
 export default {
   name: 'blogList',
@@ -77,8 +77,13 @@ export default {
   },
   methods: {
     toDetail(id) {
+      detailHtml({id}).then(res=>{
+        console.log(res)
+      }).catch(err=>{
+        window.open(window._www+`/detail_${id}.html`)
+      })
       // this.$router.push('./detail?id=' + id);
-     window.open(`http://sxitw.cn:8000/detail_${id}.html`);
+     // window.open(`http://sxitw.cn:8000/detail_${id}.html`);
     },
     toClassDetail(value, label) {
       this.$router.push('./classifyDetail?value=' + value + '&label=' + label);

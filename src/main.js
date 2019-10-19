@@ -9,6 +9,9 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueJsonp from 'vue-jsonp'
 import VueClipboard from 'vue-clipboard2'
+import {BASE_WWW} from './config.js'
+
+window._www = BASE_WWW;
 
 import Copyright from './components/copyright.vue'
 

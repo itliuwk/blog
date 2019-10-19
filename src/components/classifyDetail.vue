@@ -50,7 +50,7 @@
 import Right from '@/components/right';
 import { random_bg_photo, updateTitle } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
-import { listClass, listClassCount } from '@/api/blog';
+import { listClass, listClassCount, detailHtml } from '@/api/blog';
 
 export default {
   name: 'classifyDetail',
@@ -130,7 +130,13 @@ export default {
     },
     toDetail(id) {
       // this.$router.push('./detail?id=' + id);
-      window.open(`http://sxitw.cn:8000/detail_${id}.html`);
+      detailHtml({ id })
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          window.open(window._www + `/detail_${id}.html`);
+        });
     },
     currentChange(page) {
       this.params = {
