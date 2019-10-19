@@ -48,7 +48,7 @@ export default {
     };
   },
   beforeCreate() {
-    updateTitle('注册')
+    updateTitle('注册');
   },
   components: {
     SIdentify
@@ -95,9 +95,10 @@ export default {
           Alert.fail(res.data.message);
           return false;
         }
+        Alert.success('注册成功');
         setTimeout(() => {
           this.$router.push('/login');
-        }, 2000);
+        }, 1500);
       });
     },
     //验证码

@@ -61,7 +61,7 @@
                 <el-dropdown-item v-show="isClose">
                   <span @click="closeBg">关闭背景图</span>
                 </el-dropdown-item> -->
-                <el-dropdown-item><span @click="loginOut">退出</span></el-dropdown-item>
+                <el-dropdown-item><span style="display: inline-block; width: 100%;height: 100%;" @click="loginOut">退出</span></el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>

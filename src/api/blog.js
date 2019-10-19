@@ -81,3 +81,13 @@ export function detailHtml(params) {
     params,
   }).then(res => res.data);
 }
+
+
+export function detailTurnHtml(params) {
+  return request({
+    url: BASE_API + 'blog/detailTurnHtml',
+    method: 'get',
+    params,
+  }).then(res => res.data);
+}
+

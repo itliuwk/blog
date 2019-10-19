@@ -28,12 +28,12 @@
     <div style="margin: 10px; 0">
       <span>
         <!-- <i class="iconfont icon-yanjing"></i> -->
-        {{ statistics[0].name }} : {{ statistics[0].count }}
+        {{ visit }}
       </span>
-      <span style="margin: 0 20px;">最近访问时间：{{ statistics[0].logintime }}</span>
+      <span style="margin: 0 20px;">最近访问时间：{{ lately }}</span>
       <span>
         <!--  <i class="iconfont icon-ren"></i> -->
-        {{ statistics[1].name }} : {{ statistics[1].count }}
+        {{ register }}
       </span>
     </div>
     <div style="padding: 20px 0">
@@ -57,7 +57,10 @@ export default {
   data() {
     return {
       time: '0天0小时0分0秒',
-      statistics: []
+      statistics: [],
+      visit: '',
+      register: '',
+      lately: ''
     };
   },
   mounted() {
@@ -74,7 +77,9 @@ export default {
           item.logintime = YYYYMMDD(parseInt(item.logintime));
           return item;
         });
-        this.statistics = res.data;
+        this.visit = res.data[0].name + ' : ' + res.data[0].count;
+        this.register = res.data[1].name + ' : ' + res.data[1].count;
+        this.lately = res.data[0].logintime;
         this.updateStatistics();
       });
     },
