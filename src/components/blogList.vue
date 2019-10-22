@@ -7,7 +7,9 @@
           <img v-else src="../assets/images/8.jpg" alt="" />
           <div>
             <div class="header">
-              <h3 @click="toDetail(item.id)">{{ item.title }}</h3>
+              <h3 @click="toDetail(item.id)">
+                <a target="_blank" :href="item.href">{{ item.title }}</a>
+              </h3>
               <span style="cursor: pointer" @click="toClassDetail(item.value, item.label)">{{ item.label }}</span>
             </div>
             <div class="view">{{ item.subtitle }}</div>
@@ -77,11 +79,11 @@ export default {
   },
   methods: {
     toDetail(id) {
-      detailHtml({id}).then(res=>{
-        console.log(res)
-      }).catch(err=>{
-        window.open(window._www+`/detail_${id}.html`)
-      })
+      // detailHtml({id}).then(res=>{
+      //   console.log(res)
+      // }).catch(err=>{
+      //   window.open(window._www+`/detail_${id}.html`)
+      // })
       // this.$router.push('./detail?id=' + id);
      // window.open(`http://sxitw.cn:8000/detail_${id}.html`);
     },
@@ -97,6 +99,7 @@ export default {
           item.createtime = YYYYMMDD(item.createtime);
           item.content = item.content.toString();
           item.url = random_bg_photo();
+          item.href = window._www+`/detail_${item.id}.html`
           return item;
         });
 

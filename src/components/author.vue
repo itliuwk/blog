@@ -15,7 +15,9 @@
             <img v-else src="../assets/images/8.jpg" alt="" />
             <div>
               <div class="header">
-                <h3 @click="toDetail(item.id)">{{ item.title }}</h3>
+               <h3 @click="toDetail(item.id)">
+                 <a target="_blank" :href="item.href">{{ item.title }}</a>
+               </h3>
                 <span style="cursor: pointer" @click="toClassDetail(item.value, item.label)">{{ item.label }}</span>
               </div>
               <div class="view">{{ item.subtitle }}</div>
@@ -102,6 +104,7 @@ export default {
           item.createtime = YYYYMMDD(item.createtime);
           item.content = item.content.toString();
           item.url = random_photo();
+          item.href = window._www + `/detail_${item.id}.html`;
           return item;
         });
         setTimeout(() => {
@@ -118,13 +121,13 @@ export default {
       this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
     },
     toDetail(id) {
-      detailHtml({ id })
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-           window.open(window._www+`/detail_${id}.html`)
-        });
+      // detailHtml({ id })
+      //   .then(res => {
+      //     console.log(res);
+      //   })
+      //   .catch(err => {
+      //     window.open(window._www + `/detail_${id}.html`);
+      //   });
     },
     currentChange(page) {
       this.params = {
