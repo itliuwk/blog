@@ -13,6 +13,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const Renderer =PrerenderSPAPlugin.PuppeteerRenderer
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const env = require('../config/prod.env')
 
@@ -35,6 +36,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    new BundleAnalyzerPlugin(), //查看各文件打包体积大小信息
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
@@ -132,6 +134,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     //     renderAfterDocumentEvent: 'render-event'//这里是必填的，需要在main里调用
     //   })
     // }),
+
+    new webpack.BannerPlugin('blog 2019 by liuwk'),
   ]
 })
 
