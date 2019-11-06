@@ -11,13 +11,13 @@
 
         <div v-loading="isLoading">
           <div class="item" v-for="(item, index) in classify" :key="index">
-            <img v-if="item.url" :src="item.url" alt="" />
-            <img v-else src="../assets/images/8.jpg" alt="" />
+            <img v-if="item.url" :src="item.url" alt=""/>
+            <img v-else src="../assets/images/8.jpg" alt=""/>
             <div>
               <div class="header">
-               <h3 @click="toDetail(item.id)">
-                 <a target="_blank" :href="item.href">{{ item.title }}</a>
-               </h3>
+                <h3 @click="toDetail(item.id)">
+                  <a target="_blank" :href="item.href">{{ item.title }}</a>
+                </h3>
                 <span style="cursor: pointer" @click="toClassDetail(item.value, item.label)">{{ item.label }}</span>
               </div>
               <div class="view">{{ item.subtitle }}</div>
@@ -26,7 +26,8 @@
                   <i class="iconfont icon-ren" style="vertical-align: top;font-size: 14px;">{{ item.author }}</i>
                 </span>
                 <span style="margin-left: 10px;font-size: 14px;">
-                  <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;">{{ item.createtime }}</i>
+                  <i class="iconfont icon-shijian"
+                     style="vertical-align: top;font-size: 14px;">{{ item.createtime }}</i>
                 </span>
 
                 <span style="margin-left: 10px;">
@@ -38,7 +39,8 @@
         </div>
 
         <div class="pageCount" style="text-align: center">
-          <el-pagination background @current-change="currentChange" layout="total, prev, pager, next" :page-size="params.total" :total="count"></el-pagination>
+          <el-pagination background @current-change="currentChange" layout="total, prev, pager, next"
+                         :page-size="params.total" :total="count"></el-pagination>
         </div>
       </div>
     </div>
@@ -46,171 +48,171 @@
 </template>
 
 <script>
-import Right from '@/components/right';
-import { random_photo, updateTitle } from '@/utils/index';
-import { YYYYMMDD } from '@/utils/date';
-import { list, listCount, detailHtml } from '@/api/blog';
+    import Right from '@/components/right';
+    import {random_photo, updateTitle} from '@/utils/index';
+    import {YYYYMMDD} from '@/utils/date';
+    import {list, listCount, detailHtml} from '@/api/blog';
 
-export default {
-  name: 'classifyDetail',
-  data() {
-    return {
-      bgUrl: '',
-      detail: {},
-      params: {
-        page: 0,
-        total: 10,
-        classify: ''
-      },
-      isLoading: true,
-      classify: [],
-      count: 0
+    export default {
+        name: 'classifyDetail',
+        data() {
+            return {
+                bgUrl: '',
+                detail: {},
+                params: {
+                    page: 0,
+                    total: 10,
+                    classify: ''
+                },
+                isLoading: true,
+                classify: [],
+                count: 0
+            };
+        },
+        components: {
+            Right
+        },
+        watch: {
+            search(val) {
+                this.params = {
+                    page: 0,
+                    total: 10,
+                    keyword: val
+                };
+
+                this.isLoading = true;
+                this.getDetail();
+            }
+        },
+        computed: {
+            search() {
+                return this.$store.state.search;
+            }
+        },
+        mounted() {
+            this.getDetail();
+        },
+        methods: {
+            getDetail() {
+                let params = {
+                    ...this.params,
+                    author: this.$route.query.author
+                };
+                updateTitle(this.$route.query.author);
+                let that = this;
+
+                list(params).then(res => {
+                    res.data.map((item, index) => {
+                        item.createtime = YYYYMMDD(item.createtime);
+                        item.content = item.content.toString();
+                        item.url =  'https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&id=' + item.id;
+                        item.href = window._www + `/detail_${item.id}.html`;
+                        return item;
+                    });
+                    setTimeout(() => {
+                        this.classify = res.data;
+                        this.isLoading = false;
+                    }, 300);
+                });
+
+                listCount(params).then(res => {
+                    this.count = res.data['count(id)'];
+                });
+            },
+            toClassDetail(value, label) {
+                this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
+            },
+            toDetail(id) {
+                // detailHtml({ id })
+                //   .then(res => {
+                //     console.log(res);
+                //   })
+                //   .catch(err => {
+                //     window.open(window._www + `/detail_${id}.html`);
+                //   });
+            },
+            currentChange(page) {
+                this.params = {
+                    page: (page - 1) * this.params.total,
+                    total: this.params.total
+                };
+                this.isLoading = true;
+                this.getDetail();
+                document.documentElement.scrollTop = 0;
+            },
+            unescapeHTML(str) {
+                str = str.replace(/fuwenben963/g, '');
+                str = str.replace(/&amp;/g, '&');
+                str = str.replace(/&lt;/g, '<');
+                str = str.replace(/&gt;/g, '>');
+                str = str.replace(/&quot;/g, '');
+                str = str.replace(/&#039;/g, "'");
+                return str;
+            }
+        }
     };
-  },
-  components: {
-    Right
-  },
-  watch: {
-    search(val) {
-      this.params = {
-        page: 0,
-        total: 10,
-        keyword: val
-      };
-
-      this.isLoading = true;
-      this.getDetail();
-    }
-  },
-  computed: {
-    search() {
-      return this.$store.state.search;
-    }
-  },
-  mounted() {
-    this.getDetail();
-  },
-  methods: {
-    getDetail() {
-      let params = {
-        ...this.params,
-        author: this.$route.query.author
-      };
-      updateTitle(this.$route.query.author);
-      let that = this;
-
-      list(params).then(res => {
-        res.data.map((item, index) => {
-          item.createtime = YYYYMMDD(item.createtime);
-          item.content = item.content.toString();
-          item.url = random_photo();
-          item.href = window._www + `/detail_${item.id}.html`;
-          return item;
-        });
-        setTimeout(() => {
-          this.classify = res.data;
-          this.isLoading = false;
-        }, 300);
-      });
-
-      listCount(params).then(res => {
-        this.count = res.data['count(id)'];
-      });
-    },
-    toClassDetail(value, label) {
-      this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
-    },
-    toDetail(id) {
-      // detailHtml({ id })
-      //   .then(res => {
-      //     console.log(res);
-      //   })
-      //   .catch(err => {
-      //     window.open(window._www + `/detail_${id}.html`);
-      //   });
-    },
-    currentChange(page) {
-      this.params = {
-        page: (page - 1) * this.params.total,
-        total: this.params.total
-      };
-      this.isLoading = true;
-      this.getDetail();
-      document.documentElement.scrollTop = 0;
-    },
-    unescapeHTML(str) {
-      str = str.replace(/fuwenben963/g, '');
-      str = str.replace(/&amp;/g, '&');
-      str = str.replace(/&lt;/g, '<');
-      str = str.replace(/&gt;/g, '>');
-      str = str.replace(/&quot;/g, '');
-      str = str.replace(/&#039;/g, "'");
-      return str;
-    }
-  }
-};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-@import '@/views/home/home.scss';
-@import '@/components/styles/blogList.scss';
+  @import '@/views/home/home.scss';
+  @import '@/components/styles/blogList.scss';
 
-.article-focusbox {
-  position: relative;
-  padding: 50px 0;
-  background-position: center 50%;
-  background-size: cover;
-  background-repeat: repeat;
-  background-attachment: fixed;
-
-  .article-header {
-    text-align: center;
-    padding: 25px 0 25px 0;
-    border-bottom: 0;
-    border-radius: 5px 5px 0 0;
-  }
-
-  .article-title {
+  .article-focusbox {
     position: relative;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 1.3;
-    margin: 0;
-    color: #fff;
-    display: block;
-    text-shadow: 0.8px 0 5px #333;
-    z-index: 2;
+    padding: 50px 0;
+    background-position: center 50%;
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: fixed;
+
+    .article-header {
+      text-align: center;
+      padding: 25px 0 25px 0;
+      border-bottom: 0;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .article-title {
+      position: relative;
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.3;
+      margin: 0;
+      color: #fff;
+      display: block;
+      text-shadow: 0.8px 0 5px #333;
+      z-index: 2;
+    }
+
+    .article-meta {
+      font-size: 12px;
+      color: #eaeaea;
+      padding: 0 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .article-meta .item {
+      margin: 0 5px;
+      text-shadow: 0.8px 0 5px #333;
+    }
   }
 
-  .article-meta {
-    font-size: 12px;
-    color: #eaeaea;
-    padding: 0 20px;
-    z-index: 2;
-    position: relative;
+  .article-focusbox:before {
+    content: '';
+    background: #373d41;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
   }
 
-  .article-meta .item {
-    margin: 0 5px;
-    text-shadow: 0.8px 0 5px #333;
+  .pageCount {
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
   }
-}
-
-.article-focusbox:before {
-  content: '';
-  background: #373d41;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.pageCount {
-  background: #fff;
-  padding: 10px;
-  border-radius: 4px;
-}
 </style>

@@ -27,57 +27,58 @@
 </template>
 
 <script>
-  import pf from '../../assets/img/pf.png'
-  import gq from '../../assets/img/gq.png'
-  import dwz from '../../assets/img/dwz.png'
-  import bk from '../../assets/img/favicon.png'
-  import zqzb from '../../assets/img/zqzb.jpg'
-  import { updateTitle } from '@/utils/index';
+    import pf from '../../assets/img/pf.png'
+    import gq from '../../assets/img/gq.png'
+    import dwz from '../../assets/img/dwz.png'
+    import bk from '../../assets/img/favicon.png'
+    import zqzb from '../../assets/img/zqzb.jpg'
+    import {updateTitle} from '@/utils/index';
 
-  export default {
-    name: "index",
+    export default {
+        name: "index",
 
-    data() {
-      return {
-        list: [
-          {
-            name: '电影实时票房',
-            path: '/dy',
-            info: '24小时更新电影票房，查看最新的排名',
-            src: pf
-          },
-          {
-            name: '歌曲搜索',
-            path: '/music',
-            info: '搜索热门歌曲，部分可下载收费音乐',
-            src: gq
-          },
-          {
-            name: '短网址',
-            path: '/dwz',
-            info: '免费、稳定有效的在线缩短网址',
-            src: dwz
-          },
-          {
-            name: '文件',
-            path: '/files',
-            info: '免费、稳定有效的在线文件链接生成',
-            src: bk
-          },
-          {
-            name: '个人博客',
-            path: 'https://itliuwk.github.io/',
-            info: '刘伟坤 - 小前端前往后端的路上的博客',
-            src: bk,
-            target:'_blank'
-          }
-        ]
-      }
-    },
-    beforeCreate() {
-      updateTitle('站长工具');
+        data() {
+            return {
+                list: [
+                    {
+                        name: '电影实时票房',
+                        path: '/dy',
+                        info: '24小时更新电影票房，查看最新的排名',
+                        src: pf
+                    },
+                    {
+                        name: '歌曲搜索',
+                        path: 'http://music.sxitw.cn',
+                        info: '搜索热门歌曲，部分可下载收费音乐',
+                        src: gq,
+                        target: '_blank'
+                    },
+                    {
+                        name: '短网址',
+                        path: '/dwz',
+                        info: '免费、稳定有效的在线缩短网址',
+                        src: dwz
+                    },
+                    {
+                        name: '文件',
+                        path: '/files',
+                        info: '免费、稳定有效的在线文件链接生成',
+                        src: bk
+                    },
+                    {
+                        name: '个人博客',
+                        path: 'https://itliuwk.github.io/',
+                        info: '刘伟坤 - 小前端前往后端的路上的博客',
+                        src: bk,
+                        target: '_blank'
+                    }
+                ]
+            }
+        },
+        beforeCreate() {
+            updateTitle('站长工具');
+        }
     }
-  }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -90,7 +91,7 @@
     padding: 20px;
     box-sizing: border-box;
     position: relative;
-    color:#fff;
+    color: #fff;
 
 
     h1 {

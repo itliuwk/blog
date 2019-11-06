@@ -98,7 +98,7 @@ export default {
         res.data.map((item, index) => {
           item.createtime = YYYYMMDD(item.createtime);
           item.content = item.content.toString();
-          item.url = random_bg_photo();
+          item.url = 'https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&id='+item.id;
           item.href = window._www+`/detail_${item.id}.html`
           return item;
         });

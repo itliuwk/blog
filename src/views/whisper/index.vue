@@ -62,7 +62,7 @@ export default {
       list().then(res => {
         res.data.map((item, index) => {
           item.createtime = YYYYMMDD(item.createtime);
-          item.src = random_whisper_photo();
+          item.src =   'https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&id=' + index;
           return item;
         });
         this.list = res.data;
@@ -122,7 +122,7 @@ export default {
   }
 
   img:hover {
-    transition: all 1s;
+    transition: all  1s;
     transform: rotate(360deg);
   }
   .whisper {
