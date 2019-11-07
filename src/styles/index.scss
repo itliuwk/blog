@@ -282,20 +282,26 @@ h3 {
   .nav-u {
     display: none !important;
   }
+
 }
 
 @media screen and (max-width: 500px) {
   .blogList .item {
     display: block !important;
+
     img {
       width: 100% !important;
       margin-bottom: 15px;
     }
+
     > div {
       margin-left: 0 !important;
     }
   }
 
+  .carousel {
+    display: none !important;
+  }
   .logo-info {
     margin-left: 20px;
   }
@@ -304,7 +310,7 @@ h3 {
 }
 
 @media screen and (max-width: 600px) {
-.friends {
+  .friends {
     text-align: center;
   }
 }

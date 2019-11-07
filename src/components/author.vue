@@ -16,7 +16,8 @@
             <div>
               <div class="header">
                 <h3 @click="toDetail(item.id)">
-                  <a target="_blank" :href="item.href">{{ item.title }}</a>
+                  <!--                  <a target="_blank" :href="item.href">{{ item.title }}</a>-->
+                  {{item.title }}
                 </h3>
                 <span style="cursor: pointer" @click="toClassDetail(item.value, item.label)">{{ item.label }}</span>
               </div>
@@ -105,7 +106,7 @@
                     res.data.map((item, index) => {
                         item.createtime = YYYYMMDD(item.createtime);
                         item.content = item.content.toString();
-                        item.url =  'https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&id=' + item.id;
+                        item.url = 'https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&id=' + item.id;
                         item.href = window._www + `/detail_${item.id}.html`;
                         return item;
                     });
@@ -123,6 +124,7 @@
                 this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
             },
             toDetail(id) {
+                this.$router.push('./detail?id=' + id);
                 // detailHtml({ id })
                 //   .then(res => {
                 //     console.log(res);

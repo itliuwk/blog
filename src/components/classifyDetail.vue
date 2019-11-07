@@ -16,7 +16,8 @@
               <div>
                 <div class="header">
                   <h3 @click="toDetail(item.id)">
-                    <a target="_blank" :href="item.href">{{ item.title }}</a>
+<!--                    <a target="_blank" :href="">{{ }}</a>-->
+                    {{ item.title }}
                   </h3>
                   <span style="cursor: pointer" @click="toClassDetail(item.value, item.label)">{{ item.label }}</span>
                 </div>
@@ -132,7 +133,7 @@ export default {
       this.$router.push('./classifyDetail?value=' + value + '&label=' + label);
     },
     toDetail(id) {
-      // this.$router.push('./detail?id=' + id);
+      this.$router.push('./detail?id=' + id);
       // detailHtml({ id })
       //   .then(res => {
       //     console.log(res);
