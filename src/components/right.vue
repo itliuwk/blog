@@ -26,7 +26,7 @@
         </div>
         <div>
           <p>留言</p>
-          <p><span id="sourceId::T99999999999999" class="cy_cmt_count"></span></p>
+          <p><span id="sourceId::T99999999999999" class="cy_cmt_count">-</span></p>
         </div>
         <div>
           <p>分类</p>

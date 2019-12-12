@@ -8,17 +8,18 @@ import author from '@/router/modules/author'
 import note from '@/router/modules/note'
 import whisper from '@/router/modules/whisper'
 import files from '@/router/modules/files'
+import test from '@/router/modules/test'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [{
-      path: '/',
-      name: 'home',
-      component: resolve => require(['@/views/home/home'], resolve),
-      // component: () => import('@/views/home/home')
-    },
+    path: '/',
+    name: 'home',
+    component: resolve => require(['@/views/home/home'], resolve),
+    // component: () => import('@/views/home/home')
+  },
     {
       path: '/admin',
       name: 'admin',
@@ -32,9 +33,9 @@ export default new Router({
       // component: () => import('@/views/admin/index')
     },
     {
-    	path: '*',
-    	redirect: '/404',
-    	hidden: true
+      path: '*',
+      redirect: '/404',
+      hidden: true
     },
     {
       path: '/404',
@@ -48,6 +49,7 @@ export default new Router({
     ...author,
     ...note,
     ...whisper,
-    ...files
+    ...files,
+    ...test
   ]
 })

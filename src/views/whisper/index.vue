@@ -14,7 +14,7 @@
               </span>
               <span style="margin-left: 10px;font-size: 14px;">
                 <i class="iconfont icon-shijian" style="vertical-align: top;font-size: 14px;"></i>
-                {{ item.createtime }}
+                {{ item.createtime | YYYYMMDD}}
               </span>
             </div>
           </div>
@@ -33,7 +33,6 @@
 <script>
 import Right from '@/components/right';
 import { random_whisper_photo } from '@/utils/index';
-import { YYYYMMDD } from '@/utils/date';
 import { list, add, update, del } from '@/api/whisper.js';
 import Alert from '@/utils/alert';
 import { updateTitle } from '@/utils/index';
@@ -61,7 +60,6 @@ export default {
     getList() {
       list().then(res => {
         res.data.map((item, index) => {
-          item.createtime = YYYYMMDD(item.createtime);
           item.src =   'https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&id=' + index;
           return item;
         });

@@ -36,7 +36,7 @@
         </div>
         <div class="login">
           <div class="login-search" style="display: inline-block;">
-            <el-input v-model="searchValue" clearable class="search" @keyup.enter.native="search" placeholder="输入关键字 Enter键搜索..."></el-input>
+            <el-input v-model="searchValue" clearable v-focus="true" class="search" @keyup.enter.native="search" placeholder="输入关键字 Enter键搜索..."></el-input>
           </div>
 
           <div style="display: inline-block" v-if="userInfo == null || !userInfo">

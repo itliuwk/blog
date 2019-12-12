@@ -15,7 +15,7 @@ window._www = BASE_WWW;
 
 import Copyright from './components/copyright.vue'
 
-Vue.component('Copyright',Copyright)
+Vue.component('Copyright', Copyright)
 
 Vue.use(VueClipboard);
 
@@ -26,6 +26,9 @@ let userInfo = localStorage.getItem('userInfo');
 if (!userInfo || userInfo == null) {
   localStorage.clear()
 }
+import Print from '@/plugs/print'
+
+Vue.use(Print) //
 
 Vue.prototype.$loadScript = (url, callback) => {
   let script = document.createElement('script');
@@ -67,6 +70,13 @@ Vue.use(Element, {
 });
 
 import '@/styles/index.scss'// global css
+
+
+import * as Time from './utils/date'
+
+Object.keys(Time).forEach(key => {
+  Vue.filter(key, Time[key]);
+});
 
 Vue.config.productionTip = false
 
