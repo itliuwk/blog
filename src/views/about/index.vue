@@ -10,7 +10,7 @@
     </div>
 
     <div v-if="active == 1" class="layui-content" style="text-align: center">
-      <img class="favicon" src="../../assets/img/favicon.png" alt="" style="border: 1px solid #ccc" />
+      <img class="favicon" src="../../assets/img/favicon1.png" alt="" style="border: 1px solid #ccc" />
       <div class="animate">
         <h3>随心博客</h3>
         <p style="margin: 20px 0;">前端开发人员的个人博客，记录工作上，生活上的知识，并分享前端方面技术和一些趣事。</p>
@@ -38,7 +38,7 @@
     </div>
 
     <div v-if="active == 2" class="layui-content" style="text-align: center">
-      <img class="author" src="../../assets/img/author.png" alt="" />
+      <img class="author" src="../../assets/img/favicon.png" alt="" />
       <h3>刘伟坤</h3>
       <p class="animate">
         90后
@@ -193,7 +193,8 @@ export default {
     .son {
       height: 500px;
       border-radius: 10px;
-      margin: 20px 0;
+      margin: 100px 0;
+      transform: rotate(90deg);
     }
 
     > p {

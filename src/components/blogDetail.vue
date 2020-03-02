@@ -97,8 +97,8 @@ export default {
         res.data.content = that.html_entity_decode(res.data.content);
         res.data.content = that.parseDom(res.data.content);
         res.data.url = href;
-        res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + href;
-		updateTitle(res.data.title)
+        res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + 'http://sxitw.cn/detail_'+res.data.id+'.html';
+		updateTitle(res.data.title);
         that.detail = res.data;
         that.bgUrl = random_photo();
       });
