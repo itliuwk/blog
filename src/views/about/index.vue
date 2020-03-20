@@ -9,7 +9,7 @@
       </ul>
     </div>
 
-    <div v-if="active == 1" class="layui-content" style="text-align: center">
+    <div v-show="active == 1" class="layui-content" style="text-align: center">
       <img class="favicon" src="../../assets/img/favicon1.png" alt="" style="border: 1px solid #ccc" />
       <div class="animate">
         <h3>随心博客</h3>
@@ -37,7 +37,7 @@
       <h3 style="text-align:center;margin-top: 20px;">end</h3>
     </div>
 
-    <div v-if="active == 2" class="layui-content" style="text-align: center">
+    <div v-show="active == 2" class="layui-content" style="text-align: center">
       <img class="author" src="../../assets/img/favicon.png" alt="" />
       <h3>刘伟坤</h3>
       <p class="animate">
@@ -55,7 +55,7 @@
       <h3 style="text-align:center;margin-top: 20px;">end</h3>
     </div>
 
-    <div v-if="active == 3" class="layui-content">
+    <div v-show="active == 3" class="layui-content">
       <div class="info" style="text-align: center;">
         <p>这里展示本站所有友情站点，排列不分先后；如需友链，请先添加本站首页链接后，在留言墙告知，或者首页加本人微信或者QQ，谢谢!</p>
       </div>
@@ -191,7 +191,8 @@ export default {
     }
 
     .son {
-      height: 500px;
+      width: 80%;
+      /*height: 500px;*/
       border-radius: 10px;
       margin: 100px 0;
       transform: rotate(90deg);

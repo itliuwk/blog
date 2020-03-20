@@ -40,12 +40,12 @@
         data() {
             return {
                 list: [
-                    {
-                        name: '电影实时票房',
-                        path: '/dy',
-                        info: '24小时更新电影票房，查看最新的排名',
-                        src: pf
-                    },
+                    // {
+                    //     name: '电影实时票房',
+                    //     path: '/dy',
+                    //     info: '24小时更新电影票房，查看最新的排名',
+                    //     src: pf
+                    // },
                     {
                         name: '歌曲搜索',
                         path: 'http://music.sxitw.cn',
