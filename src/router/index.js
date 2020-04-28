@@ -8,7 +8,7 @@ import author from '@/router/modules/author'
 import note from '@/router/modules/note'
 import whisper from '@/router/modules/whisper'
 import files from '@/router/modules/files'
-import test from '@/router/modules/test'
+import tuchuang from '@/router/modules/tuchuang'
 
 Vue.use(Router)
 
@@ -50,6 +50,6 @@ export default new Router({
     ...note,
     ...whisper,
     ...files,
-    ...test
+    ...tuchuang
   ]
 })
