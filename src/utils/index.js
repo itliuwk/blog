@@ -20,13 +20,8 @@ export function updateTitle(title = '') {
  * 随机图片
  */
 export function random_photo() {
-  // return `https://wallpaper.infinitynewtab.com/wallpaper/${random(1, 1000)}.jpg`
-  // return `http://api.laolibab.cn/king/tupian/tpdm/${random(1, 500)}.jpg`
-  // return `http://sxitw.cn/imgs/${random(1, 39)}.jpg`
-  return `https://raw.githubusercontent.com/itliuwk/blog/master/src/assets/images/${random(1, 8)}.jpg`
-  // return `../images/${random(1, 39)}.jpg`
+  return `https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302&id=` + Math.random()
 }
-
 
 
 /**
@@ -39,7 +34,6 @@ export function random_bg_photo() {
   return `https://raw.githubusercontent.com/itliuwk/blog/master/src/assets/bg/${random(1, 59)}.jpg`
   // return `http://imgae.sxitw.cn/${random(1, 39)}.jpg`
 }
-
 
 
 /**

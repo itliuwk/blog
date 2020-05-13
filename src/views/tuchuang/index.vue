@@ -86,7 +86,6 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   .page {
     height: 800px;
-    background: #fff;
     text-align: center;
     padding-top: 20px;
 

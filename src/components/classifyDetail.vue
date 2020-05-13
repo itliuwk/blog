@@ -63,7 +63,7 @@ export default {
       detail: {},
       params: {
         page: 0,
-        total: 10,
+        total: 5,
         classify: ''
       },
       isLoading: true,
@@ -81,7 +81,7 @@ export default {
     search(val) {
       this.params = {
         page: 0,
-        total: 10,
+        total: 5,
         keyword: val
       };
       this.isLoading = true;

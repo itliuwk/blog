@@ -51,7 +51,7 @@
                 isLoading: true,
                 params: {
                     page: 0,
-                    total: 10,
+                    total: 5,
                     keyword: ''
                 },
                 count: 0
@@ -66,7 +66,7 @@
             search(val) {
                 this.params = {
                     page: 0,
-                    total: 10,
+                    total: 5,
                     keyword: val
                 };
                 this.isLoading = true;

@@ -251,11 +251,19 @@ h3 {
   .member-center {
     display: inline-block !important;
   }
-  // .box {
-  //   .box-card {
-  //     width: 400px;
-  //   }
-  // }
+}
+
+
+
+@media screen and (max-width: 1570px) {
+
+
+  .skin-peeler{
+    display: none !important;
+  }
+  #tp-weather-widget{
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -278,6 +286,7 @@ h3 {
   .menu {
     display: inline-block !important;
   }
+
 
   .nav-u {
     display: none !important;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <home :isTop="isTop"></home>
-    <div class="bg">
+    <div class="bg" :style="{backgroundImage:`url(${bgUrl})`}">
       <keep-alive>
         <transition name="fade-transform" mode="out-in">
           <router-view class="animated"></router-view>
@@ -11,6 +11,10 @@
     <Copyright></Copyright>
     <div v-show="returnTop" class="top" :style="{ bottom: scrollTop + 'px' }" @click="returnTo"><i
       class="iconfont icon-fanhuidingbu"></i></div>
+    <div id="tp-weather-widget">
+      <!--<iframe src="https://weather.seniverse.com/?token=cc83e537-7d43-4e42-a8c0-85dff49dd9c9-->
+<!--" frameborder="0"></iframe>-->
+    </div>
   </div>
 </template>
 
@@ -27,7 +31,7 @@
             return {
                 isTop: false,
                 returnTop: false,
-                isCloseBg: false,
+                isCloseBg: true,
                 disabled: false,
                 transitionName: 'slide-right',
                 enterClass: 'bounceIn',
@@ -151,6 +155,19 @@
       overflow: auto;
     }
   }
+
+  #tp-weather-widget{
+    position: fixed;
+    top: 100px;
+    right: 100px;
+  }
+
+  .brRCBH{
+    right: 30px!important;
+    left: auto!important;
+    top: 100px!important;
+  }
+
 
   // body {
   //   min-width: 1400px;

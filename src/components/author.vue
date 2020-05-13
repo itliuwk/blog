@@ -62,7 +62,7 @@
                 detail: {},
                 params: {
                     page: 0,
-                    total: 10,
+                    total: 5,
                     classify: ''
                 },
                 isLoading: true,
@@ -77,7 +77,7 @@
             search(val) {
                 this.params = {
                     page: 0,
-                    total: 10,
+                    total: 5,
                     keyword: val
                 };
 

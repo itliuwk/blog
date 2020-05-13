@@ -41,7 +41,6 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .uploadfiles {
-  background: #fff;
   text-align: center;
   padding: 20px 0;
 }
