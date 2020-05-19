@@ -30,6 +30,11 @@ import Print from '@/plugs/print'
 
 Vue.use(Print) //
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+// use
+Vue.use(mavonEditor)
+
 Vue.prototype.$loadScript = (url, callback) => {
   let script = document.createElement('script');
   if (script.readyState) {

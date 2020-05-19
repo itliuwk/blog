@@ -85,108 +85,108 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
 
 .personal {
-  position: relative;
-  height: 300px;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
-  background: #fff url('../assets/bordergif.gif') no-repeat;
-  background-size: 100% 100%;
+   position: relative;
+   height: 300px;
+   border-radius: 4px;
+   box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
+   background: #fff url('../assets/bordergif.gif') no-repeat;
+   background-size: 100% 100%;
 
-  h3 {
-    padding: 20px 0 10px 20px;
-    font-size: 16px;
-    color: #188ae2;
-  }
+   h3 {
+     padding: 20px 0 10px 20px;
+     font-size: 16px;
+     color: #188ae2;
+   }
 
-  .info {
-    text-align: center;
-    text-indent: 2em;
-    font-size: 15px;
-    padding: 10px;
-    color: #999;
-  }
+   .info {
+     text-align: center;
+     text-indent: 2em;
+     font-size: 15px;
+     padding: 10px;
+     color: #999;
+   }
 
-  .contact {
-    padding: 20px;
-    text-align: center;
+   .contact {
+     padding: 20px;
+     text-align: center;
 
-    div {
-      display: inline-block;
-      width: 35px;
-      height: 35px;
-      line-height: 35px;
-      margin: 0 10px;
-      border: 1px solid #1f2d3d;
-      border-radius: 50%;
-      text-align: center;
-      cursor: pointer;
+     div {
+       display: inline-block;
+       width: 35px;
+       height: 35px;
+       line-height: 35px;
+       margin: 0 10px;
+       border: 1px solid #1f2d3d;
+       border-radius: 50%;
+       text-align: center;
+       cursor: pointer;
 
-      i {
-        font-size: 20px;
-      }
-    }
+       i {
+         font-size: 20px;
+       }
+     }
 
-    .weixin {
-      color: #248a34;
-      border: 1px solid #248a34;
-      position: relative;
+     .weixin {
+       color: #248a34;
+       border: 1px solid #248a34;
+       position: relative;
 
-      img {
-        width: 100px;
-        height: 100px;
-        position: absolute;
-        top: -110px;
-        left: 0;
-        opacity: 0;
-        box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
-      }
-    }
+       img {
+         width: 100px;
+         height: 100px;
+         position: absolute;
+         top: -110px;
+         left: 0;
+         opacity: 0;
+         box-shadow: 0 0 10px rgba(37, 45, 51, 0.5);
+       }
+     }
 
-    .weixin:hover {
-      img {
-        opacity: 1;
-        transition-duration: 1s;
-      }
-    }
+     .weixin:hover {
+       img {
+         opacity: 1;
+         transition-duration: 1s;
+       }
+     }
 
-    .qq {
-      color: #4e91d1;
-      border: 1px solid #4e91d1;
-    }
+     .qq {
+       color: #4e91d1;
+       border: 1px solid #4e91d1;
+     }
 
-    .weibo {
-      color: #d28300;
-      border: 1px solid #d28300;
-    }
-  }
+     .weibo {
+       color: #d28300;
+       border: 1px solid #d28300;
+     }
+   }
 
-  .statistics {
-    border-top: 1px solid #eee;
-    width: 100%;
-    display: flex;
-    position: absolute;
-    height: 60px;
-    line-height: 25px;
-    bottom: 0;
-    left: 0;
+   .statistics {
+     border-top: 1px solid #eee;
+     width: 100%;
+     display: flex;
+     position: absolute;
+     height: 60px;
+     line-height: 25px;
+     bottom: 0;
+     left: 0;
 
-    div {
-      padding: 5px;
-      flex: 1;
-      border-left: 1px solid #eee;
-      text-align: center;
-      font-size: 14px;
+     div {
+       padding: 5px;
+       flex: 1;
+       border-left: 1px solid #eee;
+       text-align: center;
+       font-size: 14px;
 
-      p:nth-child(2) {
-        color: #999;
-      }
-    }
+       p:nth-child(2) {
+         color: #999;
+       }
+     }
 
-    div:nth-child(1) {
-      border: none;
-    }
-  }
-}
+     div:nth-child(1) {
+       border: none;
+     }
+   }
+ }
 
 .article {
   background: #fff;

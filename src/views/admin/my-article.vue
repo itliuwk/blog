@@ -104,6 +104,7 @@
             id
           };
           detail(params).then(res => {
+            console.log(res);
             this.detail = res.data;
           });
         }, 1000)

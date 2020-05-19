@@ -57,6 +57,8 @@ import Right from '@/components/right';
 import { random_photo,updateTitle  } from '@/utils/index';
 import { YYYYMMDD } from '@/utils/date';
 import { detail } from '@/api/blog';
+import marked from 'marked'
+
 
 export default {
   name: 'blogDetail',
@@ -95,7 +97,12 @@ export default {
         let href = window.location.href;
         res.data.createtime = YYYYMMDD(res.data.createtime);
         res.data.content = that.html_entity_decode(res.data.content);
-        res.data.content = that.parseDom(res.data.content);
+        // res.data.content = that.parseDom(res.data.content);
+
+        res.data.content = marked(res.data.content,{
+          sanitize: true
+        });
+
         res.data.url = href;
         res.data.included = 'http://zhanzhang.baidu.com/sitesubmit/index?sitename=' + 'http://sxitw.cn/detail_'+res.data.id+'.html';
 		updateTitle(res.data.title);
