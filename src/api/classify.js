@@ -4,7 +4,7 @@ import {BASE_API} from '../config'
 
 export function classify() {
   return request({
-    url: BASE_API + 'classify/list',
+    url: '/api/classify/list',
     method: 'get'
   }).then(res => res.data);
 }
@@ -12,7 +12,7 @@ export function classify() {
 
 export function classifyCount() {
   return request({
-    url: BASE_API + 'classify/list/count',
+    url:'/api/classify/list/count',
     method: 'get'
   }).then(res => res.data);
 }
@@ -20,7 +20,7 @@ export function classifyCount() {
 
 export function classifylen() {
   return request({
-    url: BASE_API + 'classify/length',
+    url: '/api/classify/length',
     method: 'get'
   }).then(res => res.data);
 }

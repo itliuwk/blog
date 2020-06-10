@@ -4,7 +4,7 @@ import {BASE_API} from '../config'
 
 export function updatePhoto(params) {
   return request({
-    url: BASE_API + 'upload/token',
+    url: '/api/upload/token',
     method: 'post',
     data: params,
   }).then(res => res.data);

@@ -4,7 +4,7 @@ import {BASE_API} from '../config'
 
 export function list(params) {
   return request({
-    url: BASE_API + 'blog/list',
+    url: '/api/blog/list',
     method: 'get',
     params,
   }).then(res => res.data);
@@ -12,7 +12,7 @@ export function list(params) {
 
 export function listCount(params) {
   return request({
-    url: BASE_API + 'blog/list/count',
+    url: '/api/blog/list/count',
     method: 'get',
     params,
   }).then(res => res.data);
@@ -20,7 +20,7 @@ export function listCount(params) {
 
 export function listClass(params) {
   return request({
-    url: BASE_API + 'blog/listClass',
+    url: '/api/blog/listClass',
     method: 'get',
     params,
   }).then(res => res.data);
@@ -29,17 +29,16 @@ export function listClass(params) {
 
 export function listClassCount(params) {
   return request({
-    url: BASE_API + 'blog/listClass/count',
+    url:'/api/blog/listClass/count',
     method: 'get',
     params,
   }).then(res => res.data);
 }
 
 
-
 export function detail(params) {
   return request({
-    url: BASE_API + 'blog/detail',
+    url: '/api/blog/detail',
     method: 'get',
     params,
   }).then(res => res.data);
@@ -48,35 +47,33 @@ export function detail(params) {
 
 export function add(params) {
   return request({
-    url: BASE_API + 'blog/new',
+    url: '/api/blog/new',
     method: 'post',
-    data:params,
+    data: params,
   }).then(res => res.data);
 }
 
 
 export function update(params) {
   return request({
-    url: BASE_API + 'blog/update?id='+params.id,
+    url:'/api/blog/update?id=' + params.id,
     method: 'post',
-    data:params,
+    data: params,
   }).then(res => res.data);
 }
 
 export function del(params) {
   return request({
-    url: BASE_API + 'blog/del?id='+params.id,
+    url: '/api/blog/del?id=' + params.id,
     method: 'post',
-    data:params,
+    data: params,
   }).then(res => res.data);
 }
 
 
-
-
 export function detailHtml(params) {
   return request({
-    url: BASE_API + 'blog/detailHtml',
+    url: '/api/blog/detailHtml',
     method: 'get',
     params,
   }).then(res => res.data);
@@ -85,7 +82,7 @@ export function detailHtml(params) {
 
 export function detailTurnHtml(params) {
   return request({
-    url: BASE_API + 'blog/detailTurnHtml',
+    url:'/api/blog/detailTurnHtml',
     method: 'get',
     params,
   }).then(res => res.data);

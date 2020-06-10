@@ -4,7 +4,7 @@ import {BASE_API} from '../config'
 
 export function detail(params) {
   return request({
-    url: BASE_API + 'statistics/detail',
+    url: '/api/statistics/detail',
     method: 'get',
     params,
   }).then(res => res.data);
@@ -13,7 +13,7 @@ export function detail(params) {
 
 export function update(params) {
   return request({
-    url: BASE_API + 'statistics/update',
+    url:'/api/statistics/update',
     method: 'get',
     params,
   }).then(res => res.data);

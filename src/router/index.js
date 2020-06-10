@@ -42,6 +42,11 @@ export default new Router({
       name: '404',
       component: resolve => require(['@/components/404'], resolve)
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: resolve => require(['@/views/test'], resolve)
+    },
     ...login,
     ...blog,
     ...tools,

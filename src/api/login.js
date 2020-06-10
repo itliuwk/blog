@@ -4,7 +4,7 @@ import {BASE_API} from '../config'
 
 export function login(params) {
   return request({
-    url: BASE_API + 'user/login',
+    url: '/api/user/login',
     method: 'post',
     data:params,
   }).then(res => res);
@@ -13,7 +13,7 @@ export function login(params) {
 
 export function register(params) {
   return request({
-    url: BASE_API + 'user/register',
+    url: '/api/user/register',
     method: 'post',
     data:params,
   }).then(res => res);

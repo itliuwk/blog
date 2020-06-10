@@ -22,8 +22,13 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
-
+    proxyTable: {
+      '/api': {
+        target: 'http://sxitw.cn:8000',
+        secure: false,
+        changeOrigin: true
+      }
+    },
     // Various Dev Server settings
     host: needHost, // can be overwritten by process.env.HOST
     port: 2345, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -47,7 +52,6 @@ module.exports = {
 
     cssSourceMap: true
   },
-
   build: {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
