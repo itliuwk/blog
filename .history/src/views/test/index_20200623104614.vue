@@ -8,12 +8,8 @@
       </template>
     </SLOTS>-->
     <div class="box">
-      <p>
-        <span @click="selCity($event)" id="currEl">{{selData?selData:'选择城市'}}</span>
-      </p>
-      <div class="city" ref="citySel">
-        <City v-if="isCity" @change="cityChange" @close="cityClose"></City>
-      </div>
+      <p @click="selCity($event)">{{selData?selData:'选择城市'}}</p>
+      <City v-if="isCity" class="city" style="top:10px" @change="cityChange"></City>
     </div>
   </div>
 </template>
@@ -37,16 +33,11 @@ export default {
   },
   methods: {
     selCity(e) {
-      let currEl = document.querySelector("#currEl");
       this.isCity = true;
-      this.$refs["citySel"].style.top = `${currEl.offsetTop + 20}px`;
-      this.$refs["citySel"].style.left = `${currEl.offsetLeft}px`;
-    },
-    cityClose() {
-      this.isCity = false;
+      console.log(e);
     },
     cityChange(val) {
-      this.selData = val.toString();
+      console.log(val);
     }
   },
   filters: {
@@ -67,9 +58,7 @@ export default {
   }
 
   .city {
-    display: inline-block;
-    position: fixed;
-    z-index: 99;
+    position: relative;
   }
 }
 </style>

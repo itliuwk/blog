@@ -8,9 +8,7 @@
       </template>
     </SLOTS>-->
     <div class="box">
-      <p>
-        <span @click="selCity($event)" id="currEl">{{selData?selData:'选择城市'}}</span>
-      </p>
+      <p @click="selCity($event)" id="currEl">{{selData?selData:'选择城市'}}</p>
       <div class="city" ref="citySel">
         <City v-if="isCity" @change="cityChange" @close="cityClose"></City>
       </div>
@@ -38,6 +36,7 @@ export default {
   methods: {
     selCity(e) {
       let currEl = document.querySelector("#currEl");
+      console.log(currEl);
       this.isCity = true;
       this.$refs["citySel"].style.top = `${currEl.offsetTop + 20}px`;
       this.$refs["citySel"].style.left = `${currEl.offsetLeft}px`;

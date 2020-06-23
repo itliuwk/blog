@@ -8,11 +8,9 @@
       </template>
     </SLOTS>-->
     <div class="box">
-      <p>
-        <span @click="selCity($event)" id="currEl">{{selData?selData:'选择城市'}}</span>
-      </p>
+      <p @click="selCity($event)">{{selData?selData:'选择城市'}}</p>
       <div class="city" ref="citySel">
-        <City v-if="isCity" @change="cityChange" @close="cityClose"></City>
+        <City v-if="isCity" @change="cityChange" @close='cityClose'></City>
       </div>
     </div>
   </div>
@@ -37,10 +35,10 @@ export default {
   },
   methods: {
     selCity(e) {
-      let currEl = document.querySelector("#currEl");
+      this.isCity = false;
       this.isCity = true;
-      this.$refs["citySel"].style.top = `${currEl.offsetTop + 20}px`;
-      this.$refs["citySel"].style.left = `${currEl.offsetLeft}px`;
+      this.$refs["citySel"].style.top = `${e.y + 20}px`;
+      this.$refs["citySel"].style.left = `${e.x - 10}px`;
     },
     cityClose() {
       this.isCity = false;

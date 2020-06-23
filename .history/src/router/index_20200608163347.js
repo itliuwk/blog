@@ -47,12 +47,6 @@ export default new Router({
       name: 'test',
       component: resolve => require(['@/views/test'], resolve)
     },
-    {
-      path: '/city',
-      name: 'city',
-      component: resolve => require(['@/views/city/index'], resolve),
-      // component: () => import('@/views/admin/index')
-    },
     ...login,
     ...blog,
     ...tools,
