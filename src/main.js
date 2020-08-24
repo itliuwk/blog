@@ -35,6 +35,14 @@ import 'mavon-editor/dist/css/index.css'
 // use
 Vue.use(mavonEditor)
 
+
+Vue.directive('highlight',function (el) {
+  let blocks = el.querySelectorAll('pre code');
+  blocks.forEach((block)=>{
+    hljs.highlightBlock(block)
+  })
+})
+
 Vue.prototype.$loadScript = (url, callback) => {
   let script = document.createElement('script');
   if (script.readyState) {
