@@ -1,6 +1,12 @@
 <template>
   <div class="uploadfiles">
-    <el-upload class="avatar-uploader" :action="action" :show-file-list="false" multiple :on-success="handleAvatarSuccess">
+    <el-upload
+      class="avatar-uploader"
+      :action="action"
+      :show-file-list="false"
+      multiple
+      :on-success="handleAvatarSuccess"
+    >
       <i class="el-icon-plus avatar-uploader-icon"></i>
     </el-upload>
     <div class="files">
@@ -14,13 +20,13 @@
 </template>
 
 <script>
-import { BASE_API } from '@/config';
-import { getFiles } from '@/api/files.js';
+import { BASE_API } from "@/config";
+import { getFiles } from "@/api/files.js";
 export default {
   data() {
     return {
       files: [],
-      action: BASE_API + 'uploadfiles'
+      action: "http://sxitw.cn/api/" + "uploadfiles",
     };
   },
   mounted() {
@@ -28,14 +34,14 @@ export default {
   },
   methods: {
     getFiles() {
-      getFiles().then(res => {
+      getFiles().then((res) => {
         this.files = res.data;
       });
     },
     handleAvatarSuccess() {
       this.getFiles();
-    }
-  }
+    },
+  },
 };
 </script>
 

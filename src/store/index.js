@@ -9,8 +9,8 @@ const store = new Vuex.Store({
     userInfo: '',
     isLogin: false,
     search: '',
-    isCloseBg: true,
-    count:0,
+    isCloseBg: false,
+    count: 0,
   },
   mutations: {
     SET_USERINFO(state, params) {

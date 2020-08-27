@@ -10,13 +10,15 @@
     </div>
 
     <div v-show="active == 1" class="layui-content" style="text-align: center">
-      <img class="favicon" src="../../assets/img/favicon1.png" alt="" style="border: 1px solid #ccc" />
+      <img class="favicon" src="../../assets/img/favicon1.png" alt style="border: 1px solid #ccc" />
       <div class="animate">
         <h3>随心博客</h3>
         <p style="margin: 20px 0;">前端开发人员的个人博客，记录工作上，生活上的知识，并分享前端方面技术和一些趣事。</p>
         <p>www.sxitw.cn</p>
       </div>
-      <p class="synopsis"><span>简介</span></p>
+      <p class="synopsis">
+        <span>简介</span>
+      </p>
       <p class="info">
         前端人员开发的个人博客网站，诞生于2019年8月24日，前端页面使用
         <a target="_blank" href="https://cn.vuejs.org/">vue</a>
@@ -27,18 +29,25 @@
         +
         <a target="_blank" href="https://www.mysql.com/">mysql</a>
         ，
-        <a target="_blank" href="https://buy.cloud.tencent.com/cvm?tab=lite&loginSet=SET_PASSWORD">linux CentOS</a>
+        <a
+          target="_blank"
+          href="https://buy.cloud.tencent.com/cvm?tab=lite&loginSet=SET_PASSWORD"
+        >linux CentOS</a>
         部署， 基本功能已经完成，后续将会继续完善功能和页面的优化！
       </p>
       <p>
         本博客所有前后端代码已放在
-        <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk">Github</a>
+        <a
+          target="_blank"
+          style="color: #188ae2"
+          href="https://github.com/itliuwk"
+        >Github</a>
       </p>
       <h3 style="text-align:center;margin-top: 20px;">end</h3>
     </div>
 
     <div v-show="active == 2" class="layui-content" style="text-align: center">
-      <img class="author" src="../../assets/img/favicon.png" alt="" />
+      <img class="author" src="../../assets/img/favicon.png" alt />
       <h3>刘伟坤</h3>
       <p class="animate">
         90后
@@ -49,10 +58,14 @@
         <a target="_blank" href="https://www.mysql.com/">mysql</a>
         搭建
       </p>
-      <p class="synopsis"><span>简介</span></p>
-      <p class="info">刘伟坤，90后前端开发人员，广东五华人，出厂26年有余，此博客站长，地地道道农村出生，已有小姐姐青睐和一个可爱的儿子。</p>
-      <img class="son" src="../../assets/img/son.png" alt="" />
-      <h3 style="text-align:center;margin-top: 20px;">end</h3>
+      <p class="synopsis">
+        <span>简介</span>
+      </p>
+      <p
+        class="info"
+      >刘伟坤，90后前端开发人员，广东五华人，出厂{{new Date().getFullYear() - 1994}}年有余，此博客开发者，地地道道农村出生，已有小姐姐青睐和一个可爱的儿子。</p>
+      <img class="son" src="http://images.sxitw.cn/son.png" alt />
+      <h3 style="text-align:center;margin-top: 10px;padding-bottom:20px">end</h3>
     </div>
 
     <div v-show="active == 3" class="layui-content">
@@ -64,7 +77,7 @@
         <ul>
           <li v-for="(item, index) in friends" :key="index">
             <a target="_blank" :href="item.url">
-              <img class="favicon" :src="item.src" alt="" style="border: 1px solid #ccc" />
+              <img class="favicon" :src="item.src" alt style="border: 1px solid #ccc" />
               <p>{{ item.name }}</p>
             </a>
           </li>
@@ -79,23 +92,23 @@
 </template>
 
 <script>
-import Right from '@/components/right';
-import { updateTitle } from '@/utils/index';
-import { list } from '@/api/friends';
-import { YYYYMMDD } from '@/utils/date';
+import Right from "@/components/right";
+import { updateTitle } from "@/utils/index";
+import { list } from "@/api/friends";
+import { YYYYMMDD } from "@/utils/date";
 export default {
-  name: 'about',
+  name: "about",
   data() {
     return {
       active: 1,
-      friends: []
+      friends: [],
     };
   },
   components: {
-    Right
+    Right,
   },
   beforeCreate() {
-    updateTitle('关于本站');
+    updateTitle("关于本站");
   },
   mounted() {
     //     (function(d, s) {
@@ -115,10 +128,10 @@ export default {
 
     window.changyan = undefined;
     window.cyan = undefined;
-    this.$loadScript('https://changyan.sohu.com/upload/changyan.js', () => {
+    this.$loadScript("https://changyan.sohu.com/upload/changyan.js", () => {
       window.changyan.api.config({
-        appid: 'cysWFxvAX', // 此处换成你的畅言应用的appid,
-        conf: 'prod_02e199e651f0597818eb703cd2db9ebe' // 此处换成你畅言应用的conf。
+        appid: "cysWFxvAX", // 此处换成你的畅言应用的appid,
+        conf: "prod_02e199e651f0597818eb703cd2db9ebe", // 此处换成你畅言应用的conf。
       });
     });
     this.getList();
@@ -128,14 +141,14 @@ export default {
       this.active = idx;
     },
     getList() {
-      list(this.params).then(res => {
-        this.friends = res.data.map(item => {
+      list(this.params).then((res) => {
+        this.friends = res.data.map((item) => {
           item.createtime = YYYYMMDD(parseInt(item.createtime));
           return item;
         });
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -157,6 +170,8 @@ export default {
     margin-left: auto;
     margin-right: auto;
     padding-top: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
     .layui-tab-title {
       text-align: center;
@@ -181,7 +196,8 @@ export default {
     background: #fff;
     padding-top: 20px;
     min-height: 1100px;
-
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 
     .favicon,
     .author {
@@ -191,11 +207,11 @@ export default {
     }
 
     .son {
-      width: 80%;
+      width: 60%;
       /*height: 500px;*/
       border-radius: 10px;
       margin: 100px 0;
-      transform: rotate(90deg);
+      // transform: rotate(90deg);
     }
 
     > p {
@@ -228,8 +244,18 @@ export default {
         border-radius: 10px;
         padding: 10px;
         border-color: #4d9de0;
-        background-color: #4d9de0;
+        // background-color: #4d9de0;
+        background: #289ee2;
         color: #fff;
+        animation: twinkle 1s infinite alternate;
+      }
+    }
+    @keyframes twinkle {
+      0% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
       }
     }
 
@@ -246,14 +272,13 @@ export default {
       }
 
       li:hover {
-        img{
+        img {
           transition: all 1s;
           transform: rotate(720deg);
         }
-        p{
-          color: #188AE2;
+        p {
+          color: #188ae2;
         }
-
       }
     }
   }
@@ -271,30 +296,36 @@ a {
 }
 
 body .animate {
-  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
   animation: CircleAni 1.5s ease-in-out;
 }
 
 body .info {
-  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+  transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg)
+    rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
   animation: Circle 1.5s ease-in-out;
 }
 
 @keyframes CircleAni {
   0% {
-    transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+    transform: translateX(1000px) translateY(0px) translateZ(0px) rotateX(34deg)
+      rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
   }
   100% {
-    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg)
+      rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
   }
 }
 
 @keyframes Circle {
   0% {
-    transform: translateX(-1000px) translateY(0px) translateZ(0px) rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
+    transform: translateX(-1000px) translateY(0px) translateZ(0px)
+      rotateX(34deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);
   }
   100% {
-    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
+    transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg)
+      rotateY(0deg) rotateZ(360deg) scaleX(1) scaleY(1) scaleZ(1);
   }
 }
 </style>
