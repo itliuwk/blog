@@ -11,8 +11,8 @@
 
         <div v-loading="isLoading">
           <div class="item" v-for="(item, index) in classify" :key="index">
-            <img v-if="item.url" :src="item.url" alt=""/>
-            <img v-else src="../assets/images/8.jpg" alt=""/>
+            <img  :src="item.url" alt=""/>
+            <!-- <img v-else src="../assets/images/8.jpg" alt=""/> -->
             <div>
               <div class="header">
                 <h3 @click="toDetail(item.id)">
