@@ -9,7 +9,7 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueJsonp from 'vue-jsonp'
 import VueClipboard from 'vue-clipboard2'
-import {BASE_WWW} from './config.js'
+import { BASE_WWW } from './config.js'
 
 window._www = BASE_WWW;
 
@@ -35,11 +35,13 @@ import 'mavon-editor/dist/css/index.css'
 // use
 Vue.use(mavonEditor)
 
-
-Vue.directive('highlight',function (el) {
+// highlight.js  代码高亮指令
+import Hljs from 'highlight.js';
+import 'highlight.js/styles/github-gist.css';
+Vue.directive('highlight', function (el) {
   let blocks = el.querySelectorAll('pre code');
-  blocks.forEach((block)=>{
-    hljs.highlightBlock(block)
+  blocks.forEach((block) => {
+    Hljs.highlightBlock(block)
   })
 })
 
@@ -98,7 +100,7 @@ window._vm = new Vue({
   el: '#app',
   router,
   store,
-  components: {App},
+  components: { App },
   template: '<App/>',
   // mounted() {
   //   document.dispatchEvent(new Event('render-event'))

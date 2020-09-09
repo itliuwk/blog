@@ -235,7 +235,7 @@ export default {
   }
 
   /deep/ pre {
-    background-color: #282c34;
+    // background-color: #282c34;
     color: #abb2bf;
     padding: 8px 10px;
     font-size: 15px;
