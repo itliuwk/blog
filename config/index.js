@@ -24,7 +24,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://sxitw.cn/',
+        target: 'http://api.react.sxitw.cn:3000/',
         secure: false,
         changeOrigin: true
       }
