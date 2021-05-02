@@ -20,6 +20,10 @@
               <i class="iconfont icon-gongju"></i>
               站长工具
             </router-link>
+            <router-link to="/develop_tools" tag="li">
+              <i class="iconfont icon-gongju"></i>
+              开发工具
+            </router-link>
 
             <router-link to="/note" tag="li">
               <i class="iconfont icon-biji"></i>
@@ -156,6 +160,10 @@
           <router-link to="/" tag="li">
             <i class="iconfont icon-shouye"></i>
             首页
+          </router-link>
+          <router-link to="/develop_tools" tag="li">
+              <i class="iconfont icon-gongju"></i>
+              开发工具
           </router-link>
           <router-link to="/tools" tag="li">
             <i class="iconfont icon-gongju"></i>

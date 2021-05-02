@@ -1,5 +1,5 @@
-// export const BASE_API = "http://localhost:8000/api/";
-export const BASE_API = "http://sxitw.cn:8000/api/";
+export const BASE_API = "http://localhost:8000/api/";
+// export const BASE_API = "http://sxitw.cn:8000/api/";
 export const BASE_WWW = "http://sxitw.cn";
 
 
