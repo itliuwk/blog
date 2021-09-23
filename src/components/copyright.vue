@@ -6,7 +6,7 @@
         <a target="_blank" style="color: #188ae2" href="https://github.com/itliuwk"><i class="iconfont icon-github"></i></a>
         Powered By liuwk Design.
       </span>
-      <a target="_blank" href="http://www.beian.miit.gov.cn">粤ICP备19106134号</a>
+      <a target="_blank" href="http://beian.miit.gov.cn">粤ICP备19106134号</a>
     </div>
     <div style="margin: 10px; 0">
       <a
