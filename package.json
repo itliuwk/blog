@@ -20,7 +20,7 @@
     "jsonp": "^0.2.1",
     "koa-router": "^7.4.0",
     "koa2": "^2.0.0-alpha.7",
-    "marked": "^1.2.9",
+    "marked": "^4.0.10",
     "mavon-editor": "^2.9.0",
     "moment": "^2.24.0",
     "prerender-spa-plugin": "^3.4.0",
