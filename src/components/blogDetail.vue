@@ -275,6 +275,9 @@ export default {
     /deep/ p {
       line-height: 30px;
     }
+    /deep/ .hljs-string {
+      color: #e6db74 !important;
+    }
   }
 
   /deep/ pre {
