@@ -22,7 +22,7 @@
     "koa2": "^2.0.0-alpha.7",
     "marked": "^1.2.9",
     "mavon-editor": "^2.9.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "prerender-spa-plugin": "^3.4.0",
     "qiniu": "^7.3.0",
     "require": "^2.4.20",
